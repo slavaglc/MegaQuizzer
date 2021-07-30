@@ -17,6 +17,7 @@
 		B56EE61626B3CCE30072512B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56EE61426B3CCE30072512B /* Main.storyboard */; };
 		B56EE61826B3CCE40072512B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56EE61726B3CCE40072512B /* Assets.xcassets */; };
 		B56EE61B26B3CCE40072512B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56EE61926B3CCE40072512B /* LaunchScreen.storyboard */; };
+		F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F95CA3CD26B4A116009D7F26 /* creating.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B56EE61726B3CCE40072512B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B56EE61A26B3CCE40072512B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B56EE61C26B3CCE40072512B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F95CA3CD26B4A116009D7F26 /* creating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = creating.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				59F2B55926B474B400385241 /* DataManagers */,
 				59F2B55226B4717600385241 /* Models */,
 				B56EE61426B3CCE30072512B /* Main.storyboard */,
+				F95CA3CD26B4A116009D7F26 /* creating.storyboard */,
 				B56EE61726B3CCE40072512B /* Assets.xcassets */,
 				B56EE61926B3CCE40072512B /* LaunchScreen.storyboard */,
 				B56EE61C26B3CCE40072512B /* Info.plist */,
@@ -155,6 +158,7 @@
 				B56EE61B26B3CCE40072512B /* LaunchScreen.storyboard in Resources */,
 				B56EE61826B3CCE40072512B /* Assets.xcassets in Resources */,
 				B56EE61626B3CCE30072512B /* Main.storyboard in Resources */,
+				F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
