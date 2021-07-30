@@ -17,27 +17,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="blO-Ue-ZCZ">
-                                <rect key="frame" x="10" y="84" width="300" height="454.5"/>
+                                <rect key="frame" x="10" y="137" width="394" height="596.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите Ваш вопрос" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-0z-ffC">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="83.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="83.5" id="b5f-id-gZP"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cqA-sA-DRZ">
-                                        <rect key="frame" x="0.0" y="80" width="300" height="374.5"/>
+                                        <rect key="frame" x="0.0" y="129.5" width="394" height="467"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="fVV-cE-xRA">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="20.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Варианты ответа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFk-Mo-Cwu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Варианты ответа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFk-Mo-Cwu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="236" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Правильность" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBK-hI-5sM">
-                                                        <rect key="frame" x="187" y="0.0" width="113" height="20.5"/>
+                                                        <rect key="frame" x="281" y="0.0" width="113" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -45,18 +48,24 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="QgI-JX-XVZ">
-                                                <rect key="frame" x="0.0" y="28.5" width="300" height="346"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="394" height="438.5"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Evb-by-vB6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="299"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="391.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Evb-by-vB6" secondAttribute="height" multiplier="150:149" id="K0Q-d0-4zb"/>
+                                                        </constraints>
                                                     </tableView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06l-eY-hJr">
-                                                        <rect key="frame" x="0.0" y="316" width="300" height="30"/>
+                                                        <rect key="frame" x="0.0" y="408.5" width="394" height="30"/>
                                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                         <state key="normal" title="Дальше">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="nextTapped" destination="UVU-fp-mjy" eventType="touchUpInside" id="nhD-YL-Qfw"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -64,11 +73,11 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Evb-by-vB6" secondAttribute="height" multiplier="300:299" id="48T-Nt-HgA"/>
+                                    <constraint firstAttribute="width" secondItem="blO-Ue-ZCZ" secondAttribute="height" multiplier="150:227" id="khq-3f-Tg7"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="5Xm-zG-sz4">
-                                <rect key="frame" x="10" y="134" width="300" height="149"/>
+                                <rect key="frame" x="57" y="178" width="300" height="149"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Придумайте название для вашей викторины " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0t-Ar-VJf">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="41"/>
@@ -99,13 +108,13 @@
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="5Xm-zG-sz4" firstAttribute="top" secondItem="RKC-84-Uxy" secondAttribute="top" constant="90" id="7IL-5N-aNc"/>
-                            <constraint firstItem="blO-Ue-ZCZ" firstAttribute="top" secondItem="RKC-84-Uxy" secondAttribute="top" constant="40" id="cr2-du-Yli"/>
-                            <constraint firstItem="blO-Ue-ZCZ" firstAttribute="centerX" secondItem="RKC-84-Uxy" secondAttribute="centerX" id="jBg-OU-Efa"/>
+                            <constraint firstItem="blO-Ue-ZCZ" firstAttribute="centerX" secondItem="QKF-F3-fOy" secondAttribute="centerX" id="8G2-nU-I4L"/>
+                            <constraint firstItem="blO-Ue-ZCZ" firstAttribute="leading" secondItem="RKC-84-Uxy" secondAttribute="leading" constant="10" id="EAV-bu-5El"/>
+                            <constraint firstItem="blO-Ue-ZCZ" firstAttribute="top" secondItem="RKC-84-Uxy" secondAttribute="top" constant="49" id="Ytb-FL-Gdt"/>
                             <constraint firstItem="5Xm-zG-sz4" firstAttribute="centerX" secondItem="RKC-84-Uxy" secondAttribute="centerX" id="x7T-Ly-VnZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="blO-Ue-ZCZ"/>
                                 <exclude reference="5Xm-zG-sz4"/>
                             </mask>
                         </variation>
@@ -113,8 +122,16 @@
                     <navigationItem key="navigationItem" id="pxu-Kf-E23">
                         <barButtonItem key="rightBarButtonItem" title="Готово" id="nQu-yv-Sgf">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="doneTapped:" destination="UVU-fp-mjy" id="5XV-jV-suI"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="questionTextField" destination="hBF-0z-ffC" id="ozW-jx-XyG"/>
+                        <outlet property="quizNameTextField" destination="dl2-el-cpe" id="2AD-im-oyw"/>
+                        <outlet property="tableView" destination="Evb-by-vB6" id="PsC-ns-D2n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGA-jC-Wsp" sceneMemberID="firstResponder"/>
             </objects>

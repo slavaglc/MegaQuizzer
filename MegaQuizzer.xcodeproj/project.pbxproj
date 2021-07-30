@@ -18,6 +18,7 @@
 		B56EE61826B3CCE40072512B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56EE61726B3CCE40072512B /* Assets.xcassets */; };
 		B56EE61B26B3CCE40072512B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56EE61926B3CCE40072512B /* LaunchScreen.storyboard */; };
 		F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F95CA3CD26B4A116009D7F26 /* creating.storyboard */; };
+		F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B56EE61A26B3CCE40072512B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B56EE61C26B3CCE40072512B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F95CA3CD26B4A116009D7F26 /* creating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = creating.storyboard; sourceTree = "<group>"; };
+		F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingQuizViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				B53AC76726B4231D007B8EBE /* EnterViewController.swift */,
+				F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
 				59F2B55926B474B400385241 /* DataManagers */,
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */,
 				B56EE60F26B3CCE30072512B /* AppDelegate.swift in Sources */,
 				59F2B55626B4721600385241 /* QuestionCard.swift in Sources */,
 				B56EE61126B3CCE30072512B /* SceneDelegate.swift in Sources */,
