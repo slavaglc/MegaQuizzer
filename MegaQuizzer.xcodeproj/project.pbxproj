@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B52094C326B475450059C623 /* QuizesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52094C226B475450059C623 /* QuizesListViewController.swift */; };
 		B53AC76826B4231D007B8EBE /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53AC76726B4231D007B8EBE /* EnterViewController.swift */; };
 		B56EE60F26B3CCE30072512B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EE60E26B3CCE30072512B /* AppDelegate.swift */; };
 		B56EE61126B3CCE30072512B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EE61026B3CCE30072512B /* SceneDelegate.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B52094C226B475450059C623 /* QuizesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizesListViewController.swift; sourceTree = "<group>"; };
 		B53AC76726B4231D007B8EBE /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		B56EE60B26B3CCE30072512B /* MegaQuizzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MegaQuizzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56EE60E26B3CCE30072512B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B52094C526B4754F0059C623 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B53AC76726B4231D007B8EBE /* EnterViewController.swift */,
+				B52094C226B475450059C623 /* QuizesListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		B56EE60226B3CCE30072512B = {
 			isa = PBXGroup;
 			children = (
@@ -56,7 +67,7 @@
 		B56EE60D26B3CCE30072512B /* MegaQuizzer */ = {
 			isa = PBXGroup;
 			children = (
-				B53AC76726B4231D007B8EBE /* EnterViewController.swift */,
+				B52094C526B4754F0059C623 /* ViewControllers */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
 				B56EE61426B3CCE30072512B /* Main.storyboard */,
@@ -140,6 +151,7 @@
 				B56EE60F26B3CCE30072512B /* AppDelegate.swift in Sources */,
 				B56EE61126B3CCE30072512B /* SceneDelegate.swift in Sources */,
 				B53AC76826B4231D007B8EBE /* EnterViewController.swift in Sources */,
+				B52094C326B475450059C623 /* QuizesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
