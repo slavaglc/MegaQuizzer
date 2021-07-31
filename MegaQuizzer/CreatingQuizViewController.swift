@@ -7,13 +7,12 @@ enum CreatingType {
 
 class CreatingQuizViewController: UIViewController {
     //MARK: Oulets
-    @IBOutlet weak var quizNameTextField: UITextField!
-    @IBOutlet weak var questionTextField: UITextField!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var quizNameTextField: UITextField!
+    @IBOutlet weak private var questionTextField: UITextField!
+    @IBOutlet weak private var tableView: UITableView!
     
-    
-    @IBOutlet weak var questionStackView: UIStackView!
-    @IBOutlet weak var quizNameStackView: UIStackView!
+    @IBOutlet weak private var questionStackView: UIStackView!
+    @IBOutlet weak private var quizNameStackView: UIStackView!
     //MARK: Public variables
     var creatingType = CreatingType.quizName
     
@@ -82,16 +81,12 @@ class CreatingQuizViewController: UIViewController {
         switch creatingType {
         case .quizName:
             navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = false
-            
             quizNameStackView.moveIn()
-            quizNameStackView.isHidden = false
             questionStackView.isHidden = true
         case .question:
             navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = true
-            quizNameStackView.isHidden = true
-            questionStackView.isHidden = false
+            quizNameStackView.moveOut()
             questionStackView.moveIn()
-            break
         }
     }
     
@@ -130,25 +125,31 @@ extension CreatingQuizViewController: UITableViewDataSource, UITableViewDelegate
 }
 
 extension UIView {
+    
     func moveIn() {
-        self.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
-        self.alpha = 0.0
-        
+        isHidden = false
+        transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
+        alpha = 0.0
         
         UIView.animate(withDuration: 0.5) {
             self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             self.alpha = 1.0
         }
     }
+}
+
+extension UIStackView {
     
-    func moveOut() {
-        self.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
-        self.alpha = 1.0
-        
-        
-        UIView.animate(withDuration: 0.5) {
-            self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            self.alpha = 0.0
-        }
+        func moveOut() {
+            transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
+            alpha = 1.0
+            
+            UIView.animate(withDuration: 0.7) {
+                self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self.alpha = 0.0
+            } completion: { isFinished in
+                self.isHidden = true
+            }
     }
 }
+
