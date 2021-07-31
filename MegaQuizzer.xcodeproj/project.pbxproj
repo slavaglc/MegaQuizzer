@@ -19,6 +19,7 @@
 		B56EE61B26B3CCE40072512B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56EE61926B3CCE40072512B /* LaunchScreen.storyboard */; };
 		F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F95CA3CD26B4A116009D7F26 /* creating.storyboard */; };
 		F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */; };
+		F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B56EE61C26B3CCE40072512B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F95CA3CD26B4A116009D7F26 /* creating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = creating.storyboard; sourceTree = "<group>"; };
 		F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingQuizViewController.swift; sourceTree = "<group>"; };
+		F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleAnswerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				B53AC76726B4231D007B8EBE /* EnterViewController.swift */,
+				F95CA3D326B54B81009D7F26 /* Cells */,
 				F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
@@ -99,6 +102,14 @@
 				B56EE61C26B3CCE40072512B /* Info.plist */,
 			);
 			path = MegaQuizzer;
+			sourceTree = "<group>";
+		};
+		F95CA3D326B54B81009D7F26 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				59F2B55B26B474E500385241 /* QuizDataManager.swift in Sources */,
 				59F2B55826B4722800385241 /* Answer.swift in Sources */,
 				59F2B55426B471A000385241 /* Quiz.swift in Sources */,
+				F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */,
 				B53AC76826B4231D007B8EBE /* EnterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
