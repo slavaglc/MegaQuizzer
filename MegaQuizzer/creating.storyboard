@@ -68,18 +68,25 @@
                                                                             <rect key="frame" x="323" y="6.5" width="51" height="31"/>
                                                                         </switch>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Possible answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhh-Xw-rtz">
-                                                                            <rect key="frame" x="20" y="11.5" width="122.5" height="20.5"/>
+                                                                            <rect key="frame" x="44.5" y="11.5" width="122.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqv-Cr-zdh">
+                                                                            <rect key="frame" x="17" y="11" width="19.5" height="22"/>
+                                                                            <color key="tintColor" systemColor="systemPinkColor"/>
+                                                                            <state key="normal" image="trash" catalog="system"/>
+                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstItem="vhh-Xw-rtz" firstAttribute="leading" secondItem="fqv-Cr-zdh" secondAttribute="trailing" constant="8" symbolic="YES" id="3wC-8I-aJa"/>
                                                                         <constraint firstItem="yUx-ea-7Se" firstAttribute="centerY" secondItem="63b-62-qTJ" secondAttribute="centerY" id="BOq-6b-nN1"/>
                                                                         <constraint firstItem="yUx-ea-7Se" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vhh-Xw-rtz" secondAttribute="trailing" constant="10" id="D32-Ns-WY8"/>
-                                                                        <constraint firstItem="vhh-Xw-rtz" firstAttribute="leading" secondItem="63b-62-qTJ" secondAttribute="leading" constant="20" symbolic="YES" id="Ktc-vm-Mqg"/>
+                                                                        <constraint firstItem="fqv-Cr-zdh" firstAttribute="centerY" secondItem="63b-62-qTJ" secondAttribute="centerY" id="IXf-kL-qkt"/>
                                                                         <constraint firstItem="vhh-Xw-rtz" firstAttribute="centerY" secondItem="63b-62-qTJ" secondAttribute="centerY" id="N5V-tz-pHe"/>
                                                                         <constraint firstAttribute="trailing" secondItem="yUx-ea-7Se" secondAttribute="trailing" constant="22" id="cu4-t5-I3F"/>
+                                                                        <constraint firstItem="fqv-Cr-zdh" firstAttribute="leading" secondItem="63b-62-qTJ" secondAttribute="leading" constant="17" id="uYP-t4-ibr"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
@@ -215,11 +222,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
