@@ -19,7 +19,11 @@ class CreatingQuizViewController: UIViewController {
     //MARK: Private variables
     //private var quizName: String!
     private var quiz: Quiz!
+    private var quizName: String!
     private var possibleAnswers = ["Вариант ответа 1", "Вариант ответа 2", "Вариант ответа 3"]
+    private var questionCards: [QuestionCard] = []
+    private var answerArray: [Answer] = []
+    private var truthArray = [false, false, false]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +35,7 @@ class CreatingQuizViewController: UIViewController {
             if quizNameTextField.text == "" {
             highlightTextField(textField: quizNameTextField, withText: "Введите название викторины", color: .red)
             } else {
+                quizName = quizNameTextField.text
                 creatingType = .question
                 setGUI()
             }
@@ -42,7 +47,8 @@ class CreatingQuizViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
-        
+        quiz = Quiz(name: quizName, questions: questionCards)
+        QuizDataManager.shared.saveQuiz(quiz: quiz)
     }
     
     fileprivate func showCreatingAnswer(for row: Int){
@@ -68,6 +74,9 @@ class CreatingQuizViewController: UIViewController {
             self.possibleAnswers[row] = answerText
             } else {
                 self.possibleAnswers.append(answerText)
+                let cell = self.tableView.dequeueReusableCell(withIdentifier: "possibleAnswerCell") as! PossibleAnswerTableViewCell
+                let switchPosition = cell.truthSwitch.isOn
+                self.truthArray.append(switchPosition)
             }
             self.tableView.reloadData()
         }
@@ -78,6 +87,19 @@ class CreatingQuizViewController: UIViewController {
         
         alertTextField.placeholder = "Ответ"
         present(alert, animated: true)
+    }
+    
+    @objc fileprivate func switchChanged(sender: UISwitch) {
+        let row = sender.tag
+        truthArray[row] = sender.isOn
+        tableView.reloadData()
+    }
+    
+    @objc fileprivate func removeAnswer(sender: UIButton) {
+        let row = sender.tag
+        possibleAnswers.remove(at: row)
+        truthArray.remove(at: row)
+        tableView.reloadData()
     }
     
     private func setGUI() {
@@ -94,16 +116,27 @@ class CreatingQuizViewController: UIViewController {
     }
     
     private func nextQuestion() {
-        if quiz == nil {
-            guard let quizName = quizNameTextField.text else { return }
-        }
+        saveQuestionCard()
         questionStackView.moveNext()
         removeCard()
+    }
+    
+    private func saveQuestionCard() {
+        for (i, text) in possibleAnswers.enumerated() {
+            let newAnswer = Answer(answerText: text, isTrue: truthArray[i])
+            answerArray.append(newAnswer)
+        }
+        guard let questionText = questionTextField.text else { return }
+        let newQuestionCard = QuestionCard(questionText: questionText, answers: answerArray)
+        questionCards.append(newQuestionCard)
+        print(questionCards)
     }
     
     private func removeCard() {
         questionTextField.text = ""
         possibleAnswers.removeAll()
+        truthArray.removeAll()
+        answerArray.removeAll()
         tableView.reloadData()
     }
     
@@ -132,13 +165,27 @@ extension CreatingQuizViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "possibleAnswerCell") as? PossibleAnswerTableViewCell else { return UITableViewCell()}
+        
+        if possibleAnswers.count < 3 {
+            cell.removeAnswerBtn.isHidden = true
+        } else {
+            cell.removeAnswerBtn.isHidden = false
+        }
         cell.possibleAnswerLabel.text = possibleAnswers[indexPath.row]
+        cell.truthSwitch.isOn = truthArray[indexPath.row]
+        
+        cell.removeAnswerBtn.tag = indexPath.row
+        cell.truthSwitch.tag = indexPath.row
+        
+        cell.truthSwitch.addTarget(self, action: #selector(switchChanged(sender:)), for: .valueChanged)
+        cell.removeAnswerBtn.addTarget(self, action: #selector(removeAnswer(sender:)), for: .touchUpInside)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showCreatingAnswer(for: indexPath.row)
     }
+    
 }
 
 extension UIView {
@@ -168,6 +215,7 @@ extension UIStackView {
                 self.isHidden = true
             }
     }
+    
     func moveNext() {
         transform = CGAffineTransform(scaleX: 0.0, y: 1.0)
         alpha = 0.0

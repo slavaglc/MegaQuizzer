@@ -1,15 +1,9 @@
-//
-//  PossibleAnswerTableViewCell.swift
-//  MegaQuizzer
-//
-//  Created by slava on 31.07.2021.
-//
-
 import UIKit
 
 class PossibleAnswerTableViewCell: UITableViewCell {
     @IBOutlet weak var possibleAnswerLabel: UILabel!
     @IBOutlet weak var truthSwitch: UISwitch!
+    @IBOutlet weak var removeAnswerBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -91,6 +91,7 @@
                                                                 </tableViewCellContentView>
                                                                 <connections>
                                                                     <outlet property="possibleAnswerLabel" destination="vhh-Xw-rtz" id="hwI-oS-OZC"/>
+                                                                    <outlet property="removeAnswerBtn" destination="fqv-Cr-zdh" id="q8F-5s-7Vk"/>
                                                                     <outlet property="truthSwitch" destination="yUx-ea-7Se" id="Tav-Kg-M47"/>
                                                                 </connections>
                                                             </tableViewCell>
