@@ -8,9 +8,16 @@
 import UIKit
 
 class EnterViewController: UIViewController, UITextFieldDelegate {
-
+    
+    @IBOutlet weak var enterButton: UIButton!
+    
     @IBOutlet weak var nameTextField: UITextField!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        enterButton.layer.cornerRadius = enterButton.frame.width / 10
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -28,9 +35,15 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "segue", sender: nil)
     }
     
+    @IBAction func exitUnwind(for unwindSeque: UIStoryboardSegue) {
+        nameTextField.text = ""
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         joinAction()
         return true
     }
+    
+    
 
 }

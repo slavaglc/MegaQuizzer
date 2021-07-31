@@ -15,7 +15,6 @@ class QuizesListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = userName
         guard let userName = userName else { return }
         
         showAlert(title: "Привет \(userName)", massage: "Добро пожаловать в MegaQuizzer! Ты попал на экран выбора темы. Выбирай и вперед!")
@@ -32,11 +31,14 @@ class QuizesListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
 
         content.text = questions[indexPath.row].name
+        content.textProperties.color = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.contentConfiguration = content
 
         return cell
     }
     
+    @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {
+    }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //       guard let quizVC =
 //               segue.destination as? QuizViewController else { return }
