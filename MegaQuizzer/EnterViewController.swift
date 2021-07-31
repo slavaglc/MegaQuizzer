@@ -10,15 +10,11 @@ import UIKit
 class EnterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
-//    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        view.endEditing(true)
-//    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController =
@@ -32,16 +28,9 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "segue", sender: nil)
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        joinAction()
-//        return true
-//    }
-
-    
-    // MARK: - Navigation
-
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        joinAction()
+        return true
+    }
 
 }
-
-
