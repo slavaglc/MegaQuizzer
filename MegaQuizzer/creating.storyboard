@@ -175,11 +175,6 @@
                             <constraint firstItem="blO-Ue-ZCZ" firstAttribute="top" secondItem="RKC-84-Uxy" secondAttribute="top" constant="49" id="Ytb-FL-Gdt"/>
                             <constraint firstItem="5Xm-zG-sz4" firstAttribute="centerX" secondItem="RKC-84-Uxy" secondAttribute="centerX" id="x7T-Ly-VnZ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="5Xm-zG-sz4"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pxu-Kf-E23">
                         <barButtonItem key="rightBarButtonItem" title="Готово" id="nQu-yv-Sgf">

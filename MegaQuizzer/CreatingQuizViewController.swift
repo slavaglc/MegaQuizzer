@@ -1,23 +1,40 @@
 import UIKit
 
-class CreatingQuizViewController: UIViewController {
+enum CreatingType {
+    case quizName
+    case question
+}
 
+class CreatingQuizViewController: UIViewController {
+    //MARK: Oulets
     @IBOutlet weak var quizNameTextField: UITextField!
     @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    
     @IBOutlet weak var questionStackView: UIStackView!
     @IBOutlet weak var quizNameStackView: UIStackView!
+    //MARK: Public variables
+    var creatingType = CreatingType.quizName
     
+    //MARK: Private variables
+    private var quizName: String!
     private var possibleAnswers = ["Вариант ответа 1", "Вариант ответа 2", "Вариант ответа 3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setGUI()
     }
 
     @IBAction func nextTapped(_ sender: UIButton) {
-        if sender.tag == 1 {
+        if sender.tag == 0 {
+            if quizNameTextField.text == "" {
+            highlightTextField(textField: quizNameTextField, withText: "Введите название викторины", color: .red)
+            } else {
+                creatingType = .question
+                setGUI()
+            }
+        } else if sender.tag == 1 {
             showCreatingAnswer(for: possibleAnswers.count)
         }
     }
@@ -61,6 +78,38 @@ class CreatingQuizViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    private func setGUI() {
+        switch creatingType {
+        case .quizName:
+            navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = false
+            
+            quizNameStackView.moveIn()
+            quizNameStackView.isHidden = false
+            questionStackView.isHidden = true
+        case .question:
+            navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = true
+            quizNameStackView.isHidden = true
+            questionStackView.isHidden = false
+            questionStackView.moveIn()
+            break
+        }
+    }
+    
+    private func showAlert(title: String, message: String, style: UIAlertController.Style) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        present(alert, animated: true)
+    }
+    
+    private func highlightTextField(textField: UITextField, withText text: String, color: UIColor) {
+        UIView.animate(withDuration: 1.0) {
+            let placeHolderLabel = textField.subviews.first(where: { NSStringFromClass(type(of: $0)) == "UITextFieldLabel" })
+            placeHolderLabel?.tintColor = .red
+            textField.moveIn()
+            textField.attributedPlaceholder = NSAttributedString(string:                                                        text,
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: color.withAlphaComponent(0.5)])
+            
+        }
+    }
 }
 
 extension CreatingQuizViewController: UITableViewDataSource, UITableViewDelegate {
@@ -78,6 +127,28 @@ extension CreatingQuizViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showCreatingAnswer(for: indexPath.row)
     }
+}
+
+extension UIView {
+    func moveIn() {
+        self.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
+        self.alpha = 0.0
+        
+        
+        UIView.animate(withDuration: 0.5) {
+            self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.alpha = 1.0
+        }
+    }
     
-    
+    func moveOut() {
+        self.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
+        self.alpha = 1.0
+        
+        
+        UIView.animate(withDuration: 0.5) {
+            self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.alpha = 0.0
+        }
+    }
 }
