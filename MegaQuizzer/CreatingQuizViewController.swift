@@ -42,11 +42,16 @@ class CreatingQuizViewController: UIViewController {
         } else if sender.tag == 1 {
             showCreatingAnswer(for: possibleAnswers.count)
         } else if sender.tag == 2 {
+            guard possibleAnswers.count > 2 else { return
+                showAlert(title: "Постойте!", message: "Должно быть более двух вариантов ответа", style: .alert) }
+            guard questionTextField.text != "" else { return
+                highlightTextField(textField: questionTextField, withText: "Введите вопрос!", color: .red) }
             nextQuestion()
         }
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        guard questionCards.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
         quiz = Quiz(name: quizName, questions: questionCards)
         QuizDataManager.shared.saveQuiz(quiz: quiz)
     }
@@ -142,6 +147,8 @@ class CreatingQuizViewController: UIViewController {
     
     private func showAlert(title: String, message: String, style: UIAlertController.Style) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        let okAction = UIAlertAction(title: "Ок", style: .default, handler: nil)
+        alert.addAction(okAction)
         present(alert, animated: true)
     }
     
