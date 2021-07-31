@@ -39,15 +39,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B52094C526B4754F0059C623 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				B53AC76726B4231D007B8EBE /* EnterViewController.swift */,
-				B52094C226B475450059C623 /* QuizesListViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		B56EE60226B3CCE30072512B = {
 			isa = PBXGroup;
 			children = (
@@ -67,7 +58,8 @@
 		B56EE60D26B3CCE30072512B /* MegaQuizzer */ = {
 			isa = PBXGroup;
 			children = (
-				B52094C526B4754F0059C623 /* ViewControllers */,
+				B53AC76726B4231D007B8EBE /* EnterViewController.swift */,
+				B52094C226B475450059C623 /* QuizesListViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
 				B56EE61426B3CCE30072512B /* Main.storyboard */,
