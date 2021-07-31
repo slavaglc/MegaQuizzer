@@ -17,7 +17,8 @@ class CreatingQuizViewController: UIViewController {
     var creatingType = CreatingType.quizName
     
     //MARK: Private variables
-    private var quizName: String!
+    //private var quizName: String!
+    private var quiz: Quiz!
     private var possibleAnswers = ["Вариант ответа 1", "Вариант ответа 2", "Вариант ответа 3"]
     
     override func viewDidLoad() {
@@ -35,6 +36,8 @@ class CreatingQuizViewController: UIViewController {
             }
         } else if sender.tag == 1 {
             showCreatingAnswer(for: possibleAnswers.count)
+        } else if sender.tag == 2 {
+            nextQuestion()
         }
     }
     
@@ -88,6 +91,20 @@ class CreatingQuizViewController: UIViewController {
             quizNameStackView.moveOut()
             questionStackView.moveIn()
         }
+    }
+    
+    private func nextQuestion() {
+        if quiz == nil {
+            guard let quizName = quizNameTextField.text else { return }
+        }
+        questionStackView.moveNext()
+        removeCard()
+    }
+    
+    private func removeCard() {
+        questionTextField.text = ""
+        possibleAnswers.removeAll()
+        tableView.reloadData()
     }
     
     private func showAlert(title: String, message: String, style: UIAlertController.Style) {
@@ -150,6 +167,15 @@ extension UIStackView {
             } completion: { isFinished in
                 self.isHidden = true
             }
+    }
+    func moveNext() {
+        transform = CGAffineTransform(scaleX: 0.0, y: 1.0)
+        alpha = 0.0
+        
+        UIView.animate(withDuration: 0.5) {
+            self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.alpha = 1.0
+        }
     }
 }
 
