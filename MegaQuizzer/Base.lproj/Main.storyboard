@@ -104,7 +104,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="emV-Tq-jNp">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="Sr1-3F-4TD" kind="presentation" modalPresentationStyle="fullScreen" id="xAz-0g-zbS"/>
+                                <segue destination="Sr1-3F-4TD" kind="show" id="xAz-0g-zbS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -116,7 +116,9 @@
         <!--creating-->
         <scene sceneID="X9q-LK-Iys">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CreatingViewController" storyboardName="creating" id="Sr1-3F-4TD" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="CreatingViewController" storyboardName="creating" id="Sr1-3F-4TD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8y4-tI-MLH"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYL-Og-w17" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4065" y="-204"/>
