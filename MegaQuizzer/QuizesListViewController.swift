@@ -9,7 +9,7 @@ import UIKit
 
 class QuizesListViewController: UITableViewController {
     
-    var questions = QuizDataManager.shared.getQuizzes()
+    var questions: [Quiz]!
     
     var userName: String?
 
@@ -22,6 +22,7 @@ class QuizesListViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        questions = QuizDataManager.shared.getQuizzes()
         tableView.reloadData()
     }
 

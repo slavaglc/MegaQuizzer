@@ -104,7 +104,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="emV-Tq-jNp">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="Sr1-3F-4TD" kind="presentation" id="xAz-0g-zbS"/>
+                                <segue destination="Sr1-3F-4TD" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="xAz-0g-zbS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
