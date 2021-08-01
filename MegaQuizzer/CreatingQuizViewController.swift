@@ -47,6 +47,7 @@ class CreatingQuizViewController: UIViewController {
             highlightTextField(textField: quizNameTextField, withText: "Введите название викторины", color: .red)
             } else {
                 quizName = quizNameTextField.text
+                quizNameTextField.resignFirstResponder()
                 creatingType = .question
                 setGUI()
             }
@@ -227,7 +228,7 @@ extension CreatingQuizViewController: UITableViewDataSource, UITableViewDelegate
 
 extension CreatingQuizViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.tag == 0 {
+        if textField.tag == 0 && creatingType == .quizName {
             nextTapped(buttons[0])
         }
         textField.resignFirstResponder()
