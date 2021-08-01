@@ -19,6 +19,11 @@ class QuizesListViewController: UITableViewController {
         
         showAlert(title: "Привет \(userName)", massage: "Добро пожаловать в MegaQuizzer! Ты попал на экран выбора темы. Выбирай и вперед!")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
