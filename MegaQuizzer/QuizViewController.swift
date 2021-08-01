@@ -9,17 +9,17 @@ import UIKit
 
 class QuizViewController: UIViewController {
     @IBOutlet weak var numberQuestionLabel: UILabel!
-    
     @IBOutlet weak var quizName: UILabel!
-    
     @IBOutlet weak var textQuestionsLabel: UILabel!
         
     @IBOutlet var answerButtonArray: [UIButton]!
     
     
-    var quiz = QuizDataManager.shared.getQuizzes()[0] //времянка для теста!!!!!!!
-    var score = 0
+    var quiz: Quiz!
     var name: String!
+    var score = 0
+    var scoreTrueAnswer = 100
+    var scoreFalseAnswer = -50
     
     private var indexQuestions = 0
     private var arrayAnswerPerson: [UIButton] = []
@@ -38,25 +38,38 @@ class QuizViewController: UIViewController {
     }
     
     @IBAction func answerButtonAction(_ sender: UIButton) {
+        var countAnswerTrue = 0
+        for answer in quiz.questions[indexQuestions].answers {
+            if answer.isTrue == true {
+                countAnswerTrue += 1
+            }
+        }
+        if countAnswerTrue != 1 {
             sender.backgroundColor == UIColor.white ?
             (sender.backgroundColor = UIColor.yellow) :
             (sender.backgroundColor = UIColor.white)
-    }
-    
+        } else {
+            settingDefaultButton()
+            sender.backgroundColor == UIColor.white ?
+            (sender.backgroundColor = UIColor.yellow) :
+            (sender.backgroundColor = UIColor.white)
+            }
+        }
+
     @IBAction func nextButtonAction() {
-        if quiz.questions.count >= indexQuestions {
             check()
             if arrayAnswerPerson.count == 0 {
                 alertPresent()
             } else {
                 nextQuestions()
-                data()
             }
-        print(score)
-        } else {
-            performSegue(withIdentifier: "ResultVC", sender: nil) // <- переход на результат
-        }
    }
+    private func settingDefaultButton() {
+        for button in answerButtonArray {
+            button.backgroundColor = UIColor.white
+        }
+    }
+    
    private func settingUI() {
         for answerButton in answerButtonArray {
             answerButton.layer.cornerRadius = 10
@@ -80,18 +93,21 @@ class QuizViewController: UIViewController {
     }
     
     private func nextQuestions() {
-        if indexQuestions < quiz.questions.count {
+        if indexQuestions < quiz.questions.count - 1 {
             indexQuestions += 1
             arrayAnswerPerson.removeAll()
+            data()
+        } else {
+            performSegue(withIdentifier: "ResultVC", sender: nil)
         }
     }
     private func alertPresent() {
-        let alert = UIAlertController(title: nil,
+        let alert = UIAlertController(title: "Ой-ой....",
                                       message:  "А ответ кто будет выбирать?",
                                       preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Я",
-                                      style: .cancel,
+                                      style: .default,
                                       handler: nil))
         self.present(alert,
                      animated: true,
@@ -103,7 +119,7 @@ class QuizViewController: UIViewController {
             if value.backgroundColor == UIColor.yellow {
             arrayAnswerPerson.append(value)
             quiz.questions[indexQuestions].answers[index].isTrue ?
-                (score += 100) : (score -= 50)
+                (score += scoreTrueAnswer) : (score += scoreFalseAnswer)
                 value.backgroundColor = UIColor.white
             }
         }
