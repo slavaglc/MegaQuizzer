@@ -19,13 +19,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="blO-Ue-ZCZ">
                                 <rect key="frame" x="10" y="137" width="394" height="596.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите Ваш вопрос" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-0z-ffC">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите Ваш вопрос" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-0z-ffC">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="83.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="83.5" id="b5f-id-gZP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="continue" smartInsertDeleteType="no"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cqA-sA-DRZ">
                                         <rect key="frame" x="0.0" y="123.5" width="394" height="473"/>
@@ -148,7 +148,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-el-cpe">
                                         <rect key="frame" x="0.0" y="63" width="300" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" smartInsertDeleteType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RG6-5u-Bt1">
                                         <rect key="frame" x="0.0" y="119" width="300" height="30"/>
@@ -191,6 +191,9 @@
                         <outlet property="quizNameStackView" destination="5Xm-zG-sz4" id="P1u-qv-twq"/>
                         <outlet property="quizNameTextField" destination="dl2-el-cpe" id="2AD-im-oyw"/>
                         <outlet property="tableView" destination="Evb-by-vB6" id="PsC-ns-D2n"/>
+                        <outletCollection property="buttons" destination="RG6-5u-Bt1" collectionClass="NSMutableArray" id="Dlh-Tu-e8F"/>
+                        <outletCollection property="buttons" destination="06l-eY-hJr" collectionClass="NSMutableArray" id="sww-wl-A3b"/>
+                        <outletCollection property="buttons" destination="jE9-5z-zFZ" collectionClass="NSMutableArray" id="Nmv-C2-nCm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGA-jC-Wsp" sceneMemberID="firstResponder"/>
