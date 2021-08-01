@@ -52,6 +52,7 @@ class QuizesListViewController: UITableViewController {
        guard let indexPath =
                tableView.indexPathForSelectedRow else { return }
         quizVC.quiz = questions[indexPath.row]
+        quizVC.name = userName
     }
     
 }
