@@ -158,6 +158,7 @@ class CreatingQuizViewController: UIViewController {
         saveQuestionCard()
         questionStackView.moveNext()
         removeCard()
+        checkCountOfAnswers()
     }
     
     private func saveQuestionCard() {
