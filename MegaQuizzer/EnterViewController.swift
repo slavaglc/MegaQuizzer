@@ -8,11 +8,14 @@
 import UIKit
 
 class EnterViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var enterTextField: UITextField!
     
+    @IBOutlet weak var enterButton: UIButton!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        enterButton.layer.cornerRadius = enterButton.frame.width / 10
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -20,45 +23,27 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let viewController =
+                segue.destination as? UINavigationController else { return }
+        guard let quizesListVC = viewController.viewControllers.first as? QuizesListViewController else { return }
+        
+        quizesListVC.userName = nameTextField.text
+    }
+    
     @IBAction func joinAction() {
-        performSegue(withIdentifier: "enterSegue", sender: nil)
-        showAlert(title: "Hello!",
-                  massage: "Hello \(enterTextField.text ?? "User")",
-                  textField: enterTextField)
+        performSegue(withIdentifier: "segue", sender: nil)
+    }
+    
+    @IBAction func exitUnwind(for unwindSeque: UIStoryboardSegue) {
+        nameTextField.text = ""
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         joinAction()
         return true
     }
-
     
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension EnterViewController {
-    private func showAlert(title: String,
-                           massage: String,
-                           textField: UITextField?) {
-        let alert = UIAlertController(title: title,
-                                      message: massage,
-                                      preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK",
-                                        style: .cancel) { _ in
-            textField?.text = ""
-        }
-        
-        alert.addAction(alertAction)
-        
-        present(alert, animated: true)
-    }
 }
