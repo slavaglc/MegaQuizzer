@@ -54,6 +54,7 @@ class CreatingQuizViewController: UIViewController {
         guard questionCards.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
         quiz = Quiz(name: quizName, questions: questionCards)
         QuizDataManager.shared.saveQuiz(quiz: quiz)
+        dismiss(animated: true, completion: nil)
     }
     
     fileprivate func showCreatingAnswer(for row: Int){
