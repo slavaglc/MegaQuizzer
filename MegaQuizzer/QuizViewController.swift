@@ -61,8 +61,9 @@ class QuizViewController: UIViewController {
             if arrayAnswerPerson.count == 0 {
                 alertPresent()
             } else {
+                settingUI()
                 nextQuestions()
-            }
+        }
    }
     private func settingDefaultButton() {
         for button in answerButtonArray {
