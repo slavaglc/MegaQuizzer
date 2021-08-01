@@ -9,7 +9,7 @@ import UIKit
 
 class QuizesListViewController: UITableViewController {
     
-    var questions: [Quiz]!
+    var questions = QuizDataManager.shared.getQuizzes()
     
     var userName: String?
 
@@ -45,14 +45,15 @@ class QuizesListViewController: UITableViewController {
     
     @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//       guard let quizVC =
-//               segue.destination as? QuizViewController else { return }
-//       guard let indexPath =
-//               tableView.indexPathForSelectedRow else { return }
-//       let questions = questions[indexPath.row]
-//       quizVC.questions = questions
-//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       guard let quizVC =
+               segue.destination as? QuizViewController else { return }
+       guard let indexPath =
+               tableView.indexPathForSelectedRow else { return }
+        quizVC.quiz = questions[indexPath.row]
+        quizVC.name = userName
+    }
     
 }
 

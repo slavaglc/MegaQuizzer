@@ -128,7 +128,7 @@
                         <outletCollection property="answerButtonArray" destination="5aq-uV-EJd" collectionClass="NSMutableArray" id="5d0-rN-M0O"/>
                         <outletCollection property="answerButtonArray" destination="GZL-kN-cO3" collectionClass="NSMutableArray" id="Y0f-8H-Ytt"/>
                         <outletCollection property="answerButtonArray" destination="jjL-T0-DbR" collectionClass="NSMutableArray" id="Gx8-ub-t9Y"/>
-                        <segue destination="iwa-ke-rLI" kind="show" identifier="ResultVC" id="sXP-It-lCG"/>
+                        <segue destination="iwa-ke-rLI" kind="presentation" identifier="ResultVC" modalPresentationStyle="fullScreen" id="sXP-It-lCG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boE-04-wOf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
