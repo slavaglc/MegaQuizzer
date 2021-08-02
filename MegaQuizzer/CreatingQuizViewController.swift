@@ -1,23 +1,32 @@
 import UIKit
 
 enum CreatingType {
-    case quizName
-    case question
+    case quizName, question
 }
 
 class CreatingQuizViewController: UIViewController {
     //MARK: Oulets
+    
     @IBOutlet weak private var quizNameTextField: UITextField!
     @IBOutlet weak private var questionTextField: UITextField!
     @IBOutlet weak private var tableView: UITableView!
     
     @IBOutlet weak private var questionStackView: UIStackView!
     @IBOutlet weak private var quizNameStackView: UIStackView!
+    
+    @IBOutlet private var buttons: [UIButton]!
+    
+    
     //MARK: Public variables
+    
     var creatingType = CreatingType.quizName
     
+    //MARK: Private constances
+    
+    let maxAnswers = 5
+    
     //MARK: Private variables
-    //private var quizName: String!
+    
     private var quiz: Quiz!
     private var quizName: String!
     private var possibleAnswers = ["Вариант ответа 1", "Вариант ответа 2", "Вариант ответа 3"]
@@ -27,6 +36,8 @@ class CreatingQuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        quizNameTextField.delegate = self
+        questionTextField.delegate = self
         setGUI()
     }
 
@@ -36,14 +47,15 @@ class CreatingQuizViewController: UIViewController {
             highlightTextField(textField: quizNameTextField, withText: "Введите название викторины", color: .red)
             } else {
                 quizName = quizNameTextField.text
+                quizNameTextField.resignFirstResponder()
                 creatingType = .question
                 setGUI()
             }
         } else if sender.tag == 1 {
             showCreatingAnswer(for: possibleAnswers.count)
         } else if sender.tag == 2 {
-            guard possibleAnswers.count > 2 else { return
-                showAlert(title: "Постойте!", message: "Должно быть более двух вариантов ответа", style: .alert) }
+            guard possibleAnswers.count >= 2 else { return
+                showAlert(title: "Постойте!", message: "Должно быть не менее двух вариантов ответа", style: .alert) }
             guard questionTextField.text != "" else { return
                 highlightTextField(textField: questionTextField, withText: "Введите вопрос!", color: .red) }
             nextQuestion()
@@ -55,6 +67,18 @@ class CreatingQuizViewController: UIViewController {
         quiz = Quiz(name: quizName, questions: questionCards)
         QuizDataManager.shared.saveQuiz(quiz: quiz)
         dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func checkCountOfAnswers() {
+        if possibleAnswers.count >= maxAnswers {
+            buttons[1].isEnabled = false
+            buttons[1].isHidden = true
+        } else {
+            if buttons[1].isEnabled == false {
+                buttons[1].moveIn()
+            }
+            buttons[1].isEnabled = true
+        }
     }
     
     fileprivate func showCreatingAnswer(for row: Int){
@@ -74,7 +98,7 @@ class CreatingQuizViewController: UIViewController {
             okActionTitle = "Создать"
         }
         
-        let okAction = UIAlertAction(title: okActionTitle, style: .default) { action in
+        let okAction = UIAlertAction(title: okActionTitle, style: .default) { _ in
             guard let answerText = alertTextField.text else { return }
             if isEditing {
             self.possibleAnswers[row] = answerText
@@ -83,6 +107,7 @@ class CreatingQuizViewController: UIViewController {
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "possibleAnswerCell") as! PossibleAnswerTableViewCell
                 let switchPosition = cell.truthSwitch.isOn
                 self.truthArray.append(switchPosition)
+                self.checkCountOfAnswers()
             }
             self.tableView.reloadData()
         }
@@ -105,10 +130,12 @@ class CreatingQuizViewController: UIViewController {
         let row = sender.tag
         possibleAnswers.remove(at: row)
         truthArray.remove(at: row)
+        checkCountOfAnswers()
         tableView.reloadData()
     }
     
     private func setGUI() {
+        setCornerRadius()
         switch creatingType {
         case .quizName:
             navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = false
@@ -121,10 +148,17 @@ class CreatingQuizViewController: UIViewController {
         }
     }
     
+    private func setCornerRadius() {
+        for button in buttons {
+            button.layer.cornerRadius = 10
+        }
+    }
+    
     private func nextQuestion() {
         saveQuestionCard()
         questionStackView.moveNext()
         removeCard()
+        checkCountOfAnswers()
     }
     
     private func saveQuestionCard() {
@@ -181,10 +215,8 @@ extension CreatingQuizViewController: UITableViewDataSource, UITableViewDelegate
         }
         cell.possibleAnswerLabel.text = possibleAnswers[indexPath.row]
         cell.truthSwitch.isOn = truthArray[indexPath.row]
-        
         cell.removeAnswerBtn.tag = indexPath.row
         cell.truthSwitch.tag = indexPath.row
-        
         cell.truthSwitch.addTarget(self, action: #selector(switchChanged(sender:)), for: .valueChanged)
         cell.removeAnswerBtn.addTarget(self, action: #selector(removeAnswer(sender:)), for: .touchUpInside)
         return cell
@@ -193,15 +225,24 @@ extension CreatingQuizViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showCreatingAnswer(for: indexPath.row)
     }
-    
+}
+
+extension CreatingQuizViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 && creatingType == .quizName {
+            nextTapped(buttons[0])
+        }
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension UIView {
     
     func moveIn() {
-        isHidden = false
         transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
         alpha = 0.0
+        isHidden = false
         
         UIView.animate(withDuration: 0.5) {
             self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)

@@ -19,13 +19,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="blO-Ue-ZCZ">
                                 <rect key="frame" x="10" y="137" width="394" height="596.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите Ваш вопрос" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-0z-ffC">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите Ваш вопрос" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-0z-ffC">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="83.5"/>
+                                        <color key="backgroundColor" red="1" green="0.79565332891314278" blue="0.40659472264864649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="83.5" id="b5f-id-gZP"/>
                                         </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" smartInsertDeleteType="no"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cqA-sA-DRZ">
                                         <rect key="frame" x="0.0" y="123.5" width="394" height="473"/>
@@ -50,12 +53,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="QgI-JX-XVZ">
                                                 <rect key="frame" x="0.0" y="28.5" width="394" height="444.5"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Evb-by-vB6">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Evb-by-vB6">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="350.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="3aS-1l-AQn"/>
                                                         </constraints>
+                                                        <color key="separatorColor" red="0.78170592740972167" green="0.62117347630200359" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="sectionIndexBackgroundColor" systemColor="systemIndigoColor"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="possibleAnswerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="possibleAnswerCell" id="1TA-nu-Gy9" customClass="PossibleAnswerTableViewCell" customModule="MegaQuizzer" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="24.5" width="394" height="43.5"/>
@@ -66,11 +71,14 @@
                                                                     <subviews>
                                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yUx-ea-7Se">
                                                                             <rect key="frame" x="323" y="6.5" width="51" height="31"/>
+                                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="onTintColor" systemColor="systemIndigoColor"/>
+                                                                            <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </switch>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Possible answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhh-Xw-rtz">
                                                                             <rect key="frame" x="44.5" y="11.5" width="122.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
+                                                                            <color key="textColor" systemColor="systemBackgroundColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqv-Cr-zdh">
@@ -89,6 +97,7 @@
                                                                         <constraint firstItem="fqv-Cr-zdh" firstAttribute="leading" secondItem="63b-62-qTJ" secondAttribute="leading" constant="17" id="uYP-t4-ibr"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
+                                                                <color key="backgroundColor" red="1" green="0.73380120510915336" blue="0.29136376119079122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <connections>
                                                                     <outlet property="possibleAnswerLabel" destination="vhh-Xw-rtz" id="hwI-oS-OZC"/>
                                                                     <outlet property="removeAnswerBtn" destination="fqv-Cr-zdh" id="q8F-5s-7Vk"/>
@@ -96,6 +105,11 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                                <color key="value" systemColor="systemIndigoColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="dataSource" destination="UVU-fp-mjy" id="cv2-SI-jR1"/>
                                                             <outlet property="delegate" destination="UVU-fp-mjy" id="aZk-z1-onN"/>
@@ -147,8 +161,10 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-el-cpe">
                                         <rect key="frame" x="0.0" y="63" width="300" height="34"/>
+                                        <color key="backgroundColor" red="1" green="0.84510920981799642" blue="0.5214237726210017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="continue" smartInsertDeleteType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RG6-5u-Bt1">
                                         <rect key="frame" x="0.0" y="119" width="300" height="30"/>
@@ -191,6 +207,9 @@
                         <outlet property="quizNameStackView" destination="5Xm-zG-sz4" id="P1u-qv-twq"/>
                         <outlet property="quizNameTextField" destination="dl2-el-cpe" id="2AD-im-oyw"/>
                         <outlet property="tableView" destination="Evb-by-vB6" id="PsC-ns-D2n"/>
+                        <outletCollection property="buttons" destination="RG6-5u-Bt1" collectionClass="NSMutableArray" id="Dlh-Tu-e8F"/>
+                        <outletCollection property="buttons" destination="06l-eY-hJr" collectionClass="NSMutableArray" id="sww-wl-A3b"/>
+                        <outletCollection property="buttons" destination="jE9-5z-zFZ" collectionClass="NSMutableArray" id="Nmv-C2-nCm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGA-jC-Wsp" sceneMemberID="firstResponder"/>
