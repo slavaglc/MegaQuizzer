@@ -14,8 +14,8 @@ class QuestionListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        questions = QuizDataManager.shared.currentCreatingCards
+        tableView.reloadData()
     }
     
 
@@ -27,7 +27,13 @@ extension QuestionListViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        
+        content.text = questions[indexPath.row].questionText
+        content.secondaryText = String(questions[indexPath.row].answers.count)
+        cell.contentConfiguration = content
+        return cell
     }
     
     
