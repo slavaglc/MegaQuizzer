@@ -18,7 +18,14 @@ class QuestionListViewController: UIViewController {
         tableView.reloadData()
     }
     
-
+    @IBAction func addQuestionTapped(_ sender: UIButton) {
+        showCreatingVC()
+    }
+    
+    private func showCreatingVC() {
+        dismiss(animated: true)
+    }
+    
 }
 
 extension QuestionListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -29,12 +36,13 @@ extension QuestionListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        
         content.text = questions[indexPath.row].questionText
         content.secondaryText = String(questions[indexPath.row].answers.count)
         cell.contentConfiguration = content
         return cell
     }
+    
+    
     
     
 }

@@ -254,6 +254,9 @@
                                 <state key="normal" title="Добавить вопрос">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addQuestionTapped:" destination="KqE-jN-GcL" eventType="touchUpInside" id="fE0-97-zMm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ho8-BH-TVX"/>
@@ -279,7 +282,7 @@
         <!--Navigation Controller-->
         <scene sceneID="KjX-5v-vjS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aWY-tP-SZr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CreatingNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="aWY-tP-SZr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hjO-XE-RZ7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

@@ -42,12 +42,7 @@ class CreatingQuizViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationVC = segue.destination as? UINavigationController else { return }
-        for viewController in navigationVC.viewControllers {
-            guard let questionListVC = viewController as? QuestionListViewController else { return }
-            guard let question = sender as? QuestionCard else { return }
-            QuizDataManager.shared.currentCreatingCards.append(question)
-        }
+       removeCard()
     }
 
     @IBAction func nextTapped(_ sender: UIButton) {
@@ -63,16 +58,16 @@ class CreatingQuizViewController: UIViewController {
         } else if sender.tag == 1 {
             showCreatingAnswer(for: possibleAnswers.count)
         } else if sender.tag == 2 {
-            guard possibleAnswers.count >= 2 else { return
-                showAlert(title: "Постойте!", message: "Должно быть не менее двух вариантов ответа", style: .alert) }
-            guard questionTextField.text != "" else { return
-                highlightTextField(textField: questionTextField, withText: "Введите вопрос!", color: .red) }
+            guard checkFields() else { return }
             nextQuestion()
         }
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        guard checkFields() else { return }
         saveQuestionCard()
+        performSegue(withIdentifier: "questionListSegue", sender: nil)
+        
 //        guard questionCards.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
 //
 //       performSegue(withIdentifier: "questionListSegue", sender: nil)
@@ -181,10 +176,21 @@ class CreatingQuizViewController: UIViewController {
         }
         guard let questionText = questionTextField.text else { return }
         let newQuestionCard = QuestionCard(questionText: questionText, answers: answerArray)
-        performSegue(withIdentifier: "questionListSegue", sender: newQuestionCard)
+        QuizDataManager.shared.currentCreatingCards.append(newQuestionCard)
        // questionCards.append(newQuestionCard)
         //print(questionCards)
         
+    }
+    
+    private func checkFields() -> Bool {
+        guard possibleAnswers.count >= 2 else { showAlert(title: "Постойте!", message: "Должно быть не менее двух вариантов ответа", style: .alert)
+            return false
+             }
+        guard questionTextField.text != "" else {
+            highlightTextField(textField: questionTextField, withText: "Введите вопрос!", color: .red)
+            return false
+            }
+        return true
     }
     
     private func removeCard() {
