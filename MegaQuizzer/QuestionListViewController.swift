@@ -9,17 +9,11 @@ import UIKit
 
 class QuestionListViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
-    var questions: [QuestionCard]!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
     }
     
-    @IBAction func addQuestionTapped(_ sender: UIButton) {
-        
-    }
-    
+
 }

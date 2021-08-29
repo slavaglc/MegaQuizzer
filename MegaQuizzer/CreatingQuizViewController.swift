@@ -46,7 +46,7 @@ class CreatingQuizViewController: UIViewController {
         for viewController in navigationVC.viewControllers {
             guard let questionListVC = viewController as? QuestionListViewController else { return }
             guard let question = sender as? QuestionCard else { return }
-            questionListVC.questions.append(question)
+            
             //questionListVC.questions = questionCards
         }
     }
