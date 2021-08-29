@@ -210,17 +210,17 @@
                         <outletCollection property="buttons" destination="RG6-5u-Bt1" collectionClass="NSMutableArray" id="Dlh-Tu-e8F"/>
                         <outletCollection property="buttons" destination="06l-eY-hJr" collectionClass="NSMutableArray" id="sww-wl-A3b"/>
                         <outletCollection property="buttons" destination="jE9-5z-zFZ" collectionClass="NSMutableArray" id="Nmv-C2-nCm"/>
-                        <segue destination="KqE-jN-GcL" kind="show" identifier="questionListSegue" id="69j-dQ-9Ar"/>
+                        <segue destination="bi7-en-ImT" kind="show" identifier="questionListSegue" id="yAN-7R-RCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGA-jC-Wsp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208.6956521739132" y="61.607142857142854"/>
+            <point key="canvasLocation" x="1209" y="62"/>
         </scene>
-        <!--View Controller-->
+        <!--Question List View Controller-->
         <scene sceneID="N02-bR-pTI">
             <objects>
-                <viewController id="KqE-jN-GcL" sceneMemberID="viewController">
+                <viewController id="KqE-jN-GcL" customClass="QuestionListViewController" customModule="MegaQuizzer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="itx-tK-IrP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,6 +229,10 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="565"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemIndigoColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="KqE-jN-GcL" id="PEt-57-Rd6"/>
+                                    <outlet property="delegate" destination="KqE-jN-GcL" id="cfu-Me-AHf"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7d9-AD-Qg3">
                                 <rect key="frame" x="43.5" y="617" width="288" height="30"/>
@@ -240,6 +244,9 @@
                                 <state key="normal" title="Добавить вопрос">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addQuestionTapped:" destination="KqE-jN-GcL" eventType="touchUpInside" id="4u3-KI-Ot9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ho8-BH-TVX"/>
@@ -254,10 +261,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g6R-gV-ZdF"/>
+                    <connections>
+                        <outlet property="tableView" destination="pv0-zX-6eI" id="UP6-QI-Ims"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWL-4Q-LfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2056.875" y="60.2112676056338"/>
+            <point key="canvasLocation" x="3286" y="62"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KjX-5v-vjS">
@@ -277,6 +287,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuy-Mg-qcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-24.375" y="62.323943661971832"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6gO-ms-KSe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bi7-en-ImT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ajY-e5-lm3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ea-9Q-Vp1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemYellowColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KqE-jN-GcL" kind="relationship" relationship="rootViewController" id="qfT-u9-HaX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIr-5L-YOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2338" y="62"/>
         </scene>
     </scenes>
     <resources>

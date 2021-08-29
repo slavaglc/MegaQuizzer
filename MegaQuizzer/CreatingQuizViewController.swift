@@ -40,6 +40,16 @@ class CreatingQuizViewController: UIViewController {
         questionTextField.delegate = self
         setGUI()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationVC = segue.destination as? UINavigationController else { return }
+        for viewController in navigationVC.viewControllers {
+            guard let questionListVC = viewController as? QuestionListViewController else { return }
+            guard let question = sender as? QuestionCard else { return }
+            questionListVC.questions.append(question)
+            //questionListVC.questions = questionCards
+        }
+    }
 
     @IBAction func nextTapped(_ sender: UIButton) {
         if sender.tag == 0 {
@@ -63,11 +73,15 @@ class CreatingQuizViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
-        guard questionCards.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
-        quiz = Quiz(name: quizName, questions: questionCards)
-        QuizDataManager.shared.saveQuiz(quiz: quiz)
-        dismiss(animated: true, completion: nil)
+        saveQuestionCard()
+//        guard questionCards.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
+//
+//       performSegue(withIdentifier: "questionListSegue", sender: nil)
+//      quiz = Quiz(name: quizName, questions: questionCards)
+//      QuizDataManager.shared.saveQuiz(quiz: quiz)
+//      dismiss(animated: true, completion: nil)
     }
+    
     
     fileprivate func checkCountOfAnswers() {
         if possibleAnswers.count >= maxAnswers {
@@ -168,8 +182,10 @@ class CreatingQuizViewController: UIViewController {
         }
         guard let questionText = questionTextField.text else { return }
         let newQuestionCard = QuestionCard(questionText: questionText, answers: answerArray)
-        questionCards.append(newQuestionCard)
-        print(questionCards)
+        performSegue(withIdentifier: "questionListSegue", sender: newQuestionCard)
+       // questionCards.append(newQuestionCard)
+        //print(questionCards)
+        
     }
     
     private func removeCard() {

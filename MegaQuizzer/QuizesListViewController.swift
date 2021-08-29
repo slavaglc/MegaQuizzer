@@ -10,12 +10,14 @@ import UIKit
 class QuizesListViewController: UITableViewController {
     
     var questions = QuizDataManager.shared.getQuizzes()
-    
     var userName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let userName = userName else { return }
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem?.tintColor = .white
         
         showAlert(title: "Привет \(userName)", massage: "Добро пожаловать в MegaQuizzer! Ты попал на экран выбора темы. Выбирай и вперед!")
     }
@@ -41,6 +43,14 @@ class QuizesListViewController: UITableViewController {
         cell.contentConfiguration = content
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            questions.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
     @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {

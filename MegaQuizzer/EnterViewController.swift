@@ -10,7 +10,6 @@ import UIKit
 class EnterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var enterButton: UIButton!
-    
     @IBOutlet weak var nameTextField: UITextField!
 
     override func viewDidLoad() {
