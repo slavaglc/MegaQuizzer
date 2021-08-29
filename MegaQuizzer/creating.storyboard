@@ -210,7 +210,7 @@
                         <outletCollection property="buttons" destination="RG6-5u-Bt1" collectionClass="NSMutableArray" id="Dlh-Tu-e8F"/>
                         <outletCollection property="buttons" destination="06l-eY-hJr" collectionClass="NSMutableArray" id="sww-wl-A3b"/>
                         <outletCollection property="buttons" destination="jE9-5z-zFZ" collectionClass="NSMutableArray" id="Nmv-C2-nCm"/>
-                        <segue destination="bi7-en-ImT" kind="show" identifier="questionListSegue" id="yAN-7R-RCL"/>
+                        <segue destination="bi7-en-ImT" kind="presentation" identifier="questionListSegue" modalPresentationStyle="fullScreen" id="yAN-7R-RCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGA-jC-Wsp" sceneMemberID="firstResponder"/>
@@ -244,9 +244,6 @@
                                 <state key="normal" title="Добавить вопрос">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="addQuestionTapped:" destination="KqE-jN-GcL" eventType="touchUpInside" id="4u3-KI-Ot9"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ho8-BH-TVX"/>
@@ -262,7 +259,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="g6R-gV-ZdF"/>
                     <connections>
-                        <outlet property="tableView" destination="pv0-zX-6eI" id="UP6-QI-Ims"/>
+                        <outlet property="tableView" destination="pv0-zX-6eI" id="jkU-6S-HU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWL-4Q-LfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
