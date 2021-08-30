@@ -4,6 +4,11 @@ enum CreatingType {
     case quizName, question
 }
 
+enum EditingType {
+    case creating
+    case editing(index: Int)
+}
+
 class CreatingQuizViewController: UIViewController {
     //MARK: Oulets
     
@@ -20,6 +25,7 @@ class CreatingQuizViewController: UIViewController {
     //MARK: Public variables
     
     var creatingType = CreatingType.quizName
+    var editingType = EditingType.creating
     
     //MARK: Private constances
     
@@ -76,6 +82,17 @@ class CreatingQuizViewController: UIViewController {
 //      dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let questionListVC = segue.source as? QuestionListViewController else { return }
+        editingType = questionListVC.editingType
+        setEditingGUI()
+        switch editingType {
+        case .creating:
+            removeCard()
+        case .editing(index: let row):
+        prepareToEdit(at: row)
+        }
+    }
     
     fileprivate func checkCountOfAnswers() {
         if possibleAnswers.count >= maxAnswers {
@@ -89,7 +106,7 @@ class CreatingQuizViewController: UIViewController {
         }
     }
     
-    fileprivate func showCreatingAnswer(for row: Int){
+    fileprivate func showCreatingAnswer(for row: Int) {
         var okActionTitle: String!
         var isEditing: Bool!
         
@@ -144,6 +161,7 @@ class CreatingQuizViewController: UIViewController {
     
     private func setGUI() {
         setCornerRadius()
+        
         switch creatingType {
         case .quizName:
             navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = false
@@ -153,7 +171,30 @@ class CreatingQuizViewController: UIViewController {
             navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = true
             quizNameStackView.moveOut()
             questionStackView.moveIn()
+            setEditingGUI()
         }
+        
+    }
+    
+    private func setEditingGUI() {
+        var nextButton: UIButton? {
+            for button in buttons {
+                if button.tag == 2 {
+                    return button
+                }
+            }
+            return nil
+        }
+        guard let nextButton = nextButton else { return }
+        switch editingType {
+        case .creating:
+            nextButton.isHidden = false
+            navigationItem.rightBarButtonItem?.title = "Готово"
+        case .editing(index: _):
+            nextButton.isHidden = true
+            navigationItem.rightBarButtonItem?.title = "Сохранить"
+        }
+        
     }
     
     private func setCornerRadius() {
@@ -176,10 +217,12 @@ class CreatingQuizViewController: UIViewController {
         }
         guard let questionText = questionTextField.text else { return }
         let newQuestionCard = QuestionCard(questionText: questionText, answers: answerArray)
-        QuizDataManager.shared.currentCreatingCards.append(newQuestionCard)
-       // questionCards.append(newQuestionCard)
-        //print(questionCards)
-        
+        switch editingType {
+        case .creating:
+            QuizDataManager.shared.currentCreatingCards.append(newQuestionCard)
+        case .editing(index: let row):
+            QuizDataManager.shared.currentCreatingCards[row] = newQuestionCard
+        }
     }
     
     private func checkFields() -> Bool {
@@ -198,6 +241,16 @@ class CreatingQuizViewController: UIViewController {
         possibleAnswers.removeAll()
         truthArray.removeAll()
         answerArray.removeAll()
+        tableView.reloadData()
+    }
+    
+    private func prepareToEdit(at index: Int) {
+        let currentCard = QuizDataManager.shared.currentCreatingCards[index]
+        questionTextField.text = currentCard.questionText
+        currentCard.answers.forEach { answer in
+            possibleAnswers.append(answer.answerText)
+            truthArray.append(answer.isTrue)
+        }
         tableView.reloadData()
     }
     

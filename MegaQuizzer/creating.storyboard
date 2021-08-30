@@ -255,7 +255,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addQuestionTapped:" destination="KqE-jN-GcL" eventType="touchUpInside" id="fE0-97-zMm"/>
+                                    <segue destination="BEn-a7-biU" kind="unwind" identifier="unwindToCreating" unwindAction="unwindFor:" id="KAO-Y9-jRu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -276,6 +276,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWL-4Q-LfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BEn-a7-biU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3286" y="62"/>
         </scene>
