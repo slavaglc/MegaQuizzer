@@ -48,6 +48,11 @@ class CreatingQuizViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navController = segue.destination as? UINavigationController else { return }
+        for viewController in navController.viewControllers {
+            guard let questionListVC = viewController as? QuestionListViewController else { continue }
+            questionListVC.quizName = quizName
+        }
        removeCard()
     }
 
@@ -90,7 +95,8 @@ class CreatingQuizViewController: UIViewController {
         case .creating:
             removeCard()
         case .editing(index: let row):
-        prepareToEdit(at: row)
+            removeCard()
+            prepareToEdit(at: row)
         }
     }
     

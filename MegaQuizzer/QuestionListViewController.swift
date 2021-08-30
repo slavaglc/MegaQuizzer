@@ -10,13 +10,26 @@ import UIKit
 class QuestionListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var quizName: String = ""
     var questions: [QuestionCard] = []
     var editingType: EditingType = .creating
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setGUI()
         questions = QuizDataManager.shared.currentCreatingCards
         tableView.reloadData()
+    }
+    
+    private func setGUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveQuiz))
+    }
+    
+    @objc private func saveQuiz() {
+        QuizDataManager.shared.saveQuiz(quiz: Quiz(name: quizName, questions: questions))
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+        QuizDataManager.shared.currentCreatingCards.removeAll()
     }
 }
 
