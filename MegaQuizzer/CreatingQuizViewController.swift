@@ -129,18 +129,21 @@ class CreatingQuizViewController: UIViewController {
             okActionTitle = "Создать"
         }
         
-        let okAction = UIAlertAction(title: okActionTitle, style: .default) { _ in
+        let okAction = UIAlertAction(title: okActionTitle, style: .default) { [unowned self] _ in
             guard let answerText = alertTextField.text else { return }
             if isEditing {
-            self.possibleAnswers[row] = answerText
+                possibleAnswers[row] = answerText
+                tableView.reloadData()
             } else {
-                self.possibleAnswers.append(answerText)
+                possibleAnswers.append(answerText)
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "possibleAnswerCell") as! PossibleAnswerTableViewCell
                 let switchPosition = cell.truthSwitch.isOn
-                self.truthArray.append(switchPosition)
-                self.checkCountOfAnswers()
+                truthArray.append(switchPosition)
+                let indexPath = IndexPath(row: row, section: 0)
+                tableView.reloadData()
+                tableView.reloadRows(at: [indexPath], with: .fade)
+                checkCountOfAnswers()
             }
-            self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Отменить", style: .destructive, handler: nil)
         alert.addAction(cancelAction)
@@ -162,6 +165,8 @@ class CreatingQuizViewController: UIViewController {
         possibleAnswers.remove(at: row)
         truthArray.remove(at: row)
         checkCountOfAnswers()
+        let indexPath = IndexPath.init(row: sender.tag, section: 0)
+        tableView.deleteRows(at: [indexPath], with: .left)
         tableView.reloadData()
     }
     
