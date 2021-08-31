@@ -4,6 +4,11 @@ enum CreatingType {
     case quizName, question
 }
 
+enum EditingType {
+    case creating
+    case editing(index: Int)
+}
+
 class CreatingQuizViewController: UIViewController {
     //MARK: Oulets
     
@@ -20,6 +25,7 @@ class CreatingQuizViewController: UIViewController {
     //MARK: Public variables
     
     var creatingType = CreatingType.quizName
+    var editingType = EditingType.creating
     
     //MARK: Private constances
     
@@ -42,13 +48,12 @@ class CreatingQuizViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationVC = segue.destination as? UINavigationController else { return }
-        for viewController in navigationVC.viewControllers {
-            guard let questionListVC = viewController as? QuestionListViewController else { return }
-            guard let question = sender as? QuestionCard else { return }
-            questionListVC.questions.append(question)
-            //questionListVC.questions = questionCards
+        guard let navController = segue.destination as? UINavigationController else { return }
+        for viewController in navController.viewControllers {
+            guard let questionListVC = viewController as? QuestionListViewController else { continue }
+            questionListVC.quizName = quizName
         }
+       removeCard()
     }
 
     @IBAction func nextTapped(_ sender: UIButton) {
@@ -64,16 +69,16 @@ class CreatingQuizViewController: UIViewController {
         } else if sender.tag == 1 {
             showCreatingAnswer(for: possibleAnswers.count)
         } else if sender.tag == 2 {
-            guard possibleAnswers.count >= 2 else { return
-                showAlert(title: "Постойте!", message: "Должно быть не менее двух вариантов ответа", style: .alert) }
-            guard questionTextField.text != "" else { return
-                highlightTextField(textField: questionTextField, withText: "Введите вопрос!", color: .red) }
+            guard checkFields() else { return }
             nextQuestion()
         }
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        guard checkFields() else { return }
         saveQuestionCard()
+        performSegue(withIdentifier: "questionListSegue", sender: nil)
+        
 //        guard questionCards.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
 //
 //       performSegue(withIdentifier: "questionListSegue", sender: nil)
@@ -82,6 +87,18 @@ class CreatingQuizViewController: UIViewController {
 //      dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let questionListVC = segue.source as? QuestionListViewController else { return }
+        editingType = questionListVC.editingType
+        setEditingGUI()
+        switch editingType {
+        case .creating:
+            removeCard()
+        case .editing(index: let row):
+            removeCard()
+            prepareToEdit(at: row)
+        }
+    }
     
     fileprivate func checkCountOfAnswers() {
         if possibleAnswers.count >= maxAnswers {
@@ -95,7 +112,7 @@ class CreatingQuizViewController: UIViewController {
         }
     }
     
-    fileprivate func showCreatingAnswer(for row: Int){
+    fileprivate func showCreatingAnswer(for row: Int) {
         var okActionTitle: String!
         var isEditing: Bool!
         
@@ -150,6 +167,7 @@ class CreatingQuizViewController: UIViewController {
     
     private func setGUI() {
         setCornerRadius()
+        
         switch creatingType {
         case .quizName:
             navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = false
@@ -159,7 +177,30 @@ class CreatingQuizViewController: UIViewController {
             navigationController?.navigationBar.items?.last?.rightBarButtonItem?.isEnabled = true
             quizNameStackView.moveOut()
             questionStackView.moveIn()
+            setEditingGUI()
         }
+        
+    }
+    
+    private func setEditingGUI() {
+        var nextButton: UIButton? {
+            for button in buttons {
+                if button.tag == 2 {
+                    return button
+                }
+            }
+            return nil
+        }
+        guard let nextButton = nextButton else { return }
+        switch editingType {
+        case .creating:
+            nextButton.isHidden = false
+            navigationItem.rightBarButtonItem?.title = "Готово"
+        case .editing(index: _):
+            nextButton.isHidden = true
+            navigationItem.rightBarButtonItem?.title = "Сохранить"
+        }
+        
     }
     
     private func setCornerRadius() {
@@ -182,10 +223,23 @@ class CreatingQuizViewController: UIViewController {
         }
         guard let questionText = questionTextField.text else { return }
         let newQuestionCard = QuestionCard(questionText: questionText, answers: answerArray)
-        performSegue(withIdentifier: "questionListSegue", sender: newQuestionCard)
-       // questionCards.append(newQuestionCard)
-        //print(questionCards)
-        
+        switch editingType {
+        case .creating:
+            QuizDataManager.shared.currentCreatingCards.append(newQuestionCard)
+        case .editing(index: let row):
+            QuizDataManager.shared.currentCreatingCards[row] = newQuestionCard
+        }
+    }
+    
+    private func checkFields() -> Bool {
+        guard possibleAnswers.count >= 2 else { showAlert(title: "Постойте!", message: "Должно быть не менее двух вариантов ответа", style: .alert)
+            return false
+             }
+        guard questionTextField.text != "" else {
+            highlightTextField(textField: questionTextField, withText: "Введите вопрос!", color: .red)
+            return false
+            }
+        return true
     }
     
     private func removeCard() {
@@ -193,6 +247,16 @@ class CreatingQuizViewController: UIViewController {
         possibleAnswers.removeAll()
         truthArray.removeAll()
         answerArray.removeAll()
+        tableView.reloadData()
+    }
+    
+    private func prepareToEdit(at index: Int) {
+        let currentCard = QuizDataManager.shared.currentCreatingCards[index]
+        questionTextField.text = currentCard.questionText
+        currentCard.answers.forEach { answer in
+            possibleAnswers.append(answer.answerText)
+            truthArray.append(answer.isTrue)
+        }
         tableView.reloadData()
     }
     

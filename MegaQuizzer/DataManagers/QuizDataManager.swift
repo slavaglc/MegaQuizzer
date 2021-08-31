@@ -11,6 +11,8 @@ class QuizDataManager {
 
     static let shared = QuizDataManager()
 
+    var currentCreatingCards: [QuestionCard] = []
+    
     private var quizzes: [Quiz] = []
 
     func saveQuiz(quiz: Quiz) {
