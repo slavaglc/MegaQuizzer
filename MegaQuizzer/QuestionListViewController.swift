@@ -27,6 +27,8 @@ class QuestionListViewController: UIViewController {
     }
     
     @objc private func saveQuiz() {
+        guard questions.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
+
         QuizDataManager.shared.saveQuiz(quiz: Quiz(name: quizName, questions: questions))
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         QuizDataManager.shared.currentCreatingCards.removeAll()
