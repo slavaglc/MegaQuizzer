@@ -5,9 +5,21 @@
 //  Created by Kristina Shlyapkina on 30.07.2021.
 //
 
-import Foundation
+import RealmSwift
 
-struct Quiz {
-   var name: String //Название викторины
-   var questions: [QuestionCard] //Объект из массива вопросов викторины
+class Quiz: Object {
+    
+    @objc dynamic var name: String = "" //Название викторины
+    var questions = List<QuestionCard>() //Объект из массива вопросов викторины
+    
+    internal init(name: String = "", questions: [QuestionCard]) {
+        self.name = name
+        self.questions.append(objectsIn: questions)
+    }
+    
+    required override init() {
+        super.init()
+        
+    }
+    
 }
