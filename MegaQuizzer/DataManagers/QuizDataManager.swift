@@ -5,22 +5,31 @@
 //  Created by Kristina Shlyapkina on 30.07.2021.
 //
 
-import Foundation
+import RealmSwift
 
-class QuizDataManager {
+final class QuizDataManager {
 
     static let shared = QuizDataManager()
-
+    
     var currentCreatingCards: [QuestionCard] = []
     
+    private let realm = try! Realm()
     private var quizzes: [Quiz] = []
 
     func saveQuiz(quiz: Quiz) {
         quizzes.append(quiz)
+        saveQuizToRealm(quiz: quiz)
     }
+    
 
     func getQuizzes() -> [Quiz] {
         return quizzes
+    }
+    
+    private func saveQuizToRealm(quiz: Quiz) {
+        try! realm.write {
+            realm.add(quiz, update: .all)
+        }
     }
 
     private init() {
@@ -71,4 +80,7 @@ class QuizDataManager {
                                      ])
                     ]))
     }
+    
+    
+    
 }

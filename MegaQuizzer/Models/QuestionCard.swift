@@ -10,7 +10,7 @@ import RealmSwift
 class QuestionCard: Object {
     
     @objc dynamic var questionText: String = ""
-     var answers = List<Answer>()
+     let answers = List<Answer>()
     
     internal init(questionText: String = "", answers: [Answer]) {
         self.questionText = questionText
