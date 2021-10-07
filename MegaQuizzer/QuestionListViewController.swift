@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionListViewController: UIViewController {
+final class QuestionListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     

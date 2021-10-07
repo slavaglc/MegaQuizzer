@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EnterViewController: UIViewController, UITextFieldDelegate {
+final class EnterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var enterButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!

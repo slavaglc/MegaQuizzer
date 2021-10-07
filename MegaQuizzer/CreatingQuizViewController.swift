@@ -9,7 +9,7 @@ enum EditingType {
     case editing(index: Int)
 }
 
-class CreatingQuizViewController: UIViewController {
+final class CreatingQuizViewController: UIViewController {
     //MARK: Oulets
     
     @IBOutlet weak private var quizNameTextField: UITextField!
@@ -134,7 +134,7 @@ class CreatingQuizViewController: UIViewController {
                 let switchPosition = cell.truthSwitch.isOn
                 truthArray.append(switchPosition)
                 tableView.reloadData()
-                tableView.visibleCells.last?.moveIn()
+                scrollToBottom(for: row, animatedLastCell: true)
                 checkCountOfAnswers()
             }
         }
@@ -204,6 +204,15 @@ class CreatingQuizViewController: UIViewController {
     private func setCornerRadius() {
         for button in buttons {
             button.layer.cornerRadius = 10
+        }
+    }
+    
+    private func scrollToBottom(for row: Int, animatedLastCell: Bool) {
+        DispatchQueue.main.async { [unowned self] in
+            let indexPath = IndexPath(row: row, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+            guard animatedLastCell else { return }
+            self.tableView.visibleCells.last?.moveIn()
         }
     }
     

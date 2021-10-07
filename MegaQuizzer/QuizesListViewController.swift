@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuizesListViewController: UITableViewController {
+final class QuizesListViewController: UITableViewController {
     
     var questions = QuizDataManager.shared.getQuizzes()
     var userName: String?
