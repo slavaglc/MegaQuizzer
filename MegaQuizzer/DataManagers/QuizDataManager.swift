@@ -21,8 +21,8 @@ final class QuizDataManager {
         saveQuizToRealm(quiz: quiz)
     }
     
-
     func getQuizzes() -> [Quiz] {
+        loadQuizFromRealm()
         return quizzes
     }
     
@@ -30,6 +30,14 @@ final class QuizDataManager {
         try! realm.write {
             realm.add(quiz, update: .all)
         }
+    }
+    
+    private func loadQuizFromRealm() {
+        var quizzesFromRealm: [Quiz] = []
+        realm.objects(Quiz.self).forEach { quiz in
+            quizzesFromRealm.append(quiz)
+        }
+        quizzes = quizzesFromRealm
     }
 
     private init() {

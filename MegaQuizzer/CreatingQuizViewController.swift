@@ -133,9 +133,8 @@ class CreatingQuizViewController: UIViewController {
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "possibleAnswerCell") as! PossibleAnswerTableViewCell
                 let switchPosition = cell.truthSwitch.isOn
                 truthArray.append(switchPosition)
-                let indexPath = IndexPath(row: row, section: 0)
                 tableView.reloadData()
-                tableView.reloadRows(at: [indexPath], with: .fade)
+                tableView.visibleCells.last?.moveIn()
                 checkCountOfAnswers()
             }
         }
