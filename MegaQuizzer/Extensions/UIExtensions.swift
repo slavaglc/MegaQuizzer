@@ -8,6 +8,13 @@ extension UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+    
+    func showActivityIndicator(target: UIViewController, style: UIActivityIndicatorView.Style = .medium, completion: (UIActivityIndicatorView)->()) {
+        let activityIndicator = UIActivityIndicatorView(style: style)
+        activityIndicator.center = target.view.center
+        navigationController!.view.addSubview(activityIndicator)
+        completion(activityIndicator)
+    }
 }
 
 extension UIView {
@@ -22,6 +29,8 @@ extension UIView {
             self.alpha = 1.0
         }
     }
+    
+    
 }
 
 extension UIStackView {

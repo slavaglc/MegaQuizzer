@@ -9,9 +9,12 @@ import UIKit
 
 final class QuizesListViewController: UITableViewController {
     
-    var questions = QuizDataManager.shared.getQuizzes()
+    
+    var quizzes: [Quiz] = []
     var userName: String?
-
+    //[Quiz(name: "test", questions: [QuestionCard(questionText: "", answers: [Answer(answerText: "", isTrue: true)])])]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let userName = userName else { return }
@@ -24,13 +27,14 @@ final class QuizesListViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        questions = QuizDataManager.shared.getQuizzes()
-        tableView.reloadData()
+            loadQuizzes()
     }
+    
+    
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        questions.count
+        quizzes.count
     }
 
     override func tableView(_ tableView: UITableView,
@@ -38,7 +42,7 @@ final class QuizesListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
 
-        content.text = questions[indexPath.row].name
+        content.text = quizzes[indexPath.row].name
         content.textProperties.color = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.contentConfiguration = content
 
@@ -48,23 +52,37 @@ final class QuizesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            questions.remove(at: indexPath.row)
+            quizzes.remove(at: indexPath.row)
+            QuizDataManager.shared.deleteQuizFromRealm(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
-    @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        guard let quizVC =
                segue.destination as? QuizViewController else { return }
        guard let indexPath =
                tableView.indexPathForSelectedRow else { return }
-        quizVC.quiz = questions[indexPath.row]
+        quizVC.quiz = quizzes[indexPath.row]
         quizVC.name = userName
     }
     
+    @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {
+    }
+    
+    private func loadQuizzes() {
+        self.showActivityIndicator(target: self.navigationController ?? self, style: .large) { activityIndicator in
+            activityIndicator.startAnimating()
+            DispatchQueue.main.async {
+                QuizDataManager.shared.loadQuizesFromRealm { [unowned self] quizes in
+                    quizzes = quizes
+                    activityIndicator.stopAnimating()
+                    tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 extension QuizesListViewController {
