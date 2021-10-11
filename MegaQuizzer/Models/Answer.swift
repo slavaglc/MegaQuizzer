@@ -8,10 +8,10 @@
 
 import RealmSwift
 
-class Answer: Object {
+class Answer: EmbeddedObject {
     
-    @objc dynamic var answerText: String = "" //Текст ответа
-    @objc dynamic var isTrue: Bool = false //Здесь правильность ответа отслеживается
+    @Persisted var answerText: String = "" //Текст ответа
+    @Persisted var isTrue: Bool = false //Здесь правильность ответа отслеживается
     
     internal init(answerText: String = "", isTrue: Bool = false) {
         self.answerText = answerText

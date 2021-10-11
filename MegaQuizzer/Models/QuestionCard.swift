@@ -7,12 +7,13 @@
 
 import RealmSwift
 
-class QuestionCard: Object {
+class QuestionCard: EmbeddedObject {
     
-    @objc dynamic var questionText: String = ""
-     let answers = List<Answer>()
+    @Persisted var questionText: String = ""
+    @Persisted var answers: List<Answer>
     
-    internal init(questionText: String = "", answers: [Answer]) {
+    convenience init(questionText: String = "", answers: [Answer]) {
+        self.init()
         self.questionText = questionText
         self.answers.append(objectsIn: answers)
     }

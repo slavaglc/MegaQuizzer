@@ -8,18 +8,16 @@
 import RealmSwift
 
 class Quiz: Object {
+    @Persisted(primaryKey: true) var id = ObjectId.generate()
+    @Persisted var name: String = "" //Название викторины
+    @Persisted var questions: List<QuestionCard> //Объект из массива вопросов викторины
     
-    @objc dynamic var name: String = "" //Название викторины
-    let questions = List<QuestionCard>() //Объект из массива вопросов викторины
-    
-    internal init(name: String = "", questions: [QuestionCard]) {
+    convenience init(name: String = "", questions: [QuestionCard]) {
+        self.init()
         self.name = name
         self.questions.append(objectsIn: questions)
     }
-    
-    override class func primaryKey() -> String {
-        return "name"
-    }
+
     
     required override init() {
         super.init()
