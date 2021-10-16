@@ -1,6 +1,6 @@
 import UIKit
 
-class PossibleAnswerTableViewCell: UITableViewCell {
+final class PossibleAnswerTableViewCell: UITableViewCell {
     @IBOutlet weak var possibleAnswerLabel: UILabel!
     @IBOutlet weak var truthSwitch: UISwitch!
     @IBOutlet weak var removeAnswerBtn: UIButton!

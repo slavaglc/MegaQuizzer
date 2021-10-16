@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121FBD5467D57432B3896B6C /* Pods_MegaQuizzerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4AFF42508335BB4D1718AF /* Pods_MegaQuizzerTests.framework */; };
 		59F2B55426B471A000385241 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2B55326B471A000385241 /* Quiz.swift */; };
 		59F2B55626B4721600385241 /* QuestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2B55526B4721600385241 /* QuestionCard.swift */; };
 		59F2B55826B4722800385241 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2B55726B4722800385241 /* Answer.swift */; };
@@ -47,6 +48,7 @@
 		59F2B55526B4721600385241 /* QuestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCard.swift; sourceTree = "<group>"; };
 		59F2B55726B4722800385241 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		59F2B55A26B474E500385241 /* QuizDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataManager.swift; sourceTree = "<group>"; };
+		6E4AFF42508335BB4D1718AF /* Pods_MegaQuizzerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaQuizzerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		984142370ADB5DC44D2BC5BA /* Pods-MegaQuizzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaQuizzer.debug.xcconfig"; path = "Target Support Files/Pods-MegaQuizzer/Pods-MegaQuizzer.debug.xcconfig"; sourceTree = "<group>"; };
 		9ED1E53E851A002E3BFEBF68 /* Pods_MegaQuizzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaQuizzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizesListViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,8 @@
 		B5EBBC1D26B6E7320005B61C /* quiz.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = quiz.storyboard; sourceTree = "<group>"; };
 		B5EBBC2026B6E7730005B61C /* result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = result.storyboard; sourceTree = "<group>"; };
 		B5EBBC2326B6E8570005B61C /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		BC9EFE8538BAE59B484155C9 /* Pods-MegaQuizzerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaQuizzerTests.release.xcconfig"; path = "Target Support Files/Pods-MegaQuizzerTests/Pods-MegaQuizzerTests.release.xcconfig"; sourceTree = "<group>"; };
+		F2F3DF9A502DE748115D6E1C /* Pods-MegaQuizzerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaQuizzerTests.debug.xcconfig"; path = "Target Support Files/Pods-MegaQuizzerTests/Pods-MegaQuizzerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F92D5B0F26DBF94A00D01167 /* QuestionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListViewController.swift; sourceTree = "<group>"; };
 		F92D5B1126DED30A00D01167 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		F95CA3CD26B4A116009D7F26 /* creating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = creating.storyboard; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121FBD5467D57432B3896B6C /* Pods_MegaQuizzerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				9ED1E53E851A002E3BFEBF68 /* Pods_MegaQuizzer.framework */,
+				6E4AFF42508335BB4D1718AF /* Pods_MegaQuizzerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,6 +197,8 @@
 			children = (
 				984142370ADB5DC44D2BC5BA /* Pods-MegaQuizzer.debug.xcconfig */,
 				3112C06AFCE5A1A322D52FEE /* Pods-MegaQuizzer.release.xcconfig */,
+				F2F3DF9A502DE748115D6E1C /* Pods-MegaQuizzerTests.debug.xcconfig */,
+				BC9EFE8538BAE59B484155C9 /* Pods-MegaQuizzerTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F97C0C05271AC9F7001B5CE3 /* Build configuration list for PBXNativeTarget "MegaQuizzerTests" */;
 			buildPhases = (
+				D3977BCE6A364E4CBE255518 /* [CP] Check Pods Manifest.lock */,
 				F97C0BF9271AC9F7001B5CE3 /* Sources */,
 				F97C0BFA271AC9F7001B5CE3 /* Frameworks */,
 				F97C0BFB271AC9F7001B5CE3 /* Resources */,
@@ -329,6 +338,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MegaQuizzer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3977BCE6A364E4CBE255518 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MegaQuizzerTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -555,6 +586,7 @@
 		};
 		F97C0C03271AC9F7001B5CE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2F3DF9A502DE748115D6E1C /* Pods-MegaQuizzerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -580,6 +612,7 @@
 		};
 		F97C0C04271AC9F7001B5CE3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC9EFE8538BAE59B484155C9 /* Pods-MegaQuizzerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

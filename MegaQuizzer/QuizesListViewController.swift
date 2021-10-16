@@ -9,9 +9,18 @@ import UIKit
 
 final class QuizesListViewController: UITableViewController {
     
-    
-    var quizzes: [Quiz] = []
     var userName: String?
+    lazy private  var searchBar: UISearchBar = { () -> UISearchBar in
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        searchBar.placeholder = "Search quiz"
+        searchBar.barStyle = .black
+        searchBar.tintColor = .white
+    
+        searchBar.becomeFirstResponder()
+        return searchBar
+    }()
+   private var quizzes: [Quiz] = []
+   
     //[Quiz(name: "test", questions: [QuestionCard(questionText: "", answers: [Answer(answerText: "", isTrue: true)])])]
     
     
@@ -19,10 +28,9 @@ final class QuizesListViewController: UITableViewController {
         super.viewDidLoad()
         guard let userName = userName else { return }
         
-        navigationItem.leftBarButtonItem = editButtonItem
-        navigationItem.leftBarButtonItem?.tintColor = .white
+        setGUI()
         
-        showAlert(title: "Привет \(userName)", massage: "Добро пожаловать в MegaQuizzer! Ты попал на экран выбора темы. Выбирай и вперед!")
+        showAlert(title: "Привет \(userName)", message: "Добро пожаловать в MegaQuizzer! Ты попал на экран выбора темы. Выбирай и вперед!", style: .alert)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +79,37 @@ final class QuizesListViewController: UITableViewController {
     @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {
     }
     
+    private func setGUI() {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(showSearchBar(sender:)), for: .touchUpInside)
+        let searchButton = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItems?.append(searchButton)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+    
+    @objc private func showSearchBar(sender: UIButton) {
+        switch sender.tag {
+        case 0: //search
+            let searchBarItem = UIBarButtonItem(customView:searchBar)
+            searchBarItem.customView?.moveIn()
+            self.navigationItem.leftBarButtonItem = searchBarItem
+            sender.setImage(UIImage(systemName: "xmark"), for: .normal)
+            sender.tag = 1
+            break
+       default: //cancel
+            navigationItem.leftBarButtonItem = editButtonItem
+            sender.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+            sender.tag = 0
+            break
+        }
+    }
+    
     private func loadQuizzes() {
-        self.showActivityIndicator(target: self.navigationController ?? self, style: .large) { activityIndicator in
+        showActivityIndicator(target: self.navigationController ?? self, style: .large) { activityIndicator in
             activityIndicator.startAnimating()
             DispatchQueue.main.async {
                 QuizDataManager.shared.loadQuizesFromRealm { [unowned self] quizes in
@@ -82,20 +119,5 @@ final class QuizesListViewController: UITableViewController {
                 }
             }
         }
-    }
-}
-
-extension QuizesListViewController {
-    private func showAlert(title: String,
-                           massage: String) {
-        let alert = UIAlertController(title: title,
-                                      message: massage,
-                                      preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Понял",
-                                        style: .cancel)
-        
-        alert.addAction(alertAction)
-        
-        present(alert, animated: true)
     }
 }
