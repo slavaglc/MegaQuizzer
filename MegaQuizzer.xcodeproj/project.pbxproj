@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		59F2B55626B4721600385241 /* QuestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2B55526B4721600385241 /* QuestionCard.swift */; };
 		59F2B55826B4722800385241 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2B55726B4722800385241 /* Answer.swift */; };
 		59F2B55B26B474E500385241 /* QuizDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2B55A26B474E500385241 /* QuizDataManager.swift */; };
+		AE8FD2AC7B285555FD3ABC97 /* Pods_MegaQuizzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED1E53E851A002E3BFEBF68 /* Pods_MegaQuizzer.framework */; };
 		B51C86C626B58FA20024C2BD /* QuizesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */; };
 		B51C86C926B5B04B0024C2BD /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51C86C826B5B04B0024C2BD /* ResultViewController.swift */; };
 		B53AC76826B4231D007B8EBE /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53AC76726B4231D007B8EBE /* EnterViewController.swift */; };
@@ -22,16 +23,32 @@
 		B5EBBC1E26B6E7320005B61C /* quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EBBC1D26B6E7320005B61C /* quiz.storyboard */; };
 		B5EBBC2126B6E7730005B61C /* result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EBBC2026B6E7730005B61C /* result.storyboard */; };
 		B5EBBC2426B6E8570005B61C /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBBC2326B6E8570005B61C /* QuizViewController.swift */; };
+		F92D5B1026DBF94A00D01167 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D5B0F26DBF94A00D01167 /* QuestionListViewController.swift */; };
+		F92D5B1226DED30A00D01167 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92D5B1126DED30A00D01167 /* UIExtensions.swift */; };
 		F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F95CA3CD26B4A116009D7F26 /* creating.storyboard */; };
 		F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */; };
 		F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */; };
+		F97C0C00271AC9F7001B5CE3 /* MegaQuizzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F97C0C01271AC9F7001B5CE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B56EE60326B3CCE30072512B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B56EE60A26B3CCE30072512B;
+			remoteInfo = MegaQuizzer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3112C06AFCE5A1A322D52FEE /* Pods-MegaQuizzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaQuizzer.release.xcconfig"; path = "Target Support Files/Pods-MegaQuizzer/Pods-MegaQuizzer.release.xcconfig"; sourceTree = "<group>"; };
 		59F2B55326B471A000385241 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		59F2B55526B4721600385241 /* QuestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCard.swift; sourceTree = "<group>"; };
 		59F2B55726B4722800385241 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		59F2B55A26B474E500385241 /* QuizDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataManager.swift; sourceTree = "<group>"; };
+		984142370ADB5DC44D2BC5BA /* Pods-MegaQuizzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaQuizzer.debug.xcconfig"; path = "Target Support Files/Pods-MegaQuizzer/Pods-MegaQuizzer.debug.xcconfig"; sourceTree = "<group>"; };
+		9ED1E53E851A002E3BFEBF68 /* Pods_MegaQuizzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaQuizzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizesListViewController.swift; sourceTree = "<group>"; };
 		B51C86C826B5B04B0024C2BD /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		B53AC76726B4231D007B8EBE /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
@@ -45,13 +62,25 @@
 		B5EBBC1D26B6E7320005B61C /* quiz.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = quiz.storyboard; sourceTree = "<group>"; };
 		B5EBBC2026B6E7730005B61C /* result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = result.storyboard; sourceTree = "<group>"; };
 		B5EBBC2326B6E8570005B61C /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		F92D5B0F26DBF94A00D01167 /* QuestionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListViewController.swift; sourceTree = "<group>"; };
+		F92D5B1126DED30A00D01167 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		F95CA3CD26B4A116009D7F26 /* creating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = creating.storyboard; sourceTree = "<group>"; };
 		F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingQuizViewController.swift; sourceTree = "<group>"; };
 		F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleAnswerTableViewCell.swift; sourceTree = "<group>"; };
+		F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegaQuizzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegaQuizzerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B56EE60826B3CCE30072512B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE8FD2AC7B285555FD3ABC97 /* Pods_MegaQuizzer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F97C0BFA271AC9F7001B5CE3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -61,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0931C2DDDA031346A3E86D9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9ED1E53E851A002E3BFEBF68 /* Pods_MegaQuizzer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		59F2B55226B4717600385241 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,7 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				B56EE60D26B3CCE30072512B /* MegaQuizzer */,
+				F97C0BFE271AC9F7001B5CE3 /* MegaQuizzerTests */,
 				B56EE60C26B3CCE30072512B /* Products */,
+				FE052085818C9F1F6B10C547 /* Pods */,
+				0931C2DDDA031346A3E86D9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B56EE60B26B3CCE30072512B /* MegaQuizzer.app */,
+				F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +146,8 @@
 				B51C86C826B5B04B0024C2BD /* ResultViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
+				F92D5B0F26DBF94A00D01167 /* QuestionListViewController.swift */,
+				F92D5B1326DED30F00D01167 /* Extensions */,
 				F95CA3D326B54B81009D7F26 /* Cells */,
 				59F2B55926B474B400385241 /* DataManagers */,
 				59F2B55226B4717600385241 /* Models */,
@@ -119,12 +162,37 @@
 			path = MegaQuizzer;
 			sourceTree = "<group>";
 		};
+		F92D5B1326DED30F00D01167 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F92D5B1126DED30A00D01167 /* UIExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F95CA3D326B54B81009D7F26 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F97C0BFE271AC9F7001B5CE3 /* MegaQuizzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */,
+			);
+			path = MegaQuizzerTests;
+			sourceTree = "<group>";
+		};
+		FE052085818C9F1F6B10C547 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				984142370ADB5DC44D2BC5BA /* Pods-MegaQuizzer.debug.xcconfig */,
+				3112C06AFCE5A1A322D52FEE /* Pods-MegaQuizzer.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B56EE61F26B3CCE40072512B /* Build configuration list for PBXNativeTarget "MegaQuizzer" */;
 			buildPhases = (
+				8C258C8ADCAB8B306B372086 /* [CP] Check Pods Manifest.lock */,
 				B56EE60726B3CCE30072512B /* Sources */,
 				B56EE60826B3CCE30072512B /* Frameworks */,
 				B56EE60926B3CCE30072512B /* Resources */,
+				2C139D955D4773FCE9972231 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,17 +217,39 @@
 			productReference = B56EE60B26B3CCE30072512B /* MegaQuizzer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F97C0BFC271AC9F7001B5CE3 /* MegaQuizzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F97C0C05271AC9F7001B5CE3 /* Build configuration list for PBXNativeTarget "MegaQuizzerTests" */;
+			buildPhases = (
+				F97C0BF9271AC9F7001B5CE3 /* Sources */,
+				F97C0BFA271AC9F7001B5CE3 /* Frameworks */,
+				F97C0BFB271AC9F7001B5CE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F97C0C02271AC9F7001B5CE3 /* PBXTargetDependency */,
+			);
+			name = MegaQuizzerTests;
+			productName = MegaQuizzerTests;
+			productReference = F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B56EE60326B3CCE30072512B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					B56EE60A26B3CCE30072512B = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					F97C0BFC271AC9F7001B5CE3 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = B56EE60A26B3CCE30072512B;
 					};
 				};
 			};
@@ -175,6 +267,7 @@
 			projectRoot = "";
 			targets = (
 				B56EE60A26B3CCE30072512B /* MegaQuizzer */,
+				F97C0BFC271AC9F7001B5CE3 /* MegaQuizzerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,7 +286,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F97C0BFB271AC9F7001B5CE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C139D955D4773FCE9972231 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MegaQuizzer/Pods-MegaQuizzer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MegaQuizzer/Pods-MegaQuizzer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MegaQuizzer/Pods-MegaQuizzer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C258C8ADCAB8B306B372086 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MegaQuizzer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B56EE60726B3CCE30072512B /* Sources */ = {
@@ -212,10 +354,28 @@
 				F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */,
 				B53AC76826B4231D007B8EBE /* EnterViewController.swift in Sources */,
 				B51C86C926B5B04B0024C2BD /* ResultViewController.swift in Sources */,
+				F92D5B1026DBF94A00D01167 /* QuestionListViewController.swift in Sources */,
+				F92D5B1226DED30A00D01167 /* UIExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F97C0BF9271AC9F7001B5CE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F97C0C00271AC9F7001B5CE3 /* MegaQuizzerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F97C0C02271AC9F7001B5CE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B56EE60A26B3CCE30072512B /* MegaQuizzer */;
+			targetProxy = F97C0C01271AC9F7001B5CE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B56EE61426B3CCE30072512B /* Main.storyboard */ = {
@@ -355,6 +515,7 @@
 		};
 		B56EE62026B3CCE40072512B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 984142370ADB5DC44D2BC5BA /* Pods-MegaQuizzer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -368,12 +529,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = MaximGoryachkin.MegaQuizzer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		B56EE62126B3CCE40072512B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3112C06AFCE5A1A322D52FEE /* Pods-MegaQuizzer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -387,7 +549,57 @@
 				PRODUCT_BUNDLE_IDENTIFIER = MaximGoryachkin.MegaQuizzer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F97C0C03271AC9F7001B5CE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2TF4J9L8G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slavaglc.MegaQuizzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MegaQuizzer.app/MegaQuizzer";
+			};
+			name = Debug;
+		};
+		F97C0C04271AC9F7001B5CE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2TF4J9L8G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slavaglc.MegaQuizzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MegaQuizzer.app/MegaQuizzer";
 			};
 			name = Release;
 		};
@@ -408,6 +620,15 @@
 			buildConfigurations = (
 				B56EE62026B3CCE40072512B /* Debug */,
 				B56EE62126B3CCE40072512B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F97C0C05271AC9F7001B5CE3 /* Build configuration list for PBXNativeTarget "MegaQuizzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F97C0C03271AC9F7001B5CE3 /* Debug */,
+				F97C0C04271AC9F7001B5CE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

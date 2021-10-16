@@ -5,9 +5,23 @@
 //  Created by Kristina Shlyapkina on 30.07.2021.
 //
 
-import Foundation
+import RealmSwift
 
-struct Quiz {
-   var name: String //Название викторины
-   var questions: [QuestionCard] //Объект из массива вопросов викторины
+class Quiz: Object {
+    @Persisted(primaryKey: true) var id = ObjectId.generate()
+    @Persisted var name: String = "" //Название викторины
+    @Persisted var questions: List<QuestionCard> //Объект из массива вопросов викторины
+    
+    convenience init(name: String = "", questions: [QuestionCard]) {
+        self.init()
+        self.name = name
+        self.questions.append(objectsIn: questions)
+    }
+
+    
+    required override init() {
+        super.init()
+        
+    }
+    
 }

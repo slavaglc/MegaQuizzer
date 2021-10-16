@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+final class QuizViewController: UIViewController {
     @IBOutlet weak var numberQuestionLabel: UILabel!
     @IBOutlet weak var quizName: UILabel!
     @IBOutlet weak var textQuestionsLabel: UILabel!
