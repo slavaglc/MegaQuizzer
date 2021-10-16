@@ -28,7 +28,18 @@
 		F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F95CA3CD26B4A116009D7F26 /* creating.storyboard */; };
 		F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */; };
 		F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */; };
+		F97C0C00271AC9F7001B5CE3 /* MegaQuizzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F97C0C01271AC9F7001B5CE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B56EE60326B3CCE30072512B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B56EE60A26B3CCE30072512B;
+			remoteInfo = MegaQuizzer;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3112C06AFCE5A1A322D52FEE /* Pods-MegaQuizzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MegaQuizzer.release.xcconfig"; path = "Target Support Files/Pods-MegaQuizzer/Pods-MegaQuizzer.release.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +67,8 @@
 		F95CA3CD26B4A116009D7F26 /* creating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = creating.storyboard; sourceTree = "<group>"; };
 		F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingQuizViewController.swift; sourceTree = "<group>"; };
 		F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleAnswerTableViewCell.swift; sourceTree = "<group>"; };
+		F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegaQuizzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegaQuizzerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +77,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8FD2AC7B285555FD3ABC97 /* Pods_MegaQuizzer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F97C0BFA271AC9F7001B5CE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B56EE60D26B3CCE30072512B /* MegaQuizzer */,
+				F97C0BFE271AC9F7001B5CE3 /* MegaQuizzerTests */,
 				B56EE60C26B3CCE30072512B /* Products */,
 				FE052085818C9F1F6B10C547 /* Pods */,
 				0931C2DDDA031346A3E86D9A /* Frameworks */,
@@ -110,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B56EE60B26B3CCE30072512B /* MegaQuizzer.app */,
+				F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +178,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F97C0BFE271AC9F7001B5CE3 /* MegaQuizzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */,
+			);
+			path = MegaQuizzerTests;
+			sourceTree = "<group>";
+		};
 		FE052085818C9F1F6B10C547 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,17 +217,39 @@
 			productReference = B56EE60B26B3CCE30072512B /* MegaQuizzer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F97C0BFC271AC9F7001B5CE3 /* MegaQuizzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F97C0C05271AC9F7001B5CE3 /* Build configuration list for PBXNativeTarget "MegaQuizzerTests" */;
+			buildPhases = (
+				F97C0BF9271AC9F7001B5CE3 /* Sources */,
+				F97C0BFA271AC9F7001B5CE3 /* Frameworks */,
+				F97C0BFB271AC9F7001B5CE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F97C0C02271AC9F7001B5CE3 /* PBXTargetDependency */,
+			);
+			name = MegaQuizzerTests;
+			productName = MegaQuizzerTests;
+			productReference = F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B56EE60326B3CCE30072512B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					B56EE60A26B3CCE30072512B = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					F97C0BFC271AC9F7001B5CE3 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = B56EE60A26B3CCE30072512B;
 					};
 				};
 			};
@@ -215,6 +267,7 @@
 			projectRoot = "";
 			targets = (
 				B56EE60A26B3CCE30072512B /* MegaQuizzer */,
+				F97C0BFC271AC9F7001B5CE3 /* MegaQuizzerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +283,13 @@
 				B56EE61626B3CCE30072512B /* Main.storyboard in Resources */,
 				F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */,
 				B5EBBC2126B6E7730005B61C /* result.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F97C0BFB271AC9F7001B5CE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +359,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F97C0BF9271AC9F7001B5CE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F97C0C00271AC9F7001B5CE3 /* MegaQuizzerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F97C0C02271AC9F7001B5CE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B56EE60A26B3CCE30072512B /* MegaQuizzer */;
+			targetProxy = F97C0C01271AC9F7001B5CE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B56EE61426B3CCE30072512B /* Main.storyboard */ = {
@@ -477,6 +553,56 @@
 			};
 			name = Release;
 		};
+		F97C0C03271AC9F7001B5CE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2TF4J9L8G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slavaglc.MegaQuizzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MegaQuizzer.app/MegaQuizzer";
+			};
+			name = Debug;
+		};
+		F97C0C04271AC9F7001B5CE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R2TF4J9L8G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.slavaglc.MegaQuizzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MegaQuizzer.app/MegaQuizzer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -494,6 +620,15 @@
 			buildConfigurations = (
 				B56EE62026B3CCE40072512B /* Debug */,
 				B56EE62126B3CCE40072512B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F97C0C05271AC9F7001B5CE3 /* Build configuration list for PBXNativeTarget "MegaQuizzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F97C0C03271AC9F7001B5CE3 /* Debug */,
+				F97C0C04271AC9F7001B5CE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

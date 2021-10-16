@@ -43,9 +43,7 @@ final class ResultViewController: UIViewController {
     private func getData() {
         guard let userName = userName,
               let result = result else { return }
-//        
-//        nameLabel.text = "Поздравляем Vfrcbv!"
-//        resultLabel.text = "Вы получили 100 очков!"
+
         nameLabel.text = "Поздравляем \(userName)!"
         resultLabel.text = "Вы получили \(result) очков!"
     }
