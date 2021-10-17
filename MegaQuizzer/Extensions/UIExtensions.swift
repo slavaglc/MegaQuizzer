@@ -30,6 +30,17 @@ extension UIView {
         }
     }
     
+    func fadeIn() {
+        let targetCenter = center
+        center = CGPoint(x: 0, y: targetCenter.y)
+        alpha = 0.0
+        
+        UIView.animate(withDuration: 0.5) {
+            self.center = CGPoint(x: targetCenter.x, y: targetCenter.y)
+            self.alpha = 1.0
+        }
+    }
+    
     
 }
 
@@ -43,7 +54,7 @@ extension UIStackView {
                 self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 self.alpha = 0.0
             } completion: { isFinished in
-                self.isHidden = true
+                self.isHidden = isFinished
             }
     }
     

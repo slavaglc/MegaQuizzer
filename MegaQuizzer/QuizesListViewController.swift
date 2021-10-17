@@ -10,13 +10,12 @@ import UIKit
 final class QuizesListViewController: UITableViewController {
     
     var userName: String?
-    lazy private  var searchBar: UISearchBar = { () -> UISearchBar in
+    lazy private  var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        let textField = searchBar.value(forKey: "searchField") as? UITextField
         searchBar.placeholder = "Search quiz"
-        searchBar.barStyle = .black
         searchBar.tintColor = .white
-    
-        searchBar.becomeFirstResponder()
+        textField?.backgroundColor = .orange
         return searchBar
     }()
    private var quizzes: [Quiz] = []
@@ -30,7 +29,7 @@ final class QuizesListViewController: UITableViewController {
         
         setGUI()
         
-        showAlert(title: "Привет \(userName)", message: "Добро пожаловать в MegaQuizzer! Ты попал на экран выбора темы. Выбирай и вперед!", style: .alert)
+       // showAlert(title: "Привет \(userName)", message: "Добро пожаловать в MegaQuizzer! Ты попал на экран выбора темы. Выбирай и вперед!", style: .alert)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +82,7 @@ final class QuizesListViewController: UITableViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.tintColor = .white
-        button.addTarget(self, action: #selector(showSearchBar(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showSearchButtonPressed(sender:)), for: .touchUpInside)
         let searchButton = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItems?.append(searchButton)
         
@@ -91,13 +90,13 @@ final class QuizesListViewController: UITableViewController {
         navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
-    @objc private func showSearchBar(sender: UIButton) {
+    
+    @objc private func showSearchButtonPressed(sender: UIButton) {
         switch sender.tag {
         case 0: //search
-            let searchBarItem = UIBarButtonItem(customView:searchBar)
-            searchBarItem.customView?.moveIn()
-            self.navigationItem.leftBarButtonItem = searchBarItem
-            sender.setImage(UIImage(systemName: "xmark"), for: .normal)
+            DispatchQueue.main.async {
+                showSearchBar()
+            }
             sender.tag = 1
             break
        default: //cancel
@@ -105,6 +104,14 @@ final class QuizesListViewController: UITableViewController {
             sender.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
             sender.tag = 0
             break
+        }
+        
+        func showSearchBar() {
+            let searchBarItem = UIBarButtonItem(customView:searchBar)
+            searchBarItem.customView?.fadeIn()
+            searchBar.becomeFirstResponder()
+            self.navigationItem.leftBarButtonItem = searchBarItem
+            sender.setImage(UIImage(systemName: "xmark"), for: .normal)
         }
     }
     
