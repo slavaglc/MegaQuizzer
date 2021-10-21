@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="1078" y="65"/>
         </scene>
-        <!--Темы-->
+        <!--Викторины-->
         <scene sceneID="MoK-oM-zut">
             <objects>
                 <tableViewController id="Un4-lI-E8O" customClass="QuizesListViewController" customModule="MegaQuizzer" customModuleProvider="target" sceneMemberID="viewController">
@@ -101,7 +101,7 @@
                             <outlet property="delegate" destination="Un4-lI-E8O" id="1td-0V-aGZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Темы" id="m5b-Jy-S2m">
+                    <navigationItem key="navigationItem" title="Викторины" id="m5b-Jy-S2m">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="emV-Tq-jNp">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>

@@ -35,7 +35,7 @@ extension UIView {
         center = CGPoint(x: 0, y: targetCenter.y)
         alpha = 0.0
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.center = CGPoint(x: targetCenter.x, y: targetCenter.y)
             self.alpha = 1.0
         }
