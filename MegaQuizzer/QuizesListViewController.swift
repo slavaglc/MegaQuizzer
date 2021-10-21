@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 final class QuizesListViewController: UITableViewController {
     
     var userName: String?
@@ -18,9 +19,13 @@ final class QuizesListViewController: UITableViewController {
         textField?.backgroundColor = .orange
         return searchBar
     }()
-    private var quizzes: [Quiz] = []
-    private var filtredQuizzes: [Quiz] = []
-    private var searchBegins = false
+    
+    private var quizesStrings: [[String: String]] = [], filtredQuizesStrings: [[String: String]] = [] //key - id, value - name
+    private var searchBegins: Bool = false {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     //[Quiz(name: "test", questions: [QuestionCard(questionText: "", answers: [Answer(answerText: "", isTrue: true)])])]
     
@@ -40,7 +45,7 @@ final class QuizesListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        !searchBegins ? quizzes.count : filtredQuizzes.count
+        !searchBegins ? quizesStrings.count : filtredQuizesStrings.count
     }
 
     override func tableView(_ tableView: UITableView,
@@ -48,7 +53,10 @@ final class QuizesListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
 
-        content.text = !searchBegins ? quizzes[indexPath.row].name : filtredQuizzes[indexPath.row].name
+        let quizName = !searchBegins ? quizesStrings[indexPath.row].first?.value : filtredQuizesStrings[indexPath.row].first?.value
+        
+        //content.text = !searchBegins ? quizzes[indexPath.row].name : filtredQuizzes[indexPath.row].name
+        content.text = quizName
         content.textProperties.color = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.contentConfiguration = content
         
@@ -58,7 +66,8 @@ final class QuizesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            quizzes.remove(at: indexPath.row)
+            //quizzes.remove(at: indexPath.row)
+            quizesStrings.remove(at: indexPath.row)
             QuizDataManager.shared.deleteQuizFromRealm(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
@@ -70,7 +79,8 @@ final class QuizesListViewController: UITableViewController {
                segue.destination as? QuizViewController else { return }
        guard let indexPath =
                tableView.indexPathForSelectedRow else { return }
-        quizVC.quiz = quizzes[indexPath.row]
+        quizVC.quizId = !searchBegins ? quizesStrings[indexPath.row].first?.key : filtredQuizesStrings[indexPath.row].first?.key
+        //quizVC.quiz = !searchBegins ? quizzes[indexPath.row] : filtredQuizzes[indexPath.row]
         quizVC.name = userName
     }
     
@@ -113,30 +123,35 @@ final class QuizesListViewController: UITableViewController {
             searchBarItem.customView?.fadeIn()
             self.navigationItem.leftBarButtonItem = searchBarItem
             sender.setImage(UIImage(systemName: "xmark"), for: .normal)
-            searchBegins = true
+           // searchBegins = true
             searchBar.becomeFirstResponder()
         }
     }
     
     @objc private func searchQuiz() {
         searchBegins = true
-        let filtredQuizzes = quizzes.filter{ quiz in
-            quiz.name.lowercased().contains(searchBar.text!.lowercased()) }
-        self.filtredQuizzes = filtredQuizzes
-        guard let text = searchBar.text else { return searchBegins.toggle()}
         
-        if text.isEmpty {
+        guard let searchBarText = searchBar.text else { return searchBegins.toggle()}
+        let filtredQuizzes = quizesStrings.filter { quiz in
+            guard let name = quiz.first?.value.lowercased() else { return false }
+            return name.contains(searchBarText.lowercased())
+        }
+        
+        self.filtredQuizesStrings = filtredQuizzes
+        
+        if searchBarText.isEmpty {
             searchBegins = false
         }
-       tableView.reloadData()
+        tableView.reloadData()
     }
     
     private func loadQuizzes() {
+
         showActivityIndicator(target: self.navigationController ?? self, style: .large) { activityIndicator in
             activityIndicator.startAnimating()
             DispatchQueue.main.async {
-                QuizDataManager.shared.loadQuizesFromRealm { [unowned self] quizes in
-                    quizzes = quizes
+                QuizDataManager.shared.loadQuizesStrings { [unowned self] fetchedStrings in
+                    quizesStrings = fetchedStrings
                     activityIndicator.stopAnimating()
                     tableView.reloadData()
                 }

@@ -17,6 +17,7 @@ final class QuizViewController: UIViewController {
     
     var quiz: Quiz!
     var name: String!
+    var quizId: String!
     var score = 0
     var scoreTrueAnswer = 100
     var scoreFalseAnswer = -50
@@ -26,8 +27,8 @@ final class QuizViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        settingUI()
+        //settingUI()
+        loadQuiz()
         data()
         numberAnswerText()
     }
@@ -78,6 +79,13 @@ final class QuizViewController: UIViewController {
         }
     quizName.text = "Категория: \n\(quiz.name)"
         
+    }
+    
+    private func loadQuiz() {
+        QuizDataManager.shared.loadQuiz(id: quizId) { [unowned self] fetchedQuiz in
+            quiz = fetchedQuiz
+            settingUI()
+        }
     }
     
    private func data() {

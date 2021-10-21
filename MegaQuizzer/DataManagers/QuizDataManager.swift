@@ -36,6 +36,20 @@ final class QuizDataManager {
             completion(quizzes)
     }
     
+    func loadQuizesStrings(completion: @escaping ([[String :String]])->()) {
+        var quizStrings: [[String: String]] = []
+        realm.objects(Quiz.self).forEach { quiz in
+            quizStrings.append([quiz.id.stringValue: quiz.name])
+        }
+        completion(quizStrings)
+    }
+    
+    func loadQuiz(id: String, completion: (Quiz)->()) {
+        let quizID = try! ObjectId(string: id)
+        guard let quiz = realm.object(ofType: Quiz.self, forPrimaryKey: quizID) else { return }
+        completion(quiz)
+    }
+    
     func deleteQuizFromRealm(at row: Int) {
         try! realm.write {
             realm.delete(realm.objects(Quiz.self)[row])
