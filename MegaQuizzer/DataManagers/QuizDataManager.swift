@@ -13,8 +13,6 @@ final class QuizDataManager {
     let realm = try! Realm()
     var currentCreatingCards: [QuestionCard] = []
     
-    //private var realm = try! Realm()
-    //private let realmConfig: Realm.Configuration  =
     private var quizzes: [Quiz] = []
 
     

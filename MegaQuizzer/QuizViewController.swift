@@ -82,9 +82,13 @@ final class QuizViewController: UIViewController {
     }
     
     private func loadQuiz() {
-        QuizDataManager.shared.loadQuiz(id: quizId) { [unowned self] fetchedQuiz in
-            quiz = fetchedQuiz
-            settingUI()
+        showActivityIndicator(target: self, style: .large) { activityIndicator in
+            activityIndicator.startAnimating()
+            QuizDataManager.shared.loadQuiz(id: quizId) { [unowned self] fetchedQuiz in
+                quiz = fetchedQuiz
+                activityIndicator.stopAnimating()
+                settingUI()
+            }
         }
     }
     

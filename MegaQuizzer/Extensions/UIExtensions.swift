@@ -12,7 +12,11 @@ extension UIViewController {
     func showActivityIndicator(target: UIViewController, style: UIActivityIndicatorView.Style = .medium, completion: (UIActivityIndicatorView)->()) {
         let activityIndicator = UIActivityIndicatorView(style: style)
         activityIndicator.center = target.view.center
-        navigationController!.view.addSubview(activityIndicator)
+        if let viewController = navigationController {
+            viewController.view.addSubview(activityIndicator)
+        } else {
+            target.view.addSubview(activityIndicator)
+        }
         completion(activityIndicator)
     }
 }

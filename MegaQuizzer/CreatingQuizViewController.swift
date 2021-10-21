@@ -29,7 +29,7 @@ final class CreatingQuizViewController: UIViewController {
     
     //MARK: Private constances
     
-    let maxAnswers = 5
+    private let maxAnswers = 5
     
     //MARK: Private variables
     

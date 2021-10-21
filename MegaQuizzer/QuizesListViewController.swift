@@ -129,8 +129,6 @@ final class QuizesListViewController: UITableViewController {
     }
     
     @objc private func searchQuiz() {
-        searchBegins = true
-        
         guard let searchBarText = searchBar.text else { return searchBegins.toggle()}
         let filtredQuizzes = quizesStrings.filter { quiz in
             guard let name = quiz.first?.value.lowercased() else { return false }
@@ -138,11 +136,12 @@ final class QuizesListViewController: UITableViewController {
         }
         
         self.filtredQuizesStrings = filtredQuizzes
+        searchBegins = true
         
         if searchBarText.isEmpty {
             searchBegins = false
         }
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     private func loadQuizzes() {
