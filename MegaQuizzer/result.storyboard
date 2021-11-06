@@ -32,7 +32,7 @@
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="tryAgainTapped" destination="gcS-Ia-Lv9" eventType="touchUpInside" id="fqg-Ny-0ql"/>
+                                            <segue destination="dAK-8q-jf7" kind="unwind" unwindAction="unwindFor:" id="o3h-1X-V5U"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NC-oa-dTj">

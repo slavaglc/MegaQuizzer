@@ -66,6 +66,13 @@ final class QuizViewController: UIViewController {
                 nextQuestions()
         }
    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let _ = segue.source as? ResultViewController else { return }
+        indexQuestions = 0
+        data()
+    }
+    
     private func settingDefaultButton() {
         for button in answerButtonArray {
             button.backgroundColor = UIColor.white

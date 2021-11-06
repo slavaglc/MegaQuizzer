@@ -145,11 +145,10 @@
 			children = (
 				B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */,
 				B5EBBC2326B6E8570005B61C /* QuizViewController.swift */,
-				F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */,
+				F9E5123E27369DAA00259B80 /* CreatingQuiz */,
 				B51C86C826B5B04B0024C2BD /* ResultViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
-				F92D5B0F26DBF94A00D01167 /* QuestionListViewController.swift */,
 				F92D5B1326DED30F00D01167 /* Extensions */,
 				F95CA3D326B54B81009D7F26 /* Cells */,
 				59F2B55926B474B400385241 /* DataManagers */,
@@ -187,6 +186,15 @@
 				F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */,
 			);
 			path = MegaQuizzerTests;
+			sourceTree = "<group>";
+		};
+		F9E5123E27369DAA00259B80 /* CreatingQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */,
+				F92D5B0F26DBF94A00D01167 /* QuestionListViewController.swift */,
+			);
+			path = CreatingQuiz;
 			sourceTree = "<group>";
 		};
 		FE052085818C9F1F6B10C547 /* Pods */ = {
