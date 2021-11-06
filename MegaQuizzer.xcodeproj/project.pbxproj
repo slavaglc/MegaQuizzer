@@ -29,6 +29,7 @@
 		F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */; };
 		F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */; };
 		F97C0C00271AC9F7001B5CE3 /* MegaQuizzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */; };
+		F9E512402736D87800259B80 /* FinishCreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegaQuizzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegaQuizzerTests.swift; sourceTree = "<group>"; };
+		F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCreatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			children = (
 				F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */,
 				F92D5B0F26DBF94A00D01167 /* QuestionListViewController.swift */,
+				F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */,
 			);
 			path = CreatingQuiz;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				B56EE60F26B3CCE30072512B /* AppDelegate.swift in Sources */,
 				59F2B55626B4721600385241 /* QuestionCard.swift in Sources */,
 				B5EBBC2426B6E8570005B61C /* QuizViewController.swift in Sources */,
+				F9E512402736D87800259B80 /* FinishCreatingViewController.swift in Sources */,
 				B56EE61126B3CCE30072512B /* SceneDelegate.swift in Sources */,
 				59F2B55B26B474E500385241 /* QuizDataManager.swift in Sources */,
 				59F2B55826B4722800385241 /* Answer.swift in Sources */,

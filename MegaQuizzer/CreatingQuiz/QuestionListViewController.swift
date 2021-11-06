@@ -22,16 +22,19 @@ final class QuestionListViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func setGUI() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveQuiz))
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let finishVC = segue.destination as? FinishCreatingViewController else { return }
+                finishVC.quizName = quizName
+                finishVC.questions = questions
     }
     
-    @objc private func saveQuiz() {
+    private func setGUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+    }
+    
+    @objc private func doneButtonTapped() {
         guard questions.count > 0 else { return showAlert(title: "Постойте!", message: "Вы не создали ни одного вопроса", style: .alert) }
-
-        QuizDataManager.shared.saveQuiz(quiz: Quiz(name: quizName, questions: questions))
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
-        QuizDataManager.shared.currentCreatingCards.removeAll()
+        performSegue(withIdentifier: "finishVCSegue", sender: nil)
     }
 }
 
