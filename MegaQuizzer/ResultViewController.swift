@@ -23,7 +23,10 @@ final class ResultViewController: UIViewController {
         getData()
     }
     
-
+    @IBAction func tryAgainTapped() {
+        dismiss(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

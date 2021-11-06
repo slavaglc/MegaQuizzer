@@ -15,7 +15,6 @@
 		AE8FD2AC7B285555FD3ABC97 /* Pods_MegaQuizzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED1E53E851A002E3BFEBF68 /* Pods_MegaQuizzer.framework */; };
 		B51C86C626B58FA20024C2BD /* QuizesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */; };
 		B51C86C926B5B04B0024C2BD /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51C86C826B5B04B0024C2BD /* ResultViewController.swift */; };
-		B53AC76826B4231D007B8EBE /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53AC76726B4231D007B8EBE /* EnterViewController.swift */; };
 		B56EE60F26B3CCE30072512B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EE60E26B3CCE30072512B /* AppDelegate.swift */; };
 		B56EE61126B3CCE30072512B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EE61026B3CCE30072512B /* SceneDelegate.swift */; };
 		B56EE61626B3CCE30072512B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56EE61426B3CCE30072512B /* Main.storyboard */; };
@@ -53,7 +52,6 @@
 		9ED1E53E851A002E3BFEBF68 /* Pods_MegaQuizzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MegaQuizzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizesListViewController.swift; sourceTree = "<group>"; };
 		B51C86C826B5B04B0024C2BD /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		B53AC76726B4231D007B8EBE /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		B56EE60B26B3CCE30072512B /* MegaQuizzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MegaQuizzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56EE60E26B3CCE30072512B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56EE61026B3CCE30072512B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 		B56EE60D26B3CCE30072512B /* MegaQuizzer */ = {
 			isa = PBXGroup;
 			children = (
-				B53AC76726B4231D007B8EBE /* EnterViewController.swift */,
 				B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */,
 				B5EBBC2326B6E8570005B61C /* QuizViewController.swift */,
 				F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */,
@@ -383,7 +380,6 @@
 				B51C86C626B58FA20024C2BD /* QuizesListViewController.swift in Sources */,
 				59F2B55426B471A000385241 /* Quiz.swift in Sources */,
 				F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */,
-				B53AC76826B4231D007B8EBE /* EnterViewController.swift in Sources */,
 				B51C86C926B5B04B0024C2BD /* ResultViewController.swift in Sources */,
 				F92D5B1026DBF94A00D01167 /* QuestionListViewController.swift in Sources */,
 				F92D5B1226DED30A00D01167 /* UIExtensions.swift in Sources */,
