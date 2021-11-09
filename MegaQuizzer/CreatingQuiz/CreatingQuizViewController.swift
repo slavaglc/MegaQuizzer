@@ -33,10 +33,8 @@ final class CreatingQuizViewController: UIViewController {
     
     //MARK: Private variables
     
-    private var quiz: Quiz!
     private var quizName: String!
     private var possibleAnswers = ["Вариант ответа 1", "Вариант ответа 2", "Вариант ответа 3"]
-    private var questionCards: [QuestionCard] = []
     private var answerArray: [Answer] = []
     private var truthArray = [false, false, false]
     
