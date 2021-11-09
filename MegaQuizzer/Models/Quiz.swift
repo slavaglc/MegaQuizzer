@@ -10,6 +10,7 @@ import RealmSwift
 class Quiz: Object {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var name: String = "" //Название викторины
+    @Persisted var imageURL: String?
     @Persisted var questions: List<QuestionCard> //Объект из массива вопросов викторины
     
     convenience init(name: String = "", questions: [QuestionCard]) {

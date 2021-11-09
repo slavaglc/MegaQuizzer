@@ -66,9 +66,9 @@ final class QuizesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            //quizzes.remove(at: indexPath.row)
+            guard let quizID = quizesStrings[indexPath.row].first?.key else { return }
+            QuizDataManager.shared.deleteQuizFromRealm(by: quizID)
             quizesStrings.remove(at: indexPath.row)
-            QuizDataManager.shared.deleteQuizFromRealm(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
@@ -80,7 +80,6 @@ final class QuizesListViewController: UITableViewController {
        guard let indexPath =
                tableView.indexPathForSelectedRow else { return }
         quizVC.quizId = !searchBegins ? quizesStrings[indexPath.row].first?.key : filtredQuizesStrings[indexPath.row].first?.key
-        //quizVC.quiz = !searchBegins ? quizzes[indexPath.row] : filtredQuizzes[indexPath.row]
         quizVC.name = userName
     }
     

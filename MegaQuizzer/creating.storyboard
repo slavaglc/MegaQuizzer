@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VNg-rQ-awF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aWY-tP-SZr">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -291,7 +291,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="flW-TL-CQf">
-                                <rect key="frame" x="28" y="74" width="358" height="407"/>
+                                <rect key="frame" x="28" y="74" width="358" height="304"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Навание викторины" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zEs-te-xsW">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="30"/>
@@ -305,7 +305,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G6R-OW-svo">
                                         <rect key="frame" x="0.0" y="48" width="358" height="198"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="buB-XD-MgD">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="buB-XD-MgD">
                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="vgr-3N-RdQ"/>
@@ -332,52 +332,8 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RsH-wM-Oz2">
-                                        <rect key="frame" x="0.0" y="264" width="358" height="85"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="SUp-7R-MrS">
-                                                <rect key="frame" x="0.0" y="0.0" width="358" height="40"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наличие таймера" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j2-8b-dUW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="259" height="40"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wOG-ME-pDk">
-                                                        <rect key="frame" x="309" y="0.0" width="51" height="40"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="49" id="QqN-TU-hn8"/>
-                                                        </constraints>
-                                                    </switch>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.53210875266627999" green="0.57824201669346464" blue="0.84258943796157837" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="w6h-4M-zfC"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4AE-72-4AJ">
-                                                <rect key="frame" x="0.0" y="45" width="358" height="40"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наличие попыток" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsG-7P-61X">
-                                                        <rect key="frame" x="0.0" y="0.0" width="301" height="40"/>
-                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aMq-Au-Cy5">
-                                                        <rect key="frame" x="309" y="0.0" width="51" height="40"/>
-                                                    </switch>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.53210875270000002" green="0.57824201669999997" blue="0.84258943799999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="O3w-eO-Viw"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or9-Ha-TiW">
-                                        <rect key="frame" x="0.0" y="367" width="358" height="40"/>
+                                        <rect key="frame" x="0.0" y="264" width="358" height="40"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Y9E-YP-UZ1"/>
@@ -406,10 +362,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="5qu-tl-Vex"/>
                     <connections>
-                        <outlet property="attemptsSwitch" destination="aMq-Au-Cy5" id="WvM-By-VsD"/>
                         <outlet property="previewLogoImageView" destination="buB-XD-MgD" id="c6g-2P-lyz"/>
                         <outlet property="quizNameTextField" destination="zEs-te-xsW" id="G7W-Gy-AcL"/>
-                        <outlet property="timerSwitch" destination="wOG-ME-pDk" id="u9I-0d-UFb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gh-63-s7x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -38,11 +38,31 @@ extension UIView {
         let targetCenter = center
         center = CGPoint(x: 0, y: targetCenter.y)
         alpha = 0.0
-        
         UIView.animate(withDuration: 0.3) {
             self.center = CGPoint(x: targetCenter.x, y: targetCenter.y)
             self.alpha = 1.0
         }
+    }
+    
+    func moveOut(completionHandler: @escaping ()->() = {}) {
+    
+        transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        alpha = 1.0
+        
+        UIView.animate(withDuration: 0.7) {
+            self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            self.alpha = 0.0
+        } completion: { isFinished in
+            self.isHidden = isFinished
+            if isFinished {
+            completionHandler()
+            }
+        }
+}
+    
+    func moveOut(completion: ()->()) {
+        moveOut()
+        completion()
     }
     
     
@@ -50,17 +70,6 @@ extension UIView {
 
 extension UIStackView {
     
-        func moveOut() {
-            transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
-            alpha = 1.0
-            
-            UIView.animate(withDuration: 0.7) {
-                self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                self.alpha = 0.0
-            } completion: { isFinished in
-                self.isHidden = isFinished
-            }
-    }
     
     func moveNext() {
         transform = CGAffineTransform(scaleX: 0.0, y: 1.0)

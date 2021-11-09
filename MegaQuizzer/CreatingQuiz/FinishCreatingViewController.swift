@@ -7,11 +7,10 @@
 
 import UIKit
 
+
 final class FinishCreatingViewController: UIViewController {
     @IBOutlet weak var quizNameTextField: UITextField!
     @IBOutlet weak var previewLogoImageView: UIImageView!
-    @IBOutlet weak var timerSwitch: UISwitch!
-    @IBOutlet weak var attemptsSwitch: UISwitch!
     
     var questions: [QuestionCard] = []
     var quizName: String!
@@ -25,6 +24,9 @@ final class FinishCreatingViewController: UIViewController {
         showImagePicker()
     }
     
+    @objc private func doneButtonTapped() {
+        saveQuiz()
+    }
     
     private func setGUI() {
         previewLogoImageView.isHidden = true
@@ -32,25 +34,22 @@ final class FinishCreatingViewController: UIViewController {
         quizNameTextField.text = quizName
     }
     
-    @objc private func doneButtonTapped() {
-        saveQuiz()
-    }
+    
     
     private func saveQuiz() {
         quizName = quizNameTextField.text
         guard quizName != "" else { return showAlert(title: "Ошибка!", message: "Введите название викторины!", style: .alert) }
         guard quizName.count < 50 else { return showAlert(title: "Длинное название!", message: "Вы выбрали слишком длинное название викторины. Название викторины должно содержать не более 50-ти символов", style: .alert) }
-        QuizDataManager.shared.saveQuiz(quiz: Quiz(name: quizName, questions: questions))
+        QuizDataManager.shared.saveQuiz(quiz: Quiz(name: quizName, questions: questions),withImage: previewLogoImageView.image)
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         QuizDataManager.shared.currentCreatingCards.removeAll()
     }
-
 }
 
 
+
+
 extension FinishCreatingViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-   
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else {
@@ -64,8 +63,7 @@ extension FinishCreatingViewController: UINavigationControllerDelegate, UIImageP
             }
             DispatchQueue.main.async {
             previewLogoImageView.image = image
-            //previewLogoImageView.moveIn()
-                previewLogoImageView.isHidden = false
+            previewLogoImageView.moveIn()
             addRemoveImageButton()
             }
         }
@@ -81,36 +79,41 @@ extension FinishCreatingViewController: UINavigationControllerDelegate, UIImageP
      }
     
     private func addRemoveImageButton() {
-//        xmark.bin.circle
-        var removeImage: UIImage?
+        
+        let removeButton = UIButton()
+        var trashImage: UIImage?
         if #available(iOS 15.0, *) {
             let config = UIImage.SymbolConfiguration(paletteColors: [.systemRed, .black, .white])
-            removeImage = UIImage.init(systemName: "trash.circle.fill")?
+            trashImage = UIImage.init(systemName: "trash.circle.fill")?
                 .withConfiguration(config)
-            
         } else {
-            
+            trashImage = UIImage(systemName: "trash.circle.fill")
+            removeButton.tintColor = .systemRed
+            removeButton.backgroundColor = .white
         }
         
+        guard let trashImage = trashImage else { return }
         
-        guard let removeImage = removeImage else { return }
+        removeButton.frame.size = CGSize(width: 50, height: 50)
         
+        let btnPositionX = previewLogoImageView.bounds.minX + removeButton.frame.width
+        let btnPositionY = previewLogoImageView.bounds.maxY - removeButton.frame.height / 2
         
-        
-        let btnPositionX = previewLogoImageView.contentClippingRect.width / 2
-        let btnPositionY = previewLogoImageView.contentClippingRect.height / 2
-        
-        let removeButton = UIButton(frame: previewLogoImageView.contentClippingRect)
-        print("imageView width:", previewLogoImageView.bounds.width)
-        print("image width:", previewLogoImageView.contentClippingRect.width)
-        
-        removeButton.setImage(removeImage, for: .normal)
-        
-        
-        
-        
-    
+        removeButton.center = CGPoint(x: btnPositionX, y: btnPositionY)
+        removeButton.contentMode = .center
+        removeButton.setBackgroundImage(trashImage, for: .normal)
+        removeButton.imageView?.contentMode = .scaleAspectFit
+        removeButton.layer.cornerRadius = 0.5 * removeButton.bounds.size.width
+        removeButton.clipsToBounds = true
+        removeButton.addTarget(self, action: #selector(removeImage(sender:)), for: .touchUpInside)
         previewLogoImageView.addSubview(removeButton)
+    }
+    
+    @objc private func removeImage(sender: UIButton) {
+        sender.removeFromSuperview()
+        previewLogoImageView.moveOut {
+            self.previewLogoImageView.image = nil
+        }
     }
     
 }
