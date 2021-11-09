@@ -10,7 +10,7 @@ import RealmSwift
 final class QuizDataManager {
  
     static let shared = QuizDataManager()
-    static let currentSchemaVersion: UInt64 = 3
+    static let currentSchemaVersion: UInt64 = 4
     
     private let realm = try! Realm()
     var currentCreatingCards: [QuestionCard] = []
@@ -23,6 +23,10 @@ final class QuizDataManager {
             if oldSchemaVersion < 1 {
                 migrateFrom0To1(with: migration)
             }
+            
+            if oldSchemaVersion == 3 {
+             migrateFrom3To4(with: migration)
+            }
          })
         Realm.Configuration.defaultConfiguration = config
     }
@@ -32,6 +36,9 @@ final class QuizDataManager {
                        newQuizProperty?["imageURL"] = nil
                     }
                  }
+    static func migrateFrom3To4(with migration: Migration) {
+        migration.renameProperty(onType: Quiz.className(), from: "imageURL", to: "imagePath")
+    }
 //    MARK: - Quiz Methods
     public func saveQuiz(quiz: Quiz, withImage previewImage: UIImage? = nil) {
         quizzes.append(quiz)
@@ -77,7 +84,7 @@ final class QuizDataManager {
         guard let quizID = try? ObjectId(string: id) else { return }
         try! realm.write  {
             guard let object = realm.object(ofType: Quiz.self, forPrimaryKey: quizID) else { return }
-            if let imageURL = object.imageURL {
+            if let imageURL = object.imagePath {
                 deleteImage(for: imageURL)
             }
             realm.delete(object)
@@ -90,7 +97,7 @@ final class QuizDataManager {
             saveImage(imageName: "PreviewImage", image: image, directory: directory) { isFinished, path in
                 if isFinished {
                     guard let imagePath = path else { return }
-                    quiz.imageURL = imagePath
+                    quiz.imagePath = imagePath
                 }
             }
         }
@@ -149,13 +156,16 @@ final class QuizDataManager {
             NSLog("Unable to create directory \(error.debugDescription)")
         }
         
-        
-        let resultPath = fileDirectory.pathComponents
+        let relativePath = fileDirectory.pathComponents
                    .suffix(fileDirectory.pathComponents.count - documentsDirectory.pathComponents.count)
                    .joined(separator: "/")
-               print(resultPath)
+               print(relativePath)
         
-        return resultPath
+        return relativePath
+    }
+    
+    private func getPreviewImageFullPath(for id: ObjectId) -> URL? {
+         getDocumentsDirectory()?.appendingPathComponent(getPreviewImageRelativePath(for: id) ?? "") ?? nil
     }
     
     private func getDocumentsDirectory() -> URL? {
@@ -163,54 +173,6 @@ final class QuizDataManager {
     }
     
     private init() {
-//        quizzes.append(
-//            Quiz(name: "Кино",
-//                 questions:
-//                    [
-//                        QuestionCard(questionText: "В каком веке был изобретен кинематограф?",
-//                                     answers: [
-//                                        Answer(answerText: "В XVII веке", isTrue: false),
-//                                        Answer(answerText: "В XIX веке", isTrue: true),
-//                                        Answer(answerText: "В XX веке", isTrue: false)
-//                                     ]),
-//
-//                        QuestionCard(questionText: "Что изначально отсутствовало в кинофильмах?",
-//                                     answers: [
-//                                        Answer(answerText: "Звук", isTrue: true),
-//                                        Answer(answerText: "Актеры", isTrue: false),
-//                                        Answer(answerText: "Сюжет", isTrue: false)
-//                                     ]),
-//
-//                        QuestionCard(questionText: "Как назывался первый цветной фильм, раскрашенный вручную?",
-//                                     answers: [
-//                                        Answer(answerText: "Кинемаколор", isTrue: false),
-//                                        Answer(answerText: "Путешествие на луну", isTrue: true),
-//                                        Answer(answerText: "Змеиный танец", isTrue: false)
-//                                     ]),
-//
-//                        QuestionCard(questionText: "Какова была средняя длина фильмов в начале XX века?",
-//                                     answers: [
-//                                        Answer(answerText: "15 минуты", isTrue: true),
-//                                        Answer(answerText: "3 минуты", isTrue: false),
-//                                        Answer(answerText: "1 час", isTrue: false)
-//                                     ]),
-//
-//                        QuestionCard(questionText: "В каком году был снят первый российский цветной кинофильм?",
-//                                     answers: [
-//                                        Answer(answerText: "1907", isTrue: false),
-//                                        Answer(answerText: "1913", isTrue: false),
-//                                        Answer(answerText: "1931", isTrue: true)
-//                                     ]),
-//
-//                        QuestionCard(questionText: "Что характерно для немого кино?",
-//                                     answers: [
-//                                        Answer(answerText: "Отсутствие диалогов в сюжете", isTrue: false),
-//                                        Answer(answerText: "Отсутствие звуковой дорожки с речью актеров", isTrue: true),
-//                                        Answer(answerText: "Полное отсутствие звуковой дорожки", isTrue: false)
-//                                     ])
-//                    ]))
     }
-    
-    
     
 }
