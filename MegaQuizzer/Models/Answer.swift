@@ -1,10 +1,3 @@
-//
-//  Answer.swift
-//  MegaQuizzer
-//
-//  Created by Kristina Shlyapkina on 30.07.2021.
-//
-
 
 import RealmSwift
 

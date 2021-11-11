@@ -1,9 +1,4 @@
-//
-//  QuizManager.swift
-//  MegaQuizzer
-//
-//  Created by Kristina Shlyapkina on 30.07.2021.
-//
+
 
 import RealmSwift
 
@@ -17,6 +12,9 @@ final class QuizDataManager {
     
     private var quizzes: [Quiz] = []
 
+    private init() {
+    }
+    
 //    MARK: - Migration rules
     static func configureMigration() {
         let config = Realm.Configuration(schemaVersion: currentSchemaVersion, migrationBlock: { (migration, oldSchemaVersion) in
@@ -172,7 +170,6 @@ final class QuizDataManager {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     }
     
-    private init() {
-    }
+
     
 }

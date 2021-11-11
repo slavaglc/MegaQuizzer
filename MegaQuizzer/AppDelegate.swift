@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  MegaQuizzer
-//
-//  Created by Максим on 30.07.2021.
-//
+
 
 import UIKit
 
