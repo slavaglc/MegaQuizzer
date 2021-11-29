@@ -1,11 +1,12 @@
 
 
 import RealmSwift
+import UIKit
 
 final class QuizDataManager {
  
     static let shared = QuizDataManager()
-    static let currentSchemaVersion: UInt64 = 4
+    static let currentSchemaVersion: UInt64 = 5
     
     private let realm = try! Realm()
     var currentCreatingCards: [QuestionCard] = []
@@ -25,6 +26,10 @@ final class QuizDataManager {
             if oldSchemaVersion == 3 {
              migrateFrom3To4(with: migration)
             }
+            
+            if oldSchemaVersion == 4 {
+                migrateFrom4To5(with: migration)
+            }
          })
         Realm.Configuration.defaultConfiguration = config
     }
@@ -36,6 +41,12 @@ final class QuizDataManager {
                  }
     static func migrateFrom3To4(with migration: Migration) {
         migration.renameProperty(onType: Quiz.className(), from: "imageURL", to: "imagePath")
+    }
+    
+    static func migrateFrom4To5(with migration: Migration) {
+        migration.enumerateObjects(ofType: Quiz.className()) { oldObject, newQuizProperty in
+            newQuizProperty?["quizDescription"] = nil
+        }
     }
 //    MARK: - Quiz Methods
     public func saveQuiz(quiz: Quiz, withImage previewImage: UIImage? = nil) {
@@ -88,13 +99,25 @@ final class QuizDataManager {
             realm.delete(object)
         }
     }
+    //MARK: - Realm Image Methods
+    public func loadImageFromLocalStore(by relativePath: String, completion: @escaping (UIImage?)->()) {
+        
+        guard let url = getPreviewImageFullPath(by: relativePath) else { return }
+        let fileURL = URL(fileURLWithPath: url.path)
+        var image: UIImage?
+        DispatchQueue.global(qos: .userInitiated).async {
+            image = UIImage(contentsOfFile: fileURL.path)
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        }
+    }
     
     private func saveQuizToRealm(quiz: Quiz, previewImage: UIImage? = nil) {
         if let image = previewImage {
-            guard let directory = getPreviewImageRelativePath(for: quiz.id) else { return }
-            saveImage(imageName: "PreviewImage", image: image, directory: directory) { isFinished, path in
+            guard let imagePath = getPreviewImageRelativePath(for: quiz.id) else { return }
+            saveImage(image: image, path: imagePath) { isFinished in
                 if isFinished {
-                    guard let imagePath = path else { return }
                     quiz.imagePath = imagePath
                 }
             }
@@ -105,14 +128,12 @@ final class QuizDataManager {
         }
     }
     
-    private func saveImage(imageName: String, image: UIImage, directory: String, completion: @escaping (_ isFinished: Bool, _ url: String?)->()) {
-        let fileName = imageName
+    private func saveImage(image: UIImage, path: String, completion: @escaping (_ isFinished: Bool)->()) {
         guard let documentsURL = getDocumentsDirectory() else { return }
-        let fileURL = documentsURL.appendingPathComponent(directory).appendingPathComponent(fileName)
-        
+        let fileURL = documentsURL.appendingPathComponent(path)
         guard let data = image.jpegData(compressionQuality: 0.7) else { return }
+        
 
-        //Checks if file exists, removes it if so.
       if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
@@ -124,7 +145,7 @@ final class QuizDataManager {
 
         do {
             try data.write(to: fileURL)
-            completion(true, directory)
+            completion(true)
         } catch let error {
             print("error saving file with error:", error)
         }
@@ -140,12 +161,11 @@ final class QuizDataManager {
         }
     }
     
-    
     private func getPreviewImageRelativePath(for id: ObjectId) -> String? {
         
        guard let documentsDirectory = getDocumentsDirectory() else { return nil }
         
-        let fileDirectory =  documentsDirectory.appendingPathComponent("users").appendingPathComponent("_USERNAME_").appendingPathComponent("quizData").appendingPathComponent(id.stringValue).appendingPathComponent("previewImage")
+        let fileDirectory =  documentsDirectory.appendingPathComponent("users").appendingPathComponent("_USERNAME_").appendingPathComponent("quizData").appendingPathComponent(id.stringValue).appendingPathComponent("previewImage").appendingPathComponent("PreviewImage.png", isDirectory: false)
         
         do {
             try FileManager.default.createDirectory(atPath: fileDirectory.path, withIntermediateDirectories: true, attributes: nil)
@@ -164,6 +184,10 @@ final class QuizDataManager {
     
     private func getPreviewImageFullPath(for id: ObjectId) -> URL? {
          getDocumentsDirectory()?.appendingPathComponent(getPreviewImageRelativePath(for: id) ?? "") ?? nil
+    }
+    
+    private func getPreviewImageFullPath(by stringPath: String) -> URL? {
+        getDocumentsDirectory()?.appendingPathComponent(stringPath) ?? nil
     }
     
     private func getDocumentsDirectory() -> URL? {

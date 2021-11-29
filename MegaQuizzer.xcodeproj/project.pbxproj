@@ -29,6 +29,7 @@
 		F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3CF26B4A375009D7F26 /* CreatingQuizViewController.swift */; };
 		F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */; };
 		F97C0C00271AC9F7001B5CE3 /* MegaQuizzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */; };
+		F9835D2A2750251200A86B14 /* QuizStartDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D292750251200A86B14 /* QuizStartDisplayViewController.swift */; };
 		F9E512402736D87800259B80 /* FinishCreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegaQuizzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegaQuizzerTests.swift; sourceTree = "<group>"; };
+		F9835D292750251200A86B14 /* QuizStartDisplayViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = QuizStartDisplayViewController.swift; sourceTree = "<group>"; };
 		F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCreatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */,
-				B5EBBC2326B6E8570005B61C /* QuizViewController.swift */,
+				F9835D28275024F400A86B14 /* Quiz */,
 				F9E5123E27369DAA00259B80 /* CreatingQuiz */,
 				B51C86C826B5B04B0024C2BD /* ResultViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
@@ -188,6 +190,15 @@
 				F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */,
 			);
 			path = MegaQuizzerTests;
+			sourceTree = "<group>";
+		};
+		F9835D28275024F400A86B14 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				F9835D292750251200A86B14 /* QuizStartDisplayViewController.swift */,
+				B5EBBC2326B6E8570005B61C /* QuizViewController.swift */,
+			);
+			path = Quiz;
 			sourceTree = "<group>";
 		};
 		F9E5123E27369DAA00259B80 /* CreatingQuiz */ = {
@@ -390,6 +401,7 @@
 				59F2B55B26B474E500385241 /* QuizDataManager.swift in Sources */,
 				59F2B55826B4722800385241 /* Answer.swift in Sources */,
 				B51C86C626B58FA20024C2BD /* QuizesListViewController.swift in Sources */,
+				F9835D2A2750251200A86B14 /* QuizStartDisplayViewController.swift in Sources */,
 				59F2B55426B471A000385241 /* Quiz.swift in Sources */,
 				F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */,
 				B51C86C926B5B04B0024C2BD /* ResultViewController.swift in Sources */,

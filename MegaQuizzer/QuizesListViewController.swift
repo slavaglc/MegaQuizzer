@@ -27,8 +27,6 @@ final class QuizesListViewController: UITableViewController {
         }
     }
     
-    //[Quiz(name: "test", questions: [QuestionCard(questionText: "", answers: [Answer(answerText: "", isTrue: true)])])]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +50,7 @@ final class QuizesListViewController: UITableViewController {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-
         let quizName = !searchBegins ? quizesStrings[indexPath.row].first?.value : filtredQuizesStrings[indexPath.row].first?.value
-        
-        //content.text = !searchBegins ? quizzes[indexPath.row].name : filtredQuizzes[indexPath.row].name
         content.text = quizName
         content.textProperties.color = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.contentConfiguration = content
@@ -75,12 +70,11 @@ final class QuizesListViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       guard let quizVC =
-               segue.destination as? QuizViewController else { return }
+       guard let quizStartVC =
+               segue.destination as? QuizStartDisplayViewController else { return }
        guard let indexPath =
                tableView.indexPathForSelectedRow else { return }
-        quizVC.quizId = !searchBegins ? quizesStrings[indexPath.row].first?.key : filtredQuizesStrings[indexPath.row].first?.key
-        quizVC.name = userName
+        quizStartVC.quizID = !searchBegins ? quizesStrings[indexPath.row].first?.key : filtredQuizesStrings[indexPath.row].first?.key
     }
     
     @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {

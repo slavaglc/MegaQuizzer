@@ -28,7 +28,6 @@ final class QuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //settingUI()
-        loadQuiz()
         data()
         numberAnswerText()
     }
@@ -86,17 +85,6 @@ final class QuizViewController: UIViewController {
         }
     quizName.text = "Категория: \n\(quiz.name)"
         
-    }
-    
-    private func loadQuiz() {
-        showActivityIndicator(target: self, style: .large) { activityIndicator in
-            activityIndicator.startAnimating()
-            QuizDataManager.shared.loadQuiz(id: quizId) { [unowned self] fetchedQuiz in
-                quiz = fetchedQuiz
-                activityIndicator.stopAnimating()
-                settingUI()
-            }
-        }
     }
     
    private func data() {
