@@ -24,7 +24,7 @@ final class QuizDataManager {
             }
             
             if oldSchemaVersion == 3 {
-             migrateFrom3To4(with: migration)
+                migrateFrom3To4(with: migration)
             }
             
             if oldSchemaVersion == 4 {

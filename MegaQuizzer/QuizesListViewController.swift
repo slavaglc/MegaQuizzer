@@ -113,7 +113,7 @@ final class QuizesListViewController: UITableViewController {
         
         func showSearchBar() {
             let searchBarItem = UIBarButtonItem(customView:searchBar)
-            searchBarItem.customView?.fadeIn()
+            searchBarItem.customView?.fadeInFromLeftSide()
             self.navigationItem.leftBarButtonItem = searchBarItem
             sender.setImage(UIImage(systemName: "xmark"), for: .normal)
            // searchBegins = true

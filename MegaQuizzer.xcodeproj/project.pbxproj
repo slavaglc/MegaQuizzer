@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,19 @@
 		F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CA3D126B54B76009D7F26 /* PossibleAnswerTableViewCell.swift */; };
 		F97C0C00271AC9F7001B5CE3 /* MegaQuizzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */; };
 		F9835D2A2750251200A86B14 /* QuizStartDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D292750251200A86B14 /* QuizStartDisplayViewController.swift */; };
+		F9835D492765FCCD00A86B14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9835D482765FCCD00A86B14 /* GoogleService-Info.plist */; };
+		F9835D4C2765FE3D00A86B14 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D4B2765FE3D00A86B14 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		F9835D4E2765FE3D00A86B14 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D4D2765FE3D00A86B14 /* FirebaseAuth */; };
+		F9835D502765FE3D00A86B14 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D4F2765FE3D00A86B14 /* FirebaseDatabase */; };
+		F9835D522765FE3D00A86B14 /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D512765FE3D00A86B14 /* FirebaseDatabaseSwift-Beta */; };
+		F9835D542765FE3D00A86B14 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D532765FE3D00A86B14 /* FirebaseFirestore */; };
+		F9835D562765FE3D00A86B14 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D552765FE3D00A86B14 /* FirebaseFirestoreSwift-Beta */; };
+		F9835D582765FE3D00A86B14 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D572765FE3D00A86B14 /* FirebaseStorage */; };
+		F9835D5A2765FE3D00A86B14 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D592765FE3D00A86B14 /* FirebaseStorageSwift-Beta */; };
+		F9835D5C27660A7900A86B14 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5B27660A7900A86B14 /* NavigationController.swift */; };
+		F9835D5E27660E3800A86B14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5D27660E3800A86B14 /* LoginViewController.swift */; };
+		F9835D6027660E4600A86B14 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */; };
+		F9835D632766686100A86B14 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D622766686100A86B14 /* AuthManager.swift */; };
 		F9E512402736D87800259B80 /* FinishCreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +87,11 @@
 		F97C0BFD271AC9F7001B5CE3 /* MegaQuizzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegaQuizzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegaQuizzerTests.swift; sourceTree = "<group>"; };
 		F9835D292750251200A86B14 /* QuizStartDisplayViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = QuizStartDisplayViewController.swift; sourceTree = "<group>"; };
+		F9835D482765FCCD00A86B14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F9835D5B27660A7900A86B14 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F9835D5D27660E3800A86B14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		F9835D622766686100A86B14 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCreatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +100,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9835D522765FE3D00A86B14 /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				AE8FD2AC7B285555FD3ABC97 /* Pods_MegaQuizzer.framework in Frameworks */,
+				F9835D562765FE3D00A86B14 /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				F9835D4E2765FE3D00A86B14 /* FirebaseAuth in Frameworks */,
+				F9835D502765FE3D00A86B14 /* FirebaseDatabase in Frameworks */,
+				F9835D5A2765FE3D00A86B14 /* FirebaseStorageSwift-Beta in Frameworks */,
+				F9835D582765FE3D00A86B14 /* FirebaseStorage in Frameworks */,
+				F9835D4C2765FE3D00A86B14 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				F9835D542765FE3D00A86B14 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				59F2B55A26B474E500385241 /* QuizDataManager.swift */,
+				F9835D622766686100A86B14 /* AuthManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -153,6 +180,8 @@
 				B51C86C826B5B04B0024C2BD /* ResultViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
+				F9835D5B27660A7900A86B14 /* NavigationController.swift */,
+				F9835D6127660E5100A86B14 /* Authorization */,
 				F92D5B1326DED30F00D01167 /* Extensions */,
 				F95CA3D326B54B81009D7F26 /* Cells */,
 				59F2B55926B474B400385241 /* DataManagers */,
@@ -164,6 +193,7 @@
 				B56EE61726B3CCE40072512B /* Assets.xcassets */,
 				B56EE61926B3CCE40072512B /* LaunchScreen.storyboard */,
 				B56EE61C26B3CCE40072512B /* Info.plist */,
+				F9835D482765FCCD00A86B14 /* GoogleService-Info.plist */,
 			);
 			path = MegaQuizzer;
 			sourceTree = "<group>";
@@ -199,6 +229,15 @@
 				B5EBBC2326B6E8570005B61C /* QuizViewController.swift */,
 			);
 			path = Quiz;
+			sourceTree = "<group>";
+		};
+		F9835D6127660E5100A86B14 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				F9835D5D27660E3800A86B14 /* LoginViewController.swift */,
+				F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		F9E5123E27369DAA00259B80 /* CreatingQuiz */ = {
@@ -240,6 +279,16 @@
 			dependencies = (
 			);
 			name = MegaQuizzer;
+			packageProductDependencies = (
+				F9835D4B2765FE3D00A86B14 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				F9835D4D2765FE3D00A86B14 /* FirebaseAuth */,
+				F9835D4F2765FE3D00A86B14 /* FirebaseDatabase */,
+				F9835D512765FE3D00A86B14 /* FirebaseDatabaseSwift-Beta */,
+				F9835D532765FE3D00A86B14 /* FirebaseFirestore */,
+				F9835D552765FE3D00A86B14 /* FirebaseFirestoreSwift-Beta */,
+				F9835D572765FE3D00A86B14 /* FirebaseStorage */,
+				F9835D592765FE3D00A86B14 /* FirebaseStorageSwift-Beta */,
+			);
 			productName = MegaQuizzer;
 			productReference = B56EE60B26B3CCE30072512B /* MegaQuizzer.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +339,9 @@
 				Base,
 			);
 			mainGroup = B56EE60226B3CCE30072512B;
+			packageReferences = (
+				F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B56EE60C26B3CCE30072512B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -311,6 +363,7 @@
 				B56EE61626B3CCE30072512B /* Main.storyboard in Resources */,
 				F95CA3CE26B4A116009D7F26 /* creating.storyboard in Resources */,
 				B5EBBC2126B6E7730005B61C /* result.storyboard in Resources */,
+				F9835D492765FCCD00A86B14 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,9 +454,13 @@
 				59F2B55B26B474E500385241 /* QuizDataManager.swift in Sources */,
 				59F2B55826B4722800385241 /* Answer.swift in Sources */,
 				B51C86C626B58FA20024C2BD /* QuizesListViewController.swift in Sources */,
+				F9835D5C27660A7900A86B14 /* NavigationController.swift in Sources */,
 				F9835D2A2750251200A86B14 /* QuizStartDisplayViewController.swift in Sources */,
 				59F2B55426B471A000385241 /* Quiz.swift in Sources */,
+				F9835D6027660E4600A86B14 /* RegistrationViewController.swift in Sources */,
 				F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */,
+				F9835D632766686100A86B14 /* AuthManager.swift in Sources */,
+				F9835D5E27660E3800A86B14 /* LoginViewController.swift in Sources */,
 				B51C86C926B5B04B0024C2BD /* ResultViewController.swift in Sources */,
 				F92D5B1026DBF94A00D01167 /* QuestionListViewController.swift in Sources */,
 				F92D5B1226DED30A00D01167 /* UIExtensions.swift in Sources */,
@@ -687,6 +744,60 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F9835D4B2765FE3D00A86B14 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		F9835D4D2765FE3D00A86B14 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F9835D4F2765FE3D00A86B14 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		F9835D512765FE3D00A86B14 /* FirebaseDatabaseSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseDatabaseSwift-Beta";
+		};
+		F9835D532765FE3D00A86B14 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F9835D552765FE3D00A86B14 /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		F9835D572765FE3D00A86B14 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		F9835D592765FE3D00A86B14 /* FirebaseStorageSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9835D4A2765FE3D00A86B14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageSwift-Beta";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B56EE60326B3CCE30072512B /* Project object */;
 }

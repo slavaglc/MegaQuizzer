@@ -34,12 +34,21 @@ extension UIView {
         }
     }
     
-    func fadeIn() {
+    func fadeInFromLeftSide() {
         let targetCenter = center
         center = CGPoint(x: 0, y: targetCenter.y)
         alpha = 0.0
+        isHidden = false
         UIView.animate(withDuration: 0.3) {
             self.center = CGPoint(x: targetCenter.x, y: targetCenter.y)
+            self.alpha = 1.0
+        }
+    }
+    
+    func fadeIn() {
+        alpha = 0.0
+        isHidden = false
+        UIView.animate(withDuration: 0.5) {
             self.alpha = 1.0
         }
     }
@@ -64,8 +73,6 @@ extension UIView {
         moveOut()
         completion()
     }
-    
-    
 }
 
 extension UIStackView {

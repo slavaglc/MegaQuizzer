@@ -22,6 +22,10 @@ class QuizStartDisplayViewController: UIViewController {
        loadQuiz()
     }
    
+   override func viewDidAppear(_ animated: Bool) {
+      setupImage()
+   }
+   
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       guard let quizVC =  segue.destination as? QuizViewController else { return }
       quizVC.quiz = quiz
@@ -35,27 +39,29 @@ class QuizStartDisplayViewController: UIViewController {
    private func setupGUI() {
       quizTitleLabel.text = quiz.name
       quizDescriptionLabel.text = quiz.quizDescription ?? ""
-      setupImage()
    }
    
    private func setupImage() {
-      guard let imagePath = quiz.imagePath else { return }
-      
-      QuizDataManager.shared.loadImageFromLocalStore(by: imagePath) {  [weak self] image in
-         guard let image = image else { return }
-         self?.quizImageView.image = image
-         print(image)
+      showActivityIndicator(target: self) { activityIdicator in
+         guard let imagePath = quiz.imagePath else { return }
+         activityIdicator.startAnimating()
+         QuizDataManager.shared.loadImageFromLocalStore(by: imagePath) {  [weak self] image in
+            guard let image = image else { activityIdicator.stopAnimating(); return }
+            self?.quizImageView.image = image
+            activityIdicator.stopAnimating()
+            self?.quizImageView.fadeIn()
+         }
       }
    }
    
    private func loadQuiz() {
-       showActivityIndicator(target: self, style: .large) { activityIndicator in
-           activityIndicator.startAnimating()
-          QuizDataManager.shared.loadQuiz(id: quizID) { [weak self] fetchedQuiz in
-              self?.quiz = fetchedQuiz
-               activityIndicator.stopAnimating()
-               setupGUI()
-           }
+      showActivityIndicator(target: self, style: .large) { activityIndicator in
+         activityIndicator.startAnimating()
+         QuizDataManager.shared.loadQuiz(id: quizID) { [weak self] fetchedQuiz in
+            self?.quiz = fetchedQuiz
+            setupGUI()
+            activityIndicator.stopAnimating()
+         }
        }
    }
    

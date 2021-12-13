@@ -27,7 +27,7 @@ final class QuizViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //settingUI()
+        settingUI()
         data()
         numberAnswerText()
     }
