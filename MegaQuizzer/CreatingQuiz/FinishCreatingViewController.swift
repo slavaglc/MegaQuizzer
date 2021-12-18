@@ -40,7 +40,7 @@ final class FinishCreatingViewController: UIViewController {
         quizName = quizNameTextField.text
         guard quizName != "" else { return showAlert(title: "Ошибка!", message: "Введите название викторины!", style: .alert) }
         guard quizName.count < 50 else { return showAlert(title: "Длинное название!", message: "Вы выбрали слишком длинное название викторины. Название викторины должно содержать не более 50-ти символов", style: .alert) }
-        QuizDataManager.shared.saveQuiz(quiz: Quiz(name: quizName, questions: questions),withImage: previewLogoImageView.image)
+        QuizDataManager.shared.saveQuiz(quiz: Quiz(name: quizName, questions: questions), for: AuthManager.shared.currentUserModel, withImage: previewLogoImageView.image)
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         QuizDataManager.shared.currentCreatingCards.removeAll()
     }

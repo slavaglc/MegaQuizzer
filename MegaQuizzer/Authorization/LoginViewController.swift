@@ -14,6 +14,11 @@ final class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.setHidesBackButton(true, animated: true)
+        dismissKey()
+    }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         signIn()
@@ -21,13 +26,20 @@ final class LoginViewController: UIViewController {
     
     private func signIn() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        AuthManager.shared.signIn(email: email, password: password, confirmPassword: password) { [weak self] error, success in
-            if let error = error {
-                self?.showAlert(title: "Ошибка входа", message: error, style: .alert)
+        
+        showActivityIndicator(target: self, style: .large) { activityhIndicator in
+            activityhIndicator.startAnimating()
+            AuthManager.shared.signIn(email: email, password: password, confirmPassword: password) { [weak self] error, success in
+                if let error = error {
+                    self?.showAlert(title: "Ошибка входа", message: error, style: .alert)
+                }
+                guard success else {activityhIndicator.stopAnimating(); return }
+                self?.navigationController?.popToRootViewController(animated: true)
+                activityhIndicator.stopAnimating()
             }
-            guard success else { return }
-            print("SUCCESS!!!!!")
         }
     }
+    
+    
     
 }

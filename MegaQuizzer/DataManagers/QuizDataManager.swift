@@ -6,7 +6,7 @@ import UIKit
 final class QuizDataManager {
  
     static let shared = QuizDataManager()
-    static let currentSchemaVersion: UInt64 = 5
+    static let currentSchemaVersion: UInt64 = 6
     
     private let realm = try! Realm()
     var currentCreatingCards: [QuestionCard] = []
@@ -30,6 +30,10 @@ final class QuizDataManager {
             if oldSchemaVersion == 4 {
                 migrateFrom4To5(with: migration)
             }
+            
+            if oldSchemaVersion <= 5 {
+                migrateFrom5To6(with: migration)
+            }
          })
         Realm.Configuration.defaultConfiguration = config
     }
@@ -48,10 +52,16 @@ final class QuizDataManager {
             newQuizProperty?["quizDescription"] = nil
         }
     }
+    
+    static func migrateFrom5To6(with migration: Migration) {
+        migration.enumerateObjects(ofType: Quiz.className()) { oldObject, newObject in
+            newObject?["user"] = nil
+        }
+    }
 //    MARK: - Quiz Methods
-    public func saveQuiz(quiz: Quiz, withImage previewImage: UIImage? = nil) {
+    public func saveQuiz(quiz: Quiz, for user: AppUser? = nil, withImage previewImage: UIImage? = nil) {
         quizzes.append(quiz)
-        saveQuizToRealm(quiz: quiz, previewImage: previewImage)
+        saveQuizToRealm(quiz: quiz, for: user, previewImage: previewImage)
     }
     
     public func getQuizzes(completion: @escaping ([Quiz])->()) -> [Quiz] {
@@ -99,6 +109,33 @@ final class QuizDataManager {
             realm.delete(object)
         }
     }
+    
+    private func saveQuizToRealm(quiz: Quiz, for user: AppUser? = nil, previewImage: UIImage? = nil) {
+        if let image = previewImage {
+            guard let imagePath = getPreviewImageRelativePath(for: quiz.id) else { return }
+            saveImage(image: image, path: imagePath) { isFinished in
+                if isFinished {
+                    quiz.imagePath = imagePath
+                }
+            }
+        }
+        
+        guard let user = user else { return }
+        createUser(user: user)
+        try! realm.write {
+            user.quizes.append(quiz)
+            quiz.user = user
+            realm.add(quiz, update: .all)
+        }
+    }
+    
+    private func createUser(user: AppUser) {
+        if realm.object(ofType: AppUser.self, forPrimaryKey: user.uid) == nil {
+        try! realm.write {
+            realm.add(user)
+            }
+        } 
+    }
     //MARK: - Realm Image Methods
     public func loadImageFromLocalStore(by relativePath: String, completion: @escaping (UIImage?)->()) {
         
@@ -110,21 +147,6 @@ final class QuizDataManager {
             DispatchQueue.main.async {
                 completion(image)
             }
-        }
-    }
-    
-    private func saveQuizToRealm(quiz: Quiz, previewImage: UIImage? = nil) {
-        if let image = previewImage {
-            guard let imagePath = getPreviewImageRelativePath(for: quiz.id) else { return }
-            saveImage(image: image, path: imagePath) { isFinished in
-                if isFinished {
-                    quiz.imagePath = imagePath
-                }
-            }
-        }
-        
-        try! realm.write {
-            realm.add(quiz, update: .all)
         }
     }
     
@@ -149,7 +171,6 @@ final class QuizDataManager {
         } catch let error {
             print("error saving file with error:", error)
         }
-
     }
     
     private func deleteImage(for url: String) {
@@ -193,7 +214,5 @@ final class QuizDataManager {
     private func getDocumentsDirectory() -> URL? {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     }
-    
-
-    
+        
 }

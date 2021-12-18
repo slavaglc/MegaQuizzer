@@ -2,7 +2,7 @@
 
 import RealmSwift
 
-class QuestionCard: EmbeddedObject {
+final class QuestionCard: EmbeddedObject {
     
     @Persisted var questionText: String = ""
     @Persisted var answers: List<Answer>

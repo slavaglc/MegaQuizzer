@@ -43,6 +43,7 @@
 		F9835D5E27660E3800A86B14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5D27660E3800A86B14 /* LoginViewController.swift */; };
 		F9835D6027660E4600A86B14 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */; };
 		F9835D632766686100A86B14 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D622766686100A86B14 /* AuthManager.swift */; };
+		F9835D65276DCFCE00A86B14 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D64276DCFCE00A86B14 /* AppUser.swift */; };
 		F9E512402736D87800259B80 /* FinishCreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		F9835D5D27660E3800A86B14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		F9835D622766686100A86B14 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		F9835D64276DCFCE00A86B14 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCreatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 		59F2B55226B4717600385241 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F9835D64276DCFCE00A86B14 /* AppUser.swift */,
 				59F2B55326B471A000385241 /* Quiz.swift */,
 				59F2B55526B4721600385241 /* QuestionCard.swift */,
 				59F2B55726B4722800385241 /* Answer.swift */,
@@ -453,6 +456,7 @@
 				B56EE61126B3CCE30072512B /* SceneDelegate.swift in Sources */,
 				59F2B55B26B474E500385241 /* QuizDataManager.swift in Sources */,
 				59F2B55826B4722800385241 /* Answer.swift in Sources */,
+				F9835D65276DCFCE00A86B14 /* AppUser.swift in Sources */,
 				B51C86C626B58FA20024C2BD /* QuizesListViewController.swift in Sources */,
 				F9835D5C27660A7900A86B14 /* NavigationController.swift in Sources */,
 				F9835D2A2750251200A86B14 /* QuizStartDisplayViewController.swift in Sources */,

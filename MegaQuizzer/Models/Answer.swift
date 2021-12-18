@@ -1,7 +1,7 @@
 
 import RealmSwift
 
-class Answer: EmbeddedObject {
+final class Answer: EmbeddedObject {
     
     @Persisted var answerText: String = "" //Текст ответа
     @Persisted var isTrue: Bool = false //Здесь правильность ответа отслеживается

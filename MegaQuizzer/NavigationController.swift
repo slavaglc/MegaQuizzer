@@ -6,24 +6,31 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 
 
 final class NavigationController: UINavigationController {
     
-    var userIsLogged: Bool = false
-    var authListener: AuthStateDidChangeListenerHandle?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        autoAuth(isLogged: userIsLogged)
+//        try! Auth.auth().signOut()
+        autoAuth()
     }
     
-    func autoAuth(isLogged: Bool) {
-        if !isLogged {
-            self.performSegue(withIdentifier: "LoginVC", sender: nil)
-//            Auth.auth().removeStateDidChangeListener(authListener!)
+    private func autoAuth() {
+        
+        AuthManager.shared.autoAuth { [weak self] userIsSignedIn in
+            if !userIsSignedIn {
+                self?.performSegue(withIdentifier: "LoginVC", sender: nil)
+            }
         }
     }
     
+//    private func autoAuth(isLogged: Bool) {
+//        if !isLogged {
+//            self.performSegue(withIdentifier: "LoginVC", sender: nil)
+//            guard let authListener = authListener else { return }
+//            Auth.auth().removeStateDidChangeListener(authListener)
+//        }
+//    }
 }

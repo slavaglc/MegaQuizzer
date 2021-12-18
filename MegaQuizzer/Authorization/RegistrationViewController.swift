@@ -24,17 +24,7 @@ final class RegistrationViewController: UIViewController {
     }
     
     @IBAction func registerButton(_ sender: UIButton) {
-        guard let email = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text else { return }
-        AuthManager.shared.signUp(email: email, password: password, confirmPassword: confirmPassword) { [weak self] error, success in
-            if let error = error {
-                self?.showAlert(title: "Ошибка регистрации", message: error, style: .alert)
-            }
-            
-            if success {
-                sender.isEnabled = false
-                print("SUCCESS!!!!!")
-            }
-        }
+        register(sender: sender)
     }
     
  
@@ -59,6 +49,26 @@ final class RegistrationViewController: UIViewController {
             return true
         }
         return false
+    }
+    
+    private func register(sender: UIButton) {
+        guard let email = emailTextField.text, let password = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text, let name = nameTextField.text else { return }
+        
+        showActivityIndicator(target: self, style: .large) { activityIndicator in
+            activityIndicator.startAnimating()
+            
+            AuthManager.shared.signUp(email: email, password: password, confirmPassword: confirmPassword, name: name ) { [weak self] error, success in
+                if let error = error {
+                    self?.showAlert(title: "Ошибка регистрации", message: error, style: .alert)
+                }
+                
+                if success {
+                    sender.isEnabled = false
+                    self?.navigationController?.popToRootViewController(animated: true)
+                }
+                activityIndicator.stopAnimating()
+            }
+        }
     }
 }
 
