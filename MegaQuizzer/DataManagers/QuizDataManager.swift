@@ -68,9 +68,9 @@ final class QuizDataManager {
             return quizzes
             }
 
-   public func loadQuizesFromRealm(completion: @escaping ([Quiz])->())  {
+    public func loadQuizesFromRealm(for user: AppUser, completion: @escaping ([Quiz])->())  {
         var quizzesFromRealm: [Quiz] = []
-            realm.objects(Quiz.self).forEach { quiz in
+        user.quizes.forEach { quiz in
                 quizzesFromRealm.append(quiz)
             }
             quizzes = quizzesFromRealm
@@ -78,16 +78,17 @@ final class QuizDataManager {
     }
     
     //    MARK: - Realm methods
-   public func loadQuizesStrings(completion: @escaping ([[String :String]])->()) {
+    public func loadQuizesStrings(for user: AppUser, completion: @escaping ([[String :String]])->()) {
         var quizStrings: [[String: String]] = []
-        realm.objects(Quiz.self).forEach { quiz in
+        user.quizes.forEach { quiz in
             quizStrings.append([quiz.id.stringValue: quiz.name])
         }
         completion(quizStrings)
     }
     
-    public func loadQuiz(id: String, completion: (Quiz)->()) {
+    public func loadQuiz(id: String, for user: AppUser, completion: (Quiz)->()) {
         let quizID = try! ObjectId(string: id)
+        
         guard let quiz = realm.object(ofType: Quiz.self, forPrimaryKey: quizID) else { return }
         completion(quiz)
     }

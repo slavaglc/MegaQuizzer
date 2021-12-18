@@ -1,7 +1,7 @@
 
 import RealmSwift
 
-final class Quiz: Object {
+final class Quiz: EmbeddedObject {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var name: String = "" //Название викторины
     @Persisted var quizDescription: String?
@@ -14,10 +14,5 @@ final class Quiz: Object {
         self.name = name
         self.questions.append(objectsIn: questions)
     }
-
-    
-    required override init() {
-        super.init()
-    }
-    
+ 
 }
