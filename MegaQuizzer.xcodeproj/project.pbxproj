@@ -39,7 +39,7 @@
 		F9835D562765FE3D00A86B14 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D552765FE3D00A86B14 /* FirebaseFirestoreSwift-Beta */; };
 		F9835D582765FE3D00A86B14 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D572765FE3D00A86B14 /* FirebaseStorage */; };
 		F9835D5A2765FE3D00A86B14 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = F9835D592765FE3D00A86B14 /* FirebaseStorageSwift-Beta */; };
-		F9835D5C27660A7900A86B14 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5B27660A7900A86B14 /* NavigationController.swift */; };
+		F9835D5C27660A7900A86B14 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5B27660A7900A86B14 /* TabBarController.swift */; };
 		F9835D5E27660E3800A86B14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5D27660E3800A86B14 /* LoginViewController.swift */; };
 		F9835D6027660E4600A86B14 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */; };
 		F9835D632766686100A86B14 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D622766686100A86B14 /* AuthManager.swift */; };
@@ -89,7 +89,7 @@
 		F97C0BFF271AC9F7001B5CE3 /* MegaQuizzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegaQuizzerTests.swift; sourceTree = "<group>"; };
 		F9835D292750251200A86B14 /* QuizStartDisplayViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = QuizStartDisplayViewController.swift; sourceTree = "<group>"; };
 		F9835D482765FCCD00A86B14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F9835D5B27660A7900A86B14 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F9835D5B27660A7900A86B14 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		F9835D5D27660E3800A86B14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		F9835D622766686100A86B14 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 				B51C86C826B5B04B0024C2BD /* ResultViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
-				F9835D5B27660A7900A86B14 /* NavigationController.swift */,
+				F9835D5B27660A7900A86B14 /* TabBarController.swift */,
 				F9835D6127660E5100A86B14 /* Authorization */,
 				F92D5B1326DED30F00D01167 /* Extensions */,
 				F95CA3D326B54B81009D7F26 /* Cells */,
@@ -458,7 +458,7 @@
 				59F2B55826B4722800385241 /* Answer.swift in Sources */,
 				F9835D65276DCFCE00A86B14 /* AppUser.swift in Sources */,
 				B51C86C626B58FA20024C2BD /* QuizesListViewController.swift in Sources */,
-				F9835D5C27660A7900A86B14 /* NavigationController.swift in Sources */,
+				F9835D5C27660A7900A86B14 /* TabBarController.swift in Sources */,
 				F9835D2A2750251200A86B14 /* QuizStartDisplayViewController.swift in Sources */,
 				59F2B55426B471A000385241 /* Quiz.swift in Sources */,
 				F9835D6027660E4600A86B14 /* RegistrationViewController.swift in Sources */,

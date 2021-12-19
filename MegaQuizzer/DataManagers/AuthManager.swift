@@ -11,7 +11,6 @@ import Firebase
 
 final class AuthManager {
     
-    
     static let shared = AuthManager()
     
     var currentUserModel: AppUser?
@@ -85,7 +84,11 @@ final class AuthManager {
         
         if let user = user {
             currentUser = user
-            currentUserModel = AppUser(uid: user.uid)
+            currentUserModel = QuizDataManager.shared.getUserFromRealm(by: user.uid)
+            if currentUserModel == nil {
+                QuizDataManager.shared.createUser(user: AppUser(uid: user.uid))
+                currentUserModel = QuizDataManager.shared.getUserFromRealm(by: user.uid)
+            }
             completion(nil, true)
             return
         }

@@ -68,6 +68,15 @@ final class QuizDataManager {
             return quizzes
             }
 
+    public func loadQuizesFromRealm(completion: @escaping ([Quiz])->())  {
+        var quizzesFromRealm: [Quiz] = []
+        realm.objects(Quiz.self).forEach { quiz in
+                quizzesFromRealm.append(quiz)
+            }
+            quizzes = quizzesFromRealm
+            completion(quizzes)
+    }
+    
     public func loadQuizesFromRealm(for user: AppUser, completion: @escaping ([Quiz])->())  {
         var quizzesFromRealm: [Quiz] = []
         user.quizes.forEach { quiz in
@@ -78,6 +87,14 @@ final class QuizDataManager {
     }
     
     //    MARK: - Realm methods
+    public func loadQuizesStrings( completion: @escaping ([[String :String]])->()) {
+        var quizStrings: [[String: String]] = []
+        realm.objects(Quiz.self).forEach { quiz in
+            quizStrings.append([quiz.id.stringValue: quiz.name])
+        }
+        completion(quizStrings)
+    }
+    
     public func loadQuizesStrings(for user: AppUser, completion: @escaping ([[String :String]])->()) {
         var quizStrings: [[String: String]] = []
         user.quizes.forEach { quiz in
@@ -86,7 +103,7 @@ final class QuizDataManager {
         completion(quizStrings)
     }
     
-    public func loadQuiz(id: String, for user: AppUser, completion: (Quiz)->()) {
+    public func loadQuiz(id: String, completion: (Quiz)->()) {
         let quizID = try! ObjectId(string: id)
         
         guard let quiz = realm.object(ofType: Quiz.self, forPrimaryKey: quizID) else { return }
@@ -111,6 +128,16 @@ final class QuizDataManager {
         }
     }
     
+    public func getUserFromRealm(by uid: String) -> AppUser? {
+        realm.object(ofType: AppUser.self, forPrimaryKey: uid)
+    }
+    
+    public func createUser(user: AppUser) {
+        try! realm.write {
+            realm.add(user)
+            }
+    }
+    
     private func saveQuizToRealm(quiz: Quiz, for user: AppUser? = nil, previewImage: UIImage? = nil) {
         if let image = previewImage {
             guard let imagePath = getPreviewImageRelativePath(for: quiz.id) else { return }
@@ -122,21 +149,16 @@ final class QuizDataManager {
         }
         
         guard let user = user else { return }
-        createUser(user: user)
+        guard let uid = user.uid else { return }
+        guard let userFromRealm = getUserFromRealm(by: uid) else { return }
         try! realm.write {
-            user.quizes.append(quiz)
-            quiz.user = user
-            realm.add(quiz, update: .all)
+            userFromRealm.quizes.append(quiz)
+            quiz.user = userFromRealm
+            realm.add(quiz, update: .modified)
         }
     }
     
-    private func createUser(user: AppUser) {
-        if realm.object(ofType: AppUser.self, forPrimaryKey: user.uid) == nil {
-        try! realm.write {
-            realm.add(user)
-            }
-        } 
-    }
+    
     //MARK: - Realm Image Methods
     public func loadImageFromLocalStore(by relativePath: String, completion: @escaping (UIImage?)->()) {
         
@@ -186,8 +208,8 @@ final class QuizDataManager {
     private func getPreviewImageRelativePath(for id: ObjectId) -> String? {
         
        guard let documentsDirectory = getDocumentsDirectory() else { return nil }
-        
-        let fileDirectory =  documentsDirectory.appendingPathComponent("users").appendingPathComponent("_USERNAME_").appendingPathComponent("quizData").appendingPathComponent(id.stringValue).appendingPathComponent("previewImage").appendingPathComponent("PreviewImage.png", isDirectory: false)
+        guard let uid = AuthManager.shared.currentUserModel?.uid else { return nil }
+        let fileDirectory =  documentsDirectory.appendingPathComponent("users").appendingPathComponent(uid).appendingPathComponent("quizData").appendingPathComponent(id.stringValue).appendingPathComponent("previewImage").appendingPathComponent("PreviewImage.png", isDirectory: false)
         
         do {
             try FileManager.default.createDirectory(atPath: fileDirectory.path, withIntermediateDirectories: true, attributes: nil)

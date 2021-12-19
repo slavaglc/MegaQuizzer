@@ -13,9 +13,5 @@ final class QuestionCard: EmbeddedObject {
         self.answers.append(objectsIn: answers)
     }
     
-    required override init() {
-        super.init()
-        
-    }
     
 }

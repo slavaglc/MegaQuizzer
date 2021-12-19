@@ -35,6 +35,7 @@ final class LoginViewController: UIViewController {
                 }
                 guard success else {activityhIndicator.stopAnimating(); return }
                 self?.navigationController?.popToRootViewController(animated: true)
+                
                 activityhIndicator.stopAnimating()
             }
         }

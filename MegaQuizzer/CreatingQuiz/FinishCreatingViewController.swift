@@ -47,8 +47,6 @@ final class FinishCreatingViewController: UIViewController {
 }
 
 
-
-
 extension FinishCreatingViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

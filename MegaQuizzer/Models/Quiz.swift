@@ -1,7 +1,7 @@
 
 import RealmSwift
 
-final class Quiz: EmbeddedObject {
+final class Quiz: Object {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var name: String = "" //Название викторины
     @Persisted var quizDescription: String?

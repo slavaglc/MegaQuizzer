@@ -140,9 +140,10 @@ final class QuizesListViewController: UITableViewController {
     private func loadQuizzes() {
 
         showActivityIndicator(target: self.navigationController ?? self, style: .large) { activityIndicator in
+            guard let user = AuthManager.shared.currentUserModel else { return }
             activityIndicator.startAnimating()
             DispatchQueue.main.async {
-                QuizDataManager.shared.loadQuizesStrings { [unowned self] fetchedStrings in
+                QuizDataManager.shared.loadQuizesStrings(for: user) { [unowned self] fetchedStrings in
                     quizesStrings = fetchedStrings
                     activityIndicator.stopAnimating()
                     tableView.reloadData()

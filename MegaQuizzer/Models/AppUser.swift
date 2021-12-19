@@ -17,8 +17,4 @@ final class AppUser: Object {
         self.init()
         self.uid = uid
     }
-    
-    func writeSelf() {
-        
-    }
 }
