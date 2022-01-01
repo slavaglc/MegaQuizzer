@@ -75,6 +75,7 @@ final class QuizesListViewController: UITableViewController {
        guard let indexPath =
                tableView.indexPathForSelectedRow else { return }
         quizStartVC.quizID = !searchBegins ? quizesStrings[indexPath.row].first?.key : filtredQuizesStrings[indexPath.row].first?.key
+        quizStartVC.locationType = .local
     }
     
     @IBAction func quizUnwind(for unwindSeque: UIStoryboardSegue) {

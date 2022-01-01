@@ -34,7 +34,8 @@ final class LoginViewController: UIViewController {
                     self?.showAlert(title: "Ошибка входа", message: error, style: .alert)
                 }
                 guard success else {activityhIndicator.stopAnimating(); return }
-                self?.navigationController?.popToRootViewController(animated: true)
+                self?.dismiss(animated: true)
+//                self?.navigationController?.popToRootViewController(animated: true)
                 
                 activityhIndicator.stopAnimating()
             }

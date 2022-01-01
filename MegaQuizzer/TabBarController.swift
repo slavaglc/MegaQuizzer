@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 
 
 final class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        try! Auth.auth().signOut()
+//        try! Auth.auth().signOut()
         autoAuth()
     }
     

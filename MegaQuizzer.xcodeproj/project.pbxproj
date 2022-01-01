@@ -44,6 +44,9 @@
 		F9835D6027660E4600A86B14 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */; };
 		F9835D632766686100A86B14 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D622766686100A86B14 /* AuthManager.swift */; };
 		F9835D65276DCFCE00A86B14 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D64276DCFCE00A86B14 /* AppUser.swift */; };
+		F9835D672773B39000A86B14 /* StateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D662773B39000A86B14 /* StateModels.swift */; };
+		F9835D6927786BDA00A86B14 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D6827786BDA00A86B14 /* FirebaseManager.swift */; };
+		F9835D6B277F96D000A86B14 /* MyPublishedQuizesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9835D6A277F96CF00A86B14 /* MyPublishedQuizesViewController.swift */; };
 		F9E512402736D87800259B80 /* FinishCreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +97,9 @@
 		F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		F9835D622766686100A86B14 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		F9835D64276DCFCE00A86B14 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		F9835D662773B39000A86B14 /* StateModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateModels.swift; sourceTree = "<group>"; };
+		F9835D6827786BDA00A86B14 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		F9835D6A277F96CF00A86B14 /* MyPublishedQuizesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPublishedQuizesViewController.swift; sourceTree = "<group>"; };
 		F9E5123F2736D87800259B80 /* FinishCreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCreatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +147,7 @@
 				59F2B55326B471A000385241 /* Quiz.swift */,
 				59F2B55526B4721600385241 /* QuestionCard.swift */,
 				59F2B55726B4722800385241 /* Answer.swift */,
+				F9835D662773B39000A86B14 /* StateModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				59F2B55A26B474E500385241 /* QuizDataManager.swift */,
+				F9835D6827786BDA00A86B14 /* FirebaseManager.swift */,
 				F9835D622766686100A86B14 /* AuthManager.swift */,
 			);
 			path = DataManagers;
@@ -177,10 +185,9 @@
 		B56EE60D26B3CCE30072512B /* MegaQuizzer */ = {
 			isa = PBXGroup;
 			children = (
-				B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */,
+				F9835D6C277F96E300A86B14 /* QuizLists */,
 				F9835D28275024F400A86B14 /* Quiz */,
 				F9E5123E27369DAA00259B80 /* CreatingQuiz */,
-				B51C86C826B5B04B0024C2BD /* ResultViewController.swift */,
 				B56EE60E26B3CCE30072512B /* AppDelegate.swift */,
 				B56EE61026B3CCE30072512B /* SceneDelegate.swift */,
 				F9835D5B27660A7900A86B14 /* TabBarController.swift */,
@@ -230,6 +237,7 @@
 			children = (
 				F9835D292750251200A86B14 /* QuizStartDisplayViewController.swift */,
 				B5EBBC2326B6E8570005B61C /* QuizViewController.swift */,
+				B51C86C826B5B04B0024C2BD /* ResultViewController.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -241,6 +249,15 @@
 				F9835D5F27660E4600A86B14 /* RegistrationViewController.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		F9835D6C277F96E300A86B14 /* QuizLists */ = {
+			isa = PBXGroup;
+			children = (
+				B51C86C526B58FA20024C2BD /* QuizesListViewController.swift */,
+				F9835D6A277F96CF00A86B14 /* MyPublishedQuizesViewController.swift */,
+			);
+			path = QuizLists;
 			sourceTree = "<group>";
 		};
 		F9E5123E27369DAA00259B80 /* CreatingQuiz */ = {
@@ -449,9 +466,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F95CA3D026B4A375009D7F26 /* CreatingQuizViewController.swift in Sources */,
+				F9835D6B277F96D000A86B14 /* MyPublishedQuizesViewController.swift in Sources */,
 				B56EE60F26B3CCE30072512B /* AppDelegate.swift in Sources */,
 				59F2B55626B4721600385241 /* QuestionCard.swift in Sources */,
 				B5EBBC2426B6E8570005B61C /* QuizViewController.swift in Sources */,
+				F9835D6927786BDA00A86B14 /* FirebaseManager.swift in Sources */,
 				F9E512402736D87800259B80 /* FinishCreatingViewController.swift in Sources */,
 				B56EE61126B3CCE30072512B /* SceneDelegate.swift in Sources */,
 				59F2B55B26B474E500385241 /* QuizDataManager.swift in Sources */,
@@ -461,6 +480,7 @@
 				F9835D5C27660A7900A86B14 /* TabBarController.swift in Sources */,
 				F9835D2A2750251200A86B14 /* QuizStartDisplayViewController.swift in Sources */,
 				59F2B55426B471A000385241 /* Quiz.swift in Sources */,
+				F9835D672773B39000A86B14 /* StateModels.swift in Sources */,
 				F9835D6027660E4600A86B14 /* RegistrationViewController.swift in Sources */,
 				F95CA3D226B54B76009D7F26 /* PossibleAnswerTableViewCell.swift in Sources */,
 				F9835D632766686100A86B14 /* AuthManager.swift in Sources */,

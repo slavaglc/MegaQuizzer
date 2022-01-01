@@ -64,7 +64,8 @@ final class RegistrationViewController: UIViewController {
                 
                 if success {
                     sender.isEnabled = false
-                    self?.navigationController?.popToRootViewController(animated: true)
+                    self?.navigationController?.dismiss(animated: true)
+//                    self?.navigationController?.popToRootViewController(animated: true)
                 }
                 activityIndicator.stopAnimating()
             }

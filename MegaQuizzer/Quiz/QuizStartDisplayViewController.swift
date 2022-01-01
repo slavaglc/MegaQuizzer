@@ -12,11 +12,13 @@ class QuizStartDisplayViewController: UIViewController {
    
    var quizID: String!
    var quiz: Quiz!
+   var locationType: QuizLocationType!
    
     @IBOutlet weak var quizTitleLabel: UILabel!
     @IBOutlet weak var quizImageView: UIImageView!
     @IBOutlet weak var quizDescriptionLabel: UILabel!
-    
+   @IBOutlet weak var publishButton: UIButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
        loadQuiz()
@@ -36,10 +38,28 @@ class QuizStartDisplayViewController: UIViewController {
        performSegue(withIdentifier: "startQuizSegue", sender: nil)
     }
    
+   @IBAction func publishQuizButtonTapped(_ sender: UIButton) {
+      guard let user = AuthManager.shared.currentUser else { return
+         
+      }
+      FirebaseManager.shared.saveQuizToFirebase(quiz: quiz, for: user)
+   }
+   
+   
    private func setupGUI() {
       quizTitleLabel.text = quiz.name
       quizDescriptionLabel.text = quiz.quizDescription ?? ""
+      
+      switch locationType {
+      case .network:
+         publishButton.isHidden = true
+      case .local:
+         publishButton.isHidden = false
+      case .none:
+         publishButton.isHidden = true
+      }
    }
+   
    
    private func setupImage() {
       showActivityIndicator(target: self) { activityIdicator in

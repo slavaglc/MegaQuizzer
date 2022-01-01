@@ -14,4 +14,16 @@ final class Answer: EmbeddedObject {
     required override init() {
         super.init()
     }
+    
+    convenience init(snapshotValue: AnyObject) {
+        self.init()
+        guard let answerText = snapshotValue["answerText"] as? String else { return }
+        isTrue = snapshotValue["isTrue"] as? Bool ?? false
+        self.answerText = answerText
+    }
+    
+    func convertToDictionary() -> NSDictionary {
+        return ["answerText": answerText, "isTrue": isTrue]
+    }
+    
 }
