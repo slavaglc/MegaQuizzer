@@ -95,7 +95,7 @@ final class QuizDataManager {
         completion(quizStrings)
     }
     
-    public func loadQuizesStrings(for user: AppUser, completion: @escaping ([[String :String]])->()) {
+    public func loadQuizesHeaders(for user: AppUser, completion: @escaping ([[String :String]])->()) {
         var quizStrings: [[String: String]] = []
         user.quizes.forEach { quiz in
             quizStrings.append([quiz.id.stringValue: quiz.name])
@@ -103,11 +103,16 @@ final class QuizDataManager {
         completion(quizStrings)
     }
     
-    public func loadQuiz(id: String, completion: (Quiz)->()) {
-        let quizID = try! ObjectId(string: id)
+    public func loadQuiz(id: String, from locationType: QuizLocationType, completion: @escaping (Quiz)->()) {
         
-        guard let quiz = realm.object(ofType: Quiz.self, forPrimaryKey: quizID) else { return }
-        completion(quiz)
+        switch locationType {
+        case .network:
+            guard let user = AuthManager.shared.currentUser else { break }
+
+            FirebaseManager.shared.fetchQuizFromFirebase(user: user, by: id, completion: completion)
+        case .local:
+            loadQuizFromRealm(id: id, completion: completion)
+        }
     }
 
    public func deleteQuizFromRealm(at row: Int) {
@@ -158,7 +163,11 @@ final class QuizDataManager {
         }
     }
     
-    
+    private func loadQuizFromRealm(id: String, completion: (Quiz)->()) {
+        guard let quizID = try? ObjectId(string: id) else { return }
+        guard let quiz = realm.object(ofType: Quiz.self, forPrimaryKey: quizID) else { return }
+        completion(quiz)
+    }
     //MARK: - Realm Image Methods
     public func loadImageFromLocalStore(by relativePath: String, completion: @escaping (UIImage?)->()) {
         

@@ -58,7 +58,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Мои викторины" image="icloud.and.arrow.up" catalog="system" selectedImage="icloud.and.arrow.up.fill" id="5pg-cC-MxY"/>
                     <connections>
-                        <segue destination="SMh-hQ-CCM" kind="show" id="qc7-DJ-3Nd"/>
+                        <segue destination="SMh-hQ-CCM" kind="show" identifier="showMyPublishedQuizes" id="qc7-DJ-3Nd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wak-Tc-QgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -319,7 +319,6 @@
         <!--Созданные викторины-->
         <scene sceneID="SUW-sY-mT3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PYY-m2-gtf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cp8-W5-jlS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Созданные викторины" image="externaldrive" catalog="system" selectedImage="externaldrive.fill" id="4vf-oD-uHe"/>
                     <toolbarItems/>
@@ -341,6 +340,7 @@
                         <segue destination="Un4-lI-E8O" kind="relationship" relationship="rootViewController" id="AZm-9F-vcO"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PYY-m2-gtf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2644" y="63"/>
         </scene>

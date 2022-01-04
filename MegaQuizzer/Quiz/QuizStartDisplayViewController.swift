@@ -77,12 +77,11 @@ class QuizStartDisplayViewController: UIViewController {
    private func loadQuiz() {
       showActivityIndicator(target: self, style: .large) { activityIndicator in
          activityIndicator.startAnimating()
-         QuizDataManager.shared.loadQuiz(id: quizID) { [weak self] fetchedQuiz in
+         QuizDataManager.shared.loadQuiz(id: quizID, from: locationType) { [weak self] fetchedQuiz in
             self?.quiz = fetchedQuiz
-            setupGUI()
+            self?.setupGUI()
             activityIndicator.stopAnimating()
          }
        }
    }
-   
 }

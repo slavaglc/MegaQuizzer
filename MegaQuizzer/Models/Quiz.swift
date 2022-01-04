@@ -19,7 +19,7 @@ final class Quiz: Object {
     convenience init(snapshot: DataSnapshot) {
         self.init()
         let snapshotValue = snapshot.value as! [String: AnyObject]
-        let questionsSnapshot = snapshotValue["questions"] as! [String: AnyObject]
+        guard let questionsSnapshot = snapshotValue["questions"] as? [String: AnyObject] else { return }
         let quizDescription = snapshotValue["quizDescription"] as? String
         
         questionsSnapshot.forEach { questionCard in
@@ -32,7 +32,7 @@ final class Quiz: Object {
          
     
     
-    func convertToDictionary() -> NSDictionary {
+    func convertToDictionary() -> Dictionary<String, String> {
         return ["id": id.stringValue, "name": name, "quizDescription": quizDescription ?? ""]
     }
  

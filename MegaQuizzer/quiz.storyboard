@@ -11,7 +11,7 @@
         <!--Quiz Start Display View Controller-->
         <scene sceneID="Sol-Bw-XYz">
             <objects>
-                <viewController id="p7d-fa-DIb" customClass="QuizStartDisplayViewController" customModule="MegaQuizzer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="p7d-fa-DIb" customClass="QuizStartDisplayViewController" customModule="MegaQuizzer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m1c-yC-OOK">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
