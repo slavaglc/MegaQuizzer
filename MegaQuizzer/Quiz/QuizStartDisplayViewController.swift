@@ -14,9 +14,9 @@ class QuizStartDisplayViewController: UIViewController {
    var quiz: Quiz!
    var locationType: QuizLocationType!
    
-    @IBOutlet weak var quizTitleLabel: UILabel!
-    @IBOutlet weak var quizImageView: UIImageView!
-    @IBOutlet weak var quizDescriptionLabel: UILabel!
+   @IBOutlet weak var quizTitleLabel: UILabel!
+   @IBOutlet weak var quizImageView: UIImageView!
+   @IBOutlet weak var quizDescriptionLabel: UILabel!
    @IBOutlet weak var publishButton: UIButton!
    
     override func viewDidLoad() {
@@ -39,22 +39,23 @@ class QuizStartDisplayViewController: UIViewController {
     }
    
    @IBAction func publishQuizButtonTapped(_ sender: UIButton) {
-      guard let user = AuthManager.shared.currentUser else { return
-         
+      guard let user = AuthManager.shared.currentUser else { return }
+      sender.isEnabled = false
+      FirebaseManager.shared.saveQuizToFirebase(quiz: quiz, for: user) { [unowned self] in
+         QuizDataManager.shared.setPublishedStatus(for: self.quizID, status: true)
       }
-      FirebaseManager.shared.saveQuizToFirebase(quiz: quiz, for: user)
    }
    
    
    private func setupGUI() {
       quizTitleLabel.text = quiz.name
       quizDescriptionLabel.text = quiz.quizDescription ?? ""
-      
       switch locationType {
       case .network:
          publishButton.isHidden = true
       case .local:
-         publishButton.isHidden = false
+         let quizIsPublished = QuizDataManager.shared.quizIsPublished(quiz: quiz) ?? false
+         publishButton.isHidden = quizIsPublished
       case .none:
          publishButton.isHidden = true
       }

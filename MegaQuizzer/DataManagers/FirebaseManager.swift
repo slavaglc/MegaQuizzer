@@ -8,6 +8,7 @@
 import Firebase
 
 
+
 final class FirebaseManager {
     static let shared = FirebaseManager()
 
@@ -17,7 +18,7 @@ final class FirebaseManager {
         refFB = Database.database().reference(withPath: "users")
     }
     
-    func saveQuizToFirebase(quiz: Quiz , for user: User) {
+    func saveQuizToFirebase(quiz: Quiz , for user: User, completion: @escaping ()->() = {} ) {
         let refQuiz = refFB.child(user.uid).child("quizes").childByAutoId()
         let firebaseID = refQuiz.key
         var quizDict = quiz.convertToDictionary()
@@ -34,6 +35,7 @@ final class FirebaseManager {
                     answerRef.setValue(answerDict)
                 }
             }
+            completion()
         }
     }
     
@@ -52,6 +54,26 @@ final class FirebaseManager {
         }
     }
     
+    func fetchQuizPreviewsFromFirebase(for user: User, completion: @escaping (_ quizesHeaders: [QuizPreview])->()) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let refQuiz = self?.refFB.child(user.uid).child("quizes") else { return }
+            var quizPreviews = [QuizPreview]()
+            refQuiz.observeSingleEvent(of: .value) { snapshot in
+                 for item in snapshot.children {
+                    if let item = item as? DataSnapshot {
+                        guard let value = item.value as? [String: AnyObject] else { continue }
+                        guard let firebaseID = value["firebaseID"] as? String, let name = value["name"] as? String, let realmID = value["id"] as? String else { continue }
+                        quizPreviews.append(QuizPreview(firebaseID: firebaseID, realmID: realmID, name: name, imageURL: nil))
+                    }
+                }
+                DispatchQueue.main.async {
+                    completion(quizPreviews)
+                }
+            }
+        }
+       
+    }
+    
     func fetchQuizesFromFirebase(for user: User, completion: @escaping (_ quizes: [Quiz])->()) {
         let refQuiz = refFB.child(user.uid).child("quizes")
         var quizes = [Quiz]()
@@ -66,7 +88,7 @@ final class FirebaseManager {
         }
     }
     
-    func fetchQuizFromFirebase(user: User ,by id: String, completion: @escaping (_ quiz: Quiz)->()) {
+    func fetchQuizFromFirebase(user: User, by id: String, completion: @escaping (_ quiz: Quiz)->()) {
         let refQuiz = refFB.child(user.uid).child("quizes")
         refQuiz.observe(.value) { snapshot in
             snapshot.children.forEach { item in
@@ -77,4 +99,26 @@ final class FirebaseManager {
             }
         }
     }
+    
+    func quizExistsInFirebase(for user: User, id: String) -> Bool {
+        var result = false
+        refFB.child(user.uid).child("quizes").observeSingleEvent(of: .value) { snapshot in
+            guard let snapshotValue = snapshot.value as? [String: AnyObject] else { return }
+            guard let idSnapshot = snapshotValue["id"] as? String else { return }
+            result = idSnapshot == id
+        }
+        return result
+    }
+    
+    func deleteQuizFromFirebase(for user: User, id: String, completion: @escaping ()->()) {
+        let refToDelete = refFB.child(user.uid).child("quizes").child(id)
+        refToDelete.removeValue { error, _ in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                completion()
+            }
+        }
+    }
+    
 }

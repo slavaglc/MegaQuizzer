@@ -9,6 +9,7 @@ final class Quiz: Object {
     @Persisted var imagePath: String?
     @Persisted var questions: List<QuestionCard> //Объект из массива вопросов викторины
     @Persisted var user: AppUser?
+    @Persisted var isPublished: Bool = false
     
     convenience init(name: String = "", questions: [QuestionCard]) {
         self.init()
@@ -18,7 +19,7 @@ final class Quiz: Object {
     
     convenience init(snapshot: DataSnapshot) {
         self.init()
-        let snapshotValue = snapshot.value as! [String: AnyObject]
+        guard let snapshotValue = snapshot.value as? [String: AnyObject] else { return }
         guard let questionsSnapshot = snapshotValue["questions"] as? [String: AnyObject] else { return }
         let quizDescription = snapshotValue["quizDescription"] as? String
         
@@ -31,9 +32,15 @@ final class Quiz: Object {
         }
          
     
-    
     func convertToDictionary() -> Dictionary<String, String> {
         return ["id": id.stringValue, "name": name, "quizDescription": quizDescription ?? ""]
     }
  
+}
+
+struct QuizPreview {
+    let firebaseID: String
+    let realmID: String
+    let name: String
+    let imageURL: String?
 }

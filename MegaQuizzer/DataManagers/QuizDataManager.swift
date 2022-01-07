@@ -6,7 +6,7 @@ import UIKit
 final class QuizDataManager {
  
     static let shared = QuizDataManager()
-    static let currentSchemaVersion: UInt64 = 6
+    static let currentSchemaVersion: UInt64 = 7
     
     private let realm = try! Realm()
     var currentCreatingCards: [QuestionCard] = []
@@ -34,6 +34,12 @@ final class QuizDataManager {
             if oldSchemaVersion <= 5 {
                 migrateFrom5To6(with: migration)
             }
+            
+            
+            if oldSchemaVersion <= 6 {
+                migrateFrom6To7(with: migration)
+            }
+            
          })
         Realm.Configuration.defaultConfiguration = config
     }
@@ -58,6 +64,12 @@ final class QuizDataManager {
             newObject?["user"] = nil
         }
     }
+    
+    static func migrateFrom6To7(with migration: Migration) {
+        migration.enumerateObjects(ofType: Quiz.className()) { oldObject, newObject in
+            newObject?["isPublished"] = false
+        }
+    }
 //    MARK: - Quiz Methods
     public func saveQuiz(quiz: Quiz, for user: AppUser? = nil, withImage previewImage: UIImage? = nil) {
         quizzes.append(quiz)
@@ -65,9 +77,38 @@ final class QuizDataManager {
     }
     
     public func getQuizzes(completion: @escaping ([Quiz])->()) -> [Quiz] {
-            return quizzes
-            }
+        return quizzes
+    }
+    
+    public func loadQuiz(id: String, from locationType: QuizLocationType, completion: @escaping (Quiz)->()) {
+        
+        switch locationType {
+        case .network:
+            guard let user = AuthManager.shared.currentUser else { break }
 
+            FirebaseManager.shared.fetchQuizFromFirebase(user: user, by: id, completion: completion)
+        case .local:
+            loadQuizFromRealm(id: id, completion: completion)
+        }
+    }
+
+    //    MARK: - Realm quiz methods
+    public func loadQuizesStrings( completion: @escaping ([[String :String]])->()) {
+        var quizStrings: [[String: String]] = []
+        realm.objects(Quiz.self).forEach { quiz in
+            quizStrings.append([quiz.id.stringValue: quiz.name])
+        }
+        completion(quizStrings)
+    }
+    
+    public func loadQuizesHeaders(for user: AppUser, completion: @escaping ([[String :String]])->()) {
+        var quizStrings: [[String: String]] = []
+        user.quizes.forEach { quiz in
+            quizStrings.append([quiz.id.stringValue: quiz.name])
+        }
+        completion(quizStrings)
+    }
+    
     public func loadQuizesFromRealm(completion: @escaping ([Quiz])->())  {
         var quizzesFromRealm: [Quiz] = []
         realm.objects(Quiz.self).forEach { quiz in
@@ -86,35 +127,6 @@ final class QuizDataManager {
             completion(quizzes)
     }
     
-    //    MARK: - Realm methods
-    public func loadQuizesStrings( completion: @escaping ([[String :String]])->()) {
-        var quizStrings: [[String: String]] = []
-        realm.objects(Quiz.self).forEach { quiz in
-            quizStrings.append([quiz.id.stringValue: quiz.name])
-        }
-        completion(quizStrings)
-    }
-    
-    public func loadQuizesHeaders(for user: AppUser, completion: @escaping ([[String :String]])->()) {
-        var quizStrings: [[String: String]] = []
-        user.quizes.forEach { quiz in
-            quizStrings.append([quiz.id.stringValue: quiz.name])
-        }
-        completion(quizStrings)
-    }
-    
-    public func loadQuiz(id: String, from locationType: QuizLocationType, completion: @escaping (Quiz)->()) {
-        
-        switch locationType {
-        case .network:
-            guard let user = AuthManager.shared.currentUser else { break }
-
-            FirebaseManager.shared.fetchQuizFromFirebase(user: user, by: id, completion: completion)
-        case .local:
-            loadQuizFromRealm(id: id, completion: completion)
-        }
-    }
-
    public func deleteQuizFromRealm(at row: Int) {
        
         try! realm.write {
@@ -141,6 +153,32 @@ final class QuizDataManager {
         try! realm.write {
             realm.add(user)
             }
+    }
+    
+    public func quizExistsInRealmDB(quiz: Quiz) -> Bool {
+        realm.object(ofType: Quiz.self, forPrimaryKey: quiz.id) != nil
+    }
+    
+    public func quizExistsInRealmDB(id: String) -> Bool {
+        guard let quizID = try? ObjectId(string: id) else { return false }
+        return realm.object(ofType: Quiz.self, forPrimaryKey: quizID) != nil
+    }
+    
+    public func quizIsPublished(quiz: Quiz) -> Bool? {
+        realm.object(ofType: Quiz.self, forPrimaryKey: quiz.id)?.isPublished
+    }
+    
+    
+    public func setPublishedStatus(for id: String, status: Bool) {
+        guard let quizID = try? ObjectId(string: id) else { return }
+        guard let quiz = realm.object(ofType: Quiz.self, forPrimaryKey: quizID) else { return }
+        do {
+            try realm.write {
+                quiz.isPublished = status
+            }
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
     }
     
     private func saveQuizToRealm(quiz: Quiz, for user: AppUser? = nil, previewImage: UIImage? = nil) {
