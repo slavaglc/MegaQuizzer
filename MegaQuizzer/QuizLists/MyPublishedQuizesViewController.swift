@@ -8,7 +8,7 @@
 import UIKit
 
 final class MyPublishedQuizesViewController: UITableViewController {
-//    var quizesHeaders = Array<[String: String]>()
+
     var quizPreviews = Array<QuizPreview>()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -20,11 +20,6 @@ final class MyPublishedQuizesViewController: UITableViewController {
             print("count of quizPreviews:", quizPreviews.count)
             self?.tableView.reloadData()
         }
-//        FirebaseManager.shared.fetchQuizHeadersFromFirebase(for: user) { [weak self] quizesHeaders in
-//            self?.quizesHeaders = quizesHeaders
-//            print(quizesHeaders)
-//            self?.tableView.reloadData()
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,11 +40,8 @@ final class MyPublishedQuizesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyQuizesCell", for: indexPath)
         var content  = cell.defaultContentConfiguration()
-        print("Cell For Row")
         content.text = quizPreviews[indexPath.row].name
-    
         cell.contentConfiguration = content
-        
         return cell
     }
     
